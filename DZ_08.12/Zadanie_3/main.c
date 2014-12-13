@@ -3,9 +3,9 @@
 
 int main()
 {
-for(int i=1; (i<=17); i=i+2)
+for(int i=1; (i<=33); i=i+2)
     {
-        printf("%d\n", i*i*i);
+        printf("%d^3=%d\n", i, i*i*i);
     }
     return 0;
 }
