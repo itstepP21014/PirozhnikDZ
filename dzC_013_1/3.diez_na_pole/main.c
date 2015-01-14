@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printField(n);
+void printField(int n);
 int gcd(int a, int b);
 
 
@@ -14,7 +14,7 @@ int main()
     return 0;
 }
 
-void printField(n)
+void printField(int n)
 {
     for(int j=1; j<=n; ++j){
         for(int i=1; i<=n; ++i){
