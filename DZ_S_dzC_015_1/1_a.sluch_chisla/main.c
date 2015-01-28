@@ -11,7 +11,7 @@ int main()
     scanf("%d", &max_N);
     for(int i=1; i<=quant_N; ++i){
         N=random()%(max_N+1);
-        if(N>=0){                 // исключить отрицательные числа
+        if(N>=0){                 // to leave out negative numbers
             printf("%d\n", N);
         }
         else{
