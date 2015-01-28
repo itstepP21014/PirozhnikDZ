@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1422468069 source:/home/pirozhnikolga/programms/PirozhnikDZ/KW/klass_work_28.01/klasswork_28.01.c
+	<stdio.h>
+	<stdlib.h>
+
+1422468100 source:/home/pirozhnikolga/programms/PirozhnikDZ/KW/klass_work_28.01/main.c
+	<stdio.h>
+	<stdlib.h>
+	"klasswork_28.01.h"
+
+1422468069 /home/pirozhnikolga/programms/PirozhnikDZ/KW/klass_work_28.01/klasswork_28.01.h
+
