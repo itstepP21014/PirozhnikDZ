@@ -9,7 +9,7 @@ int main()
     int a, b, gcd;
     printf("Enter two numbers:\n");
     scanf("%d%d", &a, &b);
-    printf("GCD of %d and %d = %d.\n", a, b, gcd(a, b));
+    printf("GCD of %d and %d = %d.\n", a, b, gcd(a, b));  // пишет что gcd не функция
     printf("LCM of %d and %d = %d.\n", a, b, lcm(a, b));
     return 0;
 }
