@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void dice(int n)
 {
     switch(n){
