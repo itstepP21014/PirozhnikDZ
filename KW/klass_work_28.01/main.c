@@ -9,7 +9,7 @@ int main()
     int humanSize, random_or_yourself;
     printf("Enter the size of array:\n");
     scanf("%d", &humanSize);
-    printf("Would you like enter arrya yourself or get it random?\n"
+    printf("Would you like enter array yourself or get it random?\n"
             "(yourself - press 1, random - press 2)\n");
     scanf("%d", &random_or_yourself);
     if(random_or_yourself==1){
@@ -18,15 +18,19 @@ int main()
     else{
         input_rand(a, humanSize);
     }
-    // output(a,humanSize);
-    int p=0;
-    do{
-        for(int i=humanSize-1; i>=0; --i){
-            if(a[i]<0){
-                printf("%d", a[i]);
-                p=1;
-            }
-        }
-    }while(p==0);
+    output(a, humanSize);
+    if(lastNegativeSearch(a, humanSize)>0){
+        printf("The last negative element in the array - %d, its order number - %d.\n", a[lastNegativeSearch(a, humanSize)], lastNegativeSearch(a, humanSize));
+    }
+    else{
+        printf("There is no any negative element in the array.\n");
+    }
+    if(firstPositiveSearch(a, humanSize)>0){
+        printf("The first positive element in the array - %d, its order number - %d.\n", a[firstPositiveSearch(a, humanSize)], firstPositiveSearch(a, humanSize));
+    }
+    else{
+        printf("There is no any positive element in the array.\n");
+    }
+
     return 0;
 }
