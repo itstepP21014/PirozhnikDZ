@@ -8,31 +8,36 @@ int main()
     char polska[i];
     printf("Vvedite obratnuyu pol'skuyu zapis':\n");
     scanf("%s", &polska[i]);
-    char polska_stack[top];
-    polska_stack[top]=polska[i];
+    int stack[top];
     for(i=0; i<=strlen(polska); ++i){
-            switch(polska_stack[top]){
+        if(polska[i]=='*'||polska[i]=='+'||polska[i]=='-'||polska[i]=='/'||polska[i]=='='){
+            stack[top]=polska[i];
+            switch(polska[i]){
             case '*':
-                polska_stack[top-2]*=polska_stack[top-1];
-                top-=3;
+                stack[top-1]*=stack[top];
+                --top;
                 break;
             case '+':
-                polska_stack[top-2]+=polska_stack[top-1];
-                top-=3;
+                stack[top-1]+=stack[top];
+                --top;
                 break;
             case '-':
-                polska_stack[top-2]-=polska_stack[top-1];
-                top-=3;
+                stack[top-1]-=stack[top];
+                --top;
                 break;
             case '/':
-                polska_stack[top-2]/=polska_stack[top-1];
-                top-=3;
+                stack[top-1]/=stack[top];
+                --top;
                 break;
             case '=':
-                return printf("%d\n", polska_stack[top]);
+                return printf("%d\n", stack[top+1]);
                 break;
             }
+        }
+        else{
+            stack[top]=polska[i];
             ++top;
+        }
     }
-    return 0;
 }
+
