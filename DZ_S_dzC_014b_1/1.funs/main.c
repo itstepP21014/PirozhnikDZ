@@ -13,6 +13,6 @@ int main()
     printf("%d\n", shiftFirstFigure(N));
     printf("Enter one else number:\n");
     scanf("%d", &M);
-    printf("%d\n", glueFigures(int N, int M));
+    printf("%d\n", glueFigures(N, M));
     return 0;
 }
