@@ -41,7 +41,7 @@ int is_there_winner()
         }
     }
     for(i; i<3; ++i){
-        if(mas[0][i]==mas[1][i] && mas[1][i]==mas[2][i] && mas[i][0]!=' '){
+        if(mas[0][i]==mas[1][i] && mas[1][i]==mas[2][i] && mas[0][i]!=' '){
             proceed=0;
             if(mas[0][i]=='X') return 1;
             else return 2;
