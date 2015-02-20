@@ -25,7 +25,7 @@ void selection_sorting(int mas[], int size)
 {
     for(int i=0; i<size-1; ++i)
     {
-        int k;
+        int k=i;
         int min=mas[i];
         for(int j=i+1; j<size; ++j)
         {
