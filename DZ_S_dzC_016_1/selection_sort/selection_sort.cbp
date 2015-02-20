@@ -31,6 +31,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../../mylib/src/arrays.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../mylib/src/sortings.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
