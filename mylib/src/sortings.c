@@ -9,7 +9,7 @@ void buble_sorting(int mas[], int size)
 {
     while(!check_sorting(mas, size))
     {
-        for(int i=0; i<size; ++i)
+        for(int i=0; i<size-1; ++i)
         {
             if(mas[i]>mas[i+1])
             {
