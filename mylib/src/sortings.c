@@ -1,11 +1,11 @@
-int check_sorting(const int mas[], int size)
+int check_sorting(const int *mas, int size)
 {
     for(int i=0; i<size-1; ++i)
         if(mas[i]>mas[i+1]) return 0;
     return 1;
 }
 
-void buble_sorting(int mas[], int size)
+void buble_sorting(int *mas, int size)
 {
     while(!check_sorting(mas, size))
     {
@@ -21,7 +21,7 @@ void buble_sorting(int mas[], int size)
     }
 }
 
-void selection_sorting(int mas[], int size)
+void selection_sorting(int *mas, int size)
 {
     for(int i=0; i<size-1; ++i)
     {

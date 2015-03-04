@@ -10,7 +10,7 @@ int main()
            "*** voprosa (?). Vvedennoe Vami slovo budet razmesheno po ukazannomu ***\n"
            "*** adresu. Dlya prekrashenya programmy vvedite chislo -99999.       ***\n\n");
     int instructionCounter=-1;
-    int memory[instructionCounter];
+    int *memory=NULL;
     do{
         ++instructionCounter;
         printf("%02d ? ", instructionCounter);
@@ -19,6 +19,7 @@ int main()
     printf("\n*** Zagruska programmy zavershena  ***\n"
            "*** Nachinayu vypolnenie programmy ***\n");
     int lengthOfProgramm=instructionCounter-1;
+    memory=(int*)malloc(lengthOfProgramm*sizeof(int));
     int accumulator;
     for(int instructionCounter=0; instructionCounter<lengthOfProgramm; ++instructionCounter){
         int instructionRegister=memory[instructionCounter];
@@ -53,4 +54,6 @@ int main()
                  break;
         }
     }
+    free(memory);
+    memory=NULL;
 }

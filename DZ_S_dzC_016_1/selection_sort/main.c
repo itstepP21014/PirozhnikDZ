@@ -10,12 +10,15 @@ int main()
 
 {
     srand(time(NULL));
-    int mas[N];
+    int *mas=NULL;
     int size = 10;
-    generate(mas, size);
-    output(mas,size);
+    mas=(int*)malloc(size*sizeof(int));
+    generateArray(mas, size);
+    outputArray(mas,size);
     selection_sorting(mas,size);
-    output(mas,size);
+    outputArray(mas,size);
 
+    free(mas);
+    mas=NULL;
     return 0;
 }

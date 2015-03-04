@@ -2,39 +2,39 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 100
 
-int check_sorting(const int mas[], int size);
-void idiot_sorting(int mas[], int sise);
-void output(const int mas[], int size);
-void generate(int mas[], int size);
+int check_sorting(const int *mas, int size);
+void idiot_sorting(int *mas, int sise);
+void output(const int *mas, int size);
+void generate(int *mas, int size);
 
 
 int main()
 
 {
     srand(time(NULL));
-    int mas[N];
+    int *mas=NULL;
     int size = 10;
+    mas=(int*)malloc(size*sizeof(int));
     generate(mas, size);
     output(mas,size);
-
     idiot_sorting(mas,size);
-
     output(mas,size);
 
+    free(mas);
+    mas=NULL;
     return 0;
 }
 
 
-int check_sorting(const int mas[], int size)
+int check_sorting(const int *mas, int size)
 {
     for(int i=0; i<size-1; ++i)
         if(mas[i]>mas[i+1]) return 0;
     return 1;
 }
 
-void idiot_sorting(int mas[], int size)
+void idiot_sorting(int *mas, int size)
 {
     while(!check_sorting(mas, size))
     {
@@ -46,7 +46,7 @@ void idiot_sorting(int mas[], int size)
     }
 }
 
-void output(const int mas[], int size)
+void output(const int *mas, int size)
 {
     for(int i=0; i<size; ++i)
     {

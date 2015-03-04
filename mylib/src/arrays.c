@@ -1,6 +1,7 @@
 #include <stdlib.h>
+#include <stdio.h>
 
-void output(const int mas[], int size)
+void outputArray(const int *mas, int size)
 {
     for(int i=0; i<size; ++i)
     {
@@ -9,7 +10,7 @@ void output(const int mas[], int size)
     printf("\n");
 }
 
-void generate(int mas[], int size)
+void generateArray(int *mas, int size)
 {
     for(int i=0; i<size; ++i)
     {
