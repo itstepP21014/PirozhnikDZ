@@ -3,12 +3,12 @@
 
 int myStrlen(char *str);
 int myStrcmp(char *str1, char *str2);
-char myStrcpy(char *str1, char *str2);
+char *myStrcpy(char *str1, char *str2);
 
 
 int main()
 {
-    char *extraFrase="We are what we eat"; *str1="Like father like son"; *str2;
+    char *extraFrase="We are what we eat", *str1="Like father like son", str2[40];
     myStrcpy(str2, extraFrase);
     printf("*** %s ***\nThis frase contains %d symbols.\n\n", str1, myStrlen(str1));
     printf("*** %s ***\nThis frase contains %d symbols.\n\n", str2, myStrlen(str2));
@@ -37,9 +37,11 @@ int myStrcmp(char *str1, char *str2)
     }
 }
 
-char myStrcpy(char *str1, char *str2)
+char *myStrcpy(char *str1, char *str2)
 {
-    for(int i=0; str2[i]==0; ++i)
+    int i;
+    for(i=0; str2[i]!=0; ++i)
         str1[i]=str2[i];
-    return *str1;
+    str1[i]=str2[i];
+    return str1;
 }
