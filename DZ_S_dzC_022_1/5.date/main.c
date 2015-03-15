@@ -9,9 +9,9 @@ typedef struct Time_ {
 }Time;
 
 void output_time(Time n);
-//void input_time(Time n);
+//Time input_time(Time n);
 void compare_time(Time a, Time b);
-void add_time(int adding, Time n);
+Time add_time(int adding, Time n);
 
 void output_time(Time n)
 {
@@ -19,10 +19,11 @@ void output_time(Time n)
 }
 
 /*
-void input_time(Time n)
+Time input_time(Time n)
 {
     printf("Vvedite vremya:\n");
     scanf("%d %d %d", &n.hour, &n.minute, &n.second);
+    return n;
 }
 */
 
@@ -43,7 +44,7 @@ void compare_time(Time a, Time b)
     }
 }
 
-void add_time(int adding, Time n)
+Time add_time(int adding, Time n)
 {
     int h=0, m=0, s=0;
     if(adding >= 86400)
@@ -55,6 +56,7 @@ void add_time(int adding, Time n)
     n.hour+=h;
     n.minute+=m;
     n.second+=s;
+    return n;
 }
 
 int main()
