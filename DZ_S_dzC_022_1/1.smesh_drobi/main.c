@@ -8,7 +8,7 @@ typedef struct Mix_fraction_ {
     int denominator;
 } Mix_fraction;
 
-Mix_fraction input_fracNum(Mix_fraction number);
+Mix_fraction input_fracNum();
 void output_fracNum(Mix_fraction number);
 double convert_fracNum(Mix_fraction number);
 Mix_fraction sum_fracNum(Mix_fraction a, Mix_fraction b);
@@ -16,8 +16,9 @@ Mix_fraction subtract_fracNum(Mix_fraction a, Mix_fraction b);
 Mix_fraction multip_fracNum(Mix_fraction a, Mix_fraction b);
 Mix_fraction divide_fracNum(Mix_fraction a, Mix_fraction b);
 
-Mix_fraction input_fracNum(Mix_fraction number)
+Mix_fraction input_fracNum()
 {
+    Mix_fraction number;
     printf("Vvedite celoe chislo, chislitel i znamenatel.\n");
     scanf("%d %d %d", &number.integer, &number.numerator, &number.denominator);
     return number;
@@ -25,7 +26,7 @@ Mix_fraction input_fracNum(Mix_fraction number)
 
 void output_fracNum(Mix_fraction number)
 {
-    if(number.integer != 0)
+    if(number.integer == 0)
         printf("%d/%d\n", number.numerator, number.denominator);
     else
         printf("%d %d/%d\n", number.integer, number.numerator, number.denominator);
@@ -114,9 +115,9 @@ Mix_fraction divide_fracNum(Mix_fraction a, Mix_fraction b)
 int main()
 {
     Mix_fraction fraction1, fraction2;
-    input_fracNum(fraction1);
+    fraction1 = input_fracNum();
     output_fracNum(fraction1);
-    input_fracNum(fraction2);
+    fraction2 = input_fracNum();
     output_fracNum(fraction2);
     printf("Summa:\n");
     output_fracNum(sum_fracNum( fraction1,  fraction2));
