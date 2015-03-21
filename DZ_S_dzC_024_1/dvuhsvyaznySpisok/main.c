@@ -29,10 +29,19 @@ int main()
     pushInFront(list, 4444);
     pushInBack(list, 22);
     pushInBack(list, 1);
+<<<<<<< HEAD
     printf("%d \n", list -> last -> data);
     printf("%d \n", list -> first -> data);
     printf("%d \n", popInFront(list));
     printf("%d \n", popInBack(list));
+=======
+    printf("%d \n", list -> first -> data);
+    popInFront(list);
+    printf("%d \n", list -> first -> data);
+    popInBack(list);
+    printf("%d \n", list -> last -> data);
+
+>>>>>>> 552162c2c4916da331241b75643309fc02c2d6e3
     return 0;
 }
 
@@ -89,6 +98,7 @@ int popInFront(List *list)
     if(!list -> first)
     {
         printf("ERROR! There is no any list.\n");
+<<<<<<< HEAD
         exit(1);
     }
     temp = list -> first;
@@ -98,11 +108,22 @@ int popInFront(List *list)
     if(temp == list -> last)
         list -> last = NULL;
     data = temp -> data;
+=======
+        exit(2);
+    }
+    temp = list -> first;
+    if(!list -> first -> prev)
+        list -> first = list -> last = NULL;
+    temp = list -> first -> prev;
+    temp -> next = NULL;
+    list -> first = temp;
+>>>>>>> 552162c2c4916da331241b75643309fc02c2d6e3
     --(list -> size);
     free(temp);
     temp = NULL;
 }
 
+<<<<<<< HEAD
 int popInBack(List *list)
 {
     int data;
@@ -119,6 +140,22 @@ int popInBack(List *list)
     if(temp == list -> last)
         list -> last = NULL;
     data = temp -> data;
+=======
+void popInBack(List *list)
+{
+    DoubleNode *temp;
+    if(!list -> first)
+    {
+        printf("ERROR! There is no any list.\n");
+        exit(2);
+    }
+    temp = list -> last;
+    if(!list -> last -> next)
+        list -> last = list -> first = NULL;
+    temp = list -> last -> next;
+    temp -> prev = NULL;
+    list -> last = temp;
+>>>>>>> 552162c2c4916da331241b75643309fc02c2d6e3
     --(list -> size);
     free(temp);
     temp = NULL;
