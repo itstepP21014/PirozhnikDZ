@@ -18,20 +18,21 @@ typedef struct List_
 void initDoubleList(List **list);
 void pushInFront(List *list, int data);
 void pushInBack(List *list, int data);
-void popInFront(List *list);
-void popInBack(List *list);
+int popInFront(List *list);
+int popInBack(List *list);
 
 int main()
 {
     List *list = NULL;
     initDoubleList(&list);
-    pushInFront(list, 22);
     pushInFront(list, 333);
-    pushInBack(list, 4444);
-    printf("%d", list -> first -> data);
-    popInFront(list);
-    printf("%d", list -> first -> data);
-
+    pushInFront(list, 4444);
+    pushInBack(list, 22);
+    pushInBack(list, 1);
+    printf("%d \n", list -> last -> data);
+    printf("%d \n", list -> first -> data);
+    printf("%d \n", popInFront(list));
+    printf("%d \n", popInBack(list));
     return 0;
 }
 
@@ -81,16 +82,45 @@ void pushInBack(List *list, int data)
     ++(list -> size);
 }
 
-void popInFront(List *list)
+int popInFront(List *list)
 {
+    int data;
     DoubleNode *temp;
     if(!list -> first)
+    {
         printf("ERROR! There is no any list.\n");
-        exit(2);
+        exit(1);
+    }
     temp = list -> first;
-    if(!list -> first -> prev)
-        list -> first = list -> last = NULL;
-    temp = list -> first -> prev;
-    temp -> next = NULL;
-    list -> first = temp;
+    list -> first = list -> first -> prev;
+    if(list -> first)
+        list -> first -> next = NULL;
+    if(temp == list -> last)
+        list -> last = NULL;
+    data = temp -> data;
+    --(list -> size);
+    free(temp);
+    temp = NULL;
 }
+
+int popInBack(List *list)
+{
+    int data;
+    DoubleNode *temp;
+    if(!list -> last)
+    {
+        printf("ERROR! There is no any list.\n");
+        exit(1);
+    }
+    temp = list -> last;
+    list -> last = list -> last -> next;
+    if(list -> last)
+        list -> last -> prev = NULL;
+    if(temp == list -> last)
+        list -> last = NULL;
+    data = temp -> data;
+    --(list -> size);
+    free(temp);
+    temp = NULL;
+}
+
