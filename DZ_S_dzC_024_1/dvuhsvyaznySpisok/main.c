@@ -25,12 +25,15 @@ int main()
 {
     List *list = NULL;
     initDoubleList(&list);
-    pushInFront(list, 22);
     pushInFront(list, 333);
-    pushInBack(list, 4444);
+    pushInFront(list, 4444);
+    pushInBack(list, 22);
+    pushInBack(list, 1);
     printf("%d \n", list -> first -> data);
     popInFront(list);
     printf("%d \n", list -> first -> data);
+    popInBack(list);
+    printf("%d \n", list -> last -> data);
 
     return 0;
 }
@@ -95,4 +98,24 @@ void popInFront(List *list)
     temp = list -> first -> prev;
     temp -> next = NULL;
     list -> first = temp;
+    free(temp);
+    temp = NULL;
+}
+
+void popInBack(List *list)
+{
+    DoubleNode *temp;
+    if(!list -> first)
+    {
+        printf("ERROR! There is no any list.\n");
+        exit(2);
+    }
+    temp = list -> last;
+    if(!list -> last -> next)
+        list -> last = list -> first = NULL;
+    temp = list -> last -> next;
+    temp -> prev = NULL;
+    list -> last = temp;
+    free(temp);
+    temp = NULL;
 }
