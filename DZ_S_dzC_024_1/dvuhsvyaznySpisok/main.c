@@ -98,6 +98,7 @@ void popInFront(List *list)
     temp = list -> first -> prev;
     temp -> next = NULL;
     list -> first = temp;
+    --(list -> size);
     free(temp);
     temp = NULL;
 }
@@ -116,6 +117,7 @@ void popInBack(List *list)
     temp = list -> last -> next;
     temp -> prev = NULL;
     list -> last = temp;
+    --(list -> size);
     free(temp);
     temp = NULL;
 }
