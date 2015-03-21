@@ -28,9 +28,9 @@ int main()
     pushInFront(list, 22);
     pushInFront(list, 333);
     pushInBack(list, 4444);
-    printf("%d", list -> first -> data);
+    printf("%d \n", list -> first -> data);
     popInFront(list);
-    printf("%d", list -> first -> data);
+    printf("%d \n", list -> first -> data);
 
     return 0;
 }
@@ -85,8 +85,10 @@ void popInFront(List *list)
 {
     DoubleNode *temp;
     if(!list -> first)
+    {
         printf("ERROR! There is no any list.\n");
         exit(2);
+    }
     temp = list -> first;
     if(!list -> first -> prev)
         list -> first = list -> last = NULL;
