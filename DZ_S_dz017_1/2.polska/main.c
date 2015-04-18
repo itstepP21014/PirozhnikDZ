@@ -11,31 +11,30 @@ int main()
     int stack[top];
     for(i=0; i<=strlen(polska); ++i){
         if(polska[i]=='*'||polska[i]=='+'||polska[i]=='-'||polska[i]=='/'||polska[i]=='='){
-            stack[top]=polska[i];
             switch(polska[i]){
             case '*':
-                stack[top-1]*=stack[top];
                 --top;
+                stack[top-1]*=stack[top];
                 break;
             case '+':
-                stack[top-1]+=stack[top];
                 --top;
+                stack[top-1]+=stack[top];
                 break;
             case '-':
-                stack[top-1]-=stack[top];
                 --top;
+                stack[top-1]-=stack[top];
                 break;
             case '/':
-                stack[top-1]/=stack[top];
                 --top;
+                stack[top-1]/=stack[top];
                 break;
             case '=':
-                return printf("%d\n", stack[top+1]);
+                return printf("%d\n", stack[top-1]);
                 break;
             }
         }
         else{
-            stack[top]=polska[i];
+            stack[top]=polska[i]-'0';
             ++top;
         }
     }
