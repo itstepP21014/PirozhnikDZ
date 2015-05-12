@@ -8,4 +8,4 @@ SOURCES += main.c
 
 unix|win32: LIBS += -lSDL2
 
-unix|win32: LIBS += -lSDL_ttf
+unix|win32: LIBS += -lSDL2_ttf
