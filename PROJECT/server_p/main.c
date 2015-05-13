@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
-#include <../roberry_p.h>
+#include <../lib/roberry_p.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
@@ -85,79 +85,79 @@ int main()
     //SDL_Texture *background = LoadImage("bg.bmp");
     //    *pictures[i++] = &background; //0
 
-    SDL_Texture *background = LoadImage("empty.jpg", ren);
+    SDL_Texture *background = LoadImage("../img/empty.jpg", ren);
         pictures[i++] = background; //0
-    SDL_Texture *cache = LoadImage("cache.jpg", ren);
+    SDL_Texture *cache = LoadImage("../img/cache.jpg", ren);
         pictures[i++] = cache; //1
-    SDL_Texture *goldBlue = LoadImage("goldBlue.jpg", ren);
+    SDL_Texture *goldBlue = LoadImage("../img/goldBlue.jpg", ren);
         pictures[i++] = goldBlue; //2
-    SDL_Texture *goldGreen = LoadImage("goldGreen.jpg", ren);
+    SDL_Texture *goldGreen = LoadImage("../img/goldGreen.jpg", ren);
         pictures[i++] = goldGreen; //3
-    SDL_Texture *goldRed = LoadImage("goldRed.jpg", ren);
+    SDL_Texture *goldRed = LoadImage("../img/goldRed.jpg", ren);
         pictures[i++] = goldRed; //4
-    SDL_Texture *goldYellow = LoadImage("goldYellow.jpg", ren);
+    SDL_Texture *goldYellow = LoadImage("../img/goldYellow.jpg", ren);
         pictures[i++] = goldYellow; //5
-    SDL_Texture *score = LoadImage("score.jpg", ren);
+    SDL_Texture *score = LoadImage("../img/score.jpg", ren);
         pictures[i++] = score; //6
-    SDL_Texture *empty = LoadImage("empty.jpg", ren);
+    SDL_Texture *empty = LoadImage("../img/empty.jpg", ren);
         pictures[i++] = empty; //7
-    SDL_Texture *placeA = LoadImage("placeA.jpg", ren);
+    SDL_Texture *placeA = LoadImage("../img/placeA.jpg", ren);
         pictures[i++] = placeA; //8
-    SDL_Texture *placeB = LoadImage("placeB.jpg", ren);
+    SDL_Texture *placeB = LoadImage("../img/placeB.jpg", ren);
         pictures[i++] = placeB; //9
-    SDL_Texture *placeC = LoadImage("placeC.jpg", ren);
+    SDL_Texture *placeC = LoadImage("../img/placeC.jpg", ren);
         pictures[i++] = placeC; //10
-    SDL_Texture *placeD = LoadImage("placeD.jpg", ren);
+    SDL_Texture *placeD = LoadImage("../img/placeD.jpg", ren);
         pictures[i++] = placeD; //11
-    SDL_Texture *placeE = LoadImage("placeE.jpg", ren);
+    SDL_Texture *placeE = LoadImage("../img/placeE.jpg", ren);
         pictures[i++] = placeE; //12
-    SDL_Texture *gamer1 = LoadImage("gamer1.jpg", ren);
+    SDL_Texture *gamer1 = LoadImage("../img/gamer1.jpg", ren);
         pictures[i++] = gamer1; //13
-    SDL_Texture *gamer2 = LoadImage("gamer2.jpg", ren);
+    SDL_Texture *gamer2 = LoadImage("../img/gamer2.jpg", ren);
         pictures[i++] = gamer2; //14
-    SDL_Texture *gamerBoth = LoadImage("gamerBoth.jpg", ren);
+    SDL_Texture *gamerBoth = LoadImage("../img/gamerBoth.jpg", ren);
         pictures[i++] = gamerBoth; //15
-    SDL_Texture *bonus1 = LoadImage("bonus1.jpg", ren);
+    SDL_Texture *bonus1 = LoadImage("../img/bonus1.jpg", ren);
         pictures[i++] = bonus1; //16
-    SDL_Texture *bonus2 = LoadImage("bonus2.jpg", ren);
+    SDL_Texture *bonus2 = LoadImage("../img/bonus2.jpg", ren);
         pictures[i++] = bonus2; //17
-    SDL_Texture *random = LoadImage("random.jpg", ren);
+    SDL_Texture *random = LoadImage("../img/random.jpg", ren);
         pictures[i++] = random; //18
-    SDL_Texture *any = LoadImage("any.jpg", ren);
+    SDL_Texture *any = LoadImage("../img/any.jpg", ren);
         pictures[i++] = any; //19
-    SDL_Texture *color = LoadImage("color.jpg", ren);
+    SDL_Texture *color = LoadImage("../img/color.jpg", ren);
         pictures[i++] = color; //20
-    SDL_Texture *blue2 = LoadImage("blue2.jpg", ren);
+    SDL_Texture *blue2 = LoadImage("../img/blue2.jpg", ren);
         pictures[i++] = blue2; //21
-    SDL_Texture *blue3 = LoadImage("blue3.jpg", ren);
+    SDL_Texture *blue3 = LoadImage("../img/blue3.jpg", ren);
         pictures[i++] = blue3; //22
-    SDL_Texture *blue4 = LoadImage("blue4.jpg", ren);
+    SDL_Texture *blue4 = LoadImage("../img/blue4.jpg", ren);
         pictures[i++] = blue4; //23
-    SDL_Texture *blue5 = LoadImage("blue5.jpg", ren);
+    SDL_Texture *blue5 = LoadImage("../img/blue5.jpg", ren);
         pictures[i++] = blue5; //24
-    SDL_Texture *green2 = LoadImage("green2.jpg", ren);
+    SDL_Texture *green2 = LoadImage("../img/green2.jpg", ren);
         pictures[i++] = green2; //25
-    SDL_Texture *green3 = LoadImage("green3.jpg", ren);
+    SDL_Texture *green3 = LoadImage("../img/green3.jpg", ren);
         pictures[i++] = green3; //26
-    SDL_Texture *green4 = LoadImage("green4.jpg", ren);
+    SDL_Texture *green4 = LoadImage("../img/green4.jpg", ren);
         pictures[i++] = green4; //27
-    SDL_Texture *green5 = LoadImage("green5.jpg", ren);
+    SDL_Texture *green5 = LoadImage("../img/green5.jpg", ren);
         pictures[i++] = green5; //28
-    SDL_Texture *red2 = LoadImage("red2.jpg", ren);
+    SDL_Texture *red2 = LoadImage("../img/red2.jpg", ren);
         pictures[i++] = red2; //29
-    SDL_Texture *red3 = LoadImage("red3.jpg", ren);
+    SDL_Texture *red3 = LoadImage("../img/red3.jpg", ren);
         pictures[i++] = red3; //30
-    SDL_Texture *red4 = LoadImage("red4.jpg", ren);
+    SDL_Texture *red4 = LoadImage("../img/red4.jpg", ren);
         pictures[i++] = red4; //31
-    SDL_Texture *red5 = LoadImage("red5.jpg", ren);
+    SDL_Texture *red5 = LoadImage("../img/red5.jpg", ren);
         pictures[i++] = red5; //32
-    SDL_Texture *yellow2 = LoadImage("yellow2.jpg", ren);
+    SDL_Texture *yellow2 = LoadImage("../img/../img/yellow2.jpg", ren);
         pictures[i++] = yellow2; //33
-    SDL_Texture *yellow3 = LoadImage("yellow3.jpg", ren);
+    SDL_Texture *yellow3 = LoadImage("../img/yellow3.jpg", ren);
         pictures[i++] = yellow3; //34
-    SDL_Texture *yellow4 = LoadImage("yellow4.jpg", ren);
+    SDL_Texture *yellow4 = LoadImage("../img/yellow4.jpg", ren);
         pictures[i++] = yellow4; //35
-    SDL_Texture *yellow5 = LoadImage("yellow5.jpg", ren);
+    SDL_Texture *yellow5 = LoadImage("../img/yellow5.jpg", ren);
         pictures[i++] = yellow5; //36
 
     for(int i = 0; i < ALL_PICTURES; ++i)

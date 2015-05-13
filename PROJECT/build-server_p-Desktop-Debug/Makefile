@@ -46,7 +46,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../server_p/main.c \
-		../roberry_p.c 
+		../lib/roberry_p.c 
 OBJECTS       = main.o \
 		roberry_p.o
 DIST          = /usr/lib/i386-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -283,11 +283,11 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../server_p/main.c ../roberry_p.h
+main.o: ../server_p/main.c ../lib/roberry_p.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o ../server_p/main.c
 
-roberry_p.o: ../roberry_p.c ../roberry_p.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o roberry_p.o ../roberry_p.c
+roberry_p.o: ../lib/roberry_p.c 
+	$(CC) -c $(CFLAGS) $(INCPATH) -o roberry_p.o ../lib/roberry_p.c
 
 ####### Install
 

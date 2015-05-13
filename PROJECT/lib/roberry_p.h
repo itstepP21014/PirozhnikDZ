@@ -2,10 +2,10 @@
 #define ROBERRY_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 
 #define GOLD_CARD 36
-#define ALL_PICTURES 37
 
 #define SCREEN_WIDTH 1200
 #define SCREEN_HEIGHT 700
@@ -23,11 +23,9 @@
 #define SIDE_RIGHT_X 1010
 #define SIDE_RIGHT_Y 130
 
-// для массивов
+// игровое поле
 #define FIELD_STR 4
 #define FIELD_CLM 5
-#define GOLD_STR 2
-#define GOLD_CLM 4
 #define A 0
 #define B 1
 #define C 2
@@ -41,8 +39,52 @@
 #define GREEN 1
 #define RED 2
 #define YELLOW 3
+
+// счет
+#define GOLD_STR 2
+#define GOLD_CLM 4
 #define GOLD 0
 #define CACHE 1
+
+// массив картинок
+#define EMPTY 0
+#define SCORE_l 2
+#define CACHE_R 3
+#define CACHE_BLUE 4
+#define CACHE_GREEN 5
+#define CACHE_RED 6
+#define CACHE_YELLOW 7
+#define PLACE_A 8
+#define PLACE_B 9
+#define PLACE_C 10
+#define PLACE_D 11
+#define PLACE_E 12
+#define GAMER1 13
+#define GAMER2 14
+#define GAMER_BOTH 15
+#define BONUS1 16
+#define BONUS2 17
+#define RANDOM 18
+#define ANY 19
+#define COLOR 20
+#define BLUE2 21
+#define BLUE3 22
+#define BLUE4 23
+#define BLUE5 24
+#define GREEN2 25
+#define GREEN3 26
+#define GREEN4 27
+#define GREEN5 28
+#define RED2 29
+#define RED3 30
+#define RED4 31
+#define RED5 32
+#define YELLOW2 33
+#define YELLOW3 34
+#define YELLOW4 35
+#define YELLOW5 36
+
+#define ALL_PICTURES 36
 
 void fill_place(int **field);
 bool restore_field(int **field, int *gold, int index);
@@ -54,14 +96,23 @@ void scoring_cache(int *score);
 void chose_informer(int **field, bool exit);
 void chose_burgular(int **field, bool exit);
 void chose_continue(bool exit, int new_game);
+void chose_back(bool exit);
+void choise_again(bool exit, int resume, int new_game);
 
+void DrawInformer(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos);
+void DrawPlace(SDL_Renderer *ren, SDL_Texture* *pic, SDL_Rect *pos);
+void DrawJewel(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos);
+void DrawBurgular(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos);
+void ShowField(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *cardPos);
 SDL_Texture* LoadImage(const char *file, SDL_Renderer *ren);
-void ApplySurface(int x, int y, int w, int h, SDL_Texture *tex, SDL_Renderer *ren);
-void DrawPlace(const SDL_Texture **pic, SDL_Renderer *renderer);
-void ApplyTextSurface(SDL_Surface *textSurface, SDL_Renderer *ren, SDL_Rect textLocation);
-void Show_field(int **field, SDL_Texture **pic, SDL_Renderer *ren);
-void DrawInform(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer);
-void DrawBurg(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer);
-void DrawGold(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer);
+SDL_Texture* LoadText(char *text, TTF_Font *font, SDL_Color color, SDL_Renderer *ren);
+void ApplayChoise(TTF_Font *font, SDL_Color color, SDL_Renderer *ren);
+void ApplayResults(const char *buf, int buf_lenth, TTF_Font *font, SDL_Color color, SDL_Renderer *ren,
+                 const int **your_score, const int **opponent_score,
+                 const int your_total, const int opponent_total);
+void ApplayRound(TTF_Font *font, SDL_Color color, SDL_Renderer *ren,
+                 const int **your_score, const int **opponent_score,
+                 const int your_total, const int opponent_total);
+void ApplayRules(TTF_Font *font, SDL_Color font_color, SDL_Renderer *ren);
 
 #endif // ROBERRY_H

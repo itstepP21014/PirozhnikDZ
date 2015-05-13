@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <../roberry_p.h>
+#include <../lib/roberry_p.h>
 #include <SDL2/SDL.h>
 #include <SDL/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
@@ -346,38 +346,96 @@ void chose_continue(bool exit, int new_game)
     }
 }
 
-/*
-void show_score_results(const Score a, const Score b)
+void chose_back(bool exit)
 {
-    printf("\nВАШ СЧЕТ:\n");
-    printf("Красных: %d (%d)\n", a.gold.red, a.cache.red);
-    printf("Желтых: %d (%d)\n", a.gold.yellow, a.cache.yellow);
-    printf("Зеленых: %d (%d)\n", a.gold.green, a.cache.green);
-    printf("Синих: %d (%d)\n", a.gold.blue, a.cache.blue);
-    printf("БОНУСЫ: %d\n", a.total);
-    printf("\n");
-    printf("СЧЕТ ОППОНЕНТА:\n");
-    printf("Красных: %d\n", b.gold.red);
-    printf("Желтых: %d\n", b.gold.yellow);
-    printf("Зеленых: %d\n", b.gold.green);
-    printf("Синих: %d\n", b.gold.blue);
-    printf("/В тайнике/: %d\n", b.cache.red + b.cache.yellow + b.cache.green + b.cache.blue);
-    printf("БОНУСЫ: %d\n", b.total);
-    printf("\n");
+    SDL_Event event;
+    bool done = false;
+    while(!done) // для проверки на правильность ввода
+    {
+        done = true; // предполагаем что пользователь ввел правильно
+        SDL_WaitEvent(&event);
+        switch(event.type)
+        {
+            case SDL_QUIT:
+            {
+                exit = true;
+                break;
+            }
+            case SDL_KEYDOWN:
+            {
+                switch(event.key.keysym.sym)
+                {
+                    case SDLK_ESCAPE:
+                    {
+                        exit = true;
+                        break;
+                    }
+                    case SDLK_1:
+                    {
+                        exit = false;
+                        break;
+                    }
+                    case SDLK_2:
+                    {
+                        exit = true;
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
 }
 
-void show_game_results(const Score a, const Score b)
+void choise_again(bool exit, int resume, int new_game)
 {
-  printf("\n                     У ВАС    У СОПЕРНИКА:\n");
-    printf("Синих:              %2d       %2d\n", a.gold.blue, b.gold.blue);
-    printf("Зеленых:            %2d       %2d\n", a.gold.green, b.gold.green);
-    printf("Красных:            %2d       %2d\n", a.gold.red, b.gold.red);
-    printf("Желтых:             %2d       %2d\n", a.gold.yellow, b.gold.yellow);
-    printf("-------------------------------\n");
-    printf("Итого с бонусами:   %2d       %2d\n", a.total, b.total);
-    printf("\n");
+    SDL_Event event;
+    bool done = false;
+    while(!done) // для проверки на правильность ввода
+    {
+        done = true; // предполагаем что пользователь ввел правильно
+        SDL_WaitEvent(&event);
+        switch(event.type)
+        {
+            case SDL_QUIT:
+            {
+                exit = true;
+                break;
+            }
+            case SDL_KEYDOWN:
+            {
+                switch(event.key.keysym.sym)
+                {
+                    case SDLK_ESCAPE:
+                    {
+                        exit = true;
+                        break;
+                    }
+                    case SDLK_1:
+                    {
+                        resume = 2;
+                        break;
+                    }
+                    case SDLK_2:
+                    {
+                        resume = 2;
+                        new_game = 0;
+                        break;
+                    }
+                    default:
+                    {
+                        done = false;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
-*/
 
 void swap_array(int *array, int size)
 {
@@ -400,188 +458,391 @@ void swap_array(int *array, int size)
 
 //SDL___________________________________________________________________________
 
+void DrawInformer(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos)
+{
+    SDL_Rect *tmp_pos = pos;
+    for(int i = 0; i < FIELD_CLM; ++i)
+    {
+        switch (field[INFORM][i])
+        {
+        case 0:
+            SDL_RenderCopy(ren, pic[EMPTY], NULL, tmp_pos);
+            break;
+        case 1:
+            SDL_RenderCopy(ren, pic[GAMER1], NULL, tmp_pos);
+            break;
+        case 2:
+            SDL_RenderCopy(ren, pic[GAMER2], NULL, tmp_pos);
+            break;
+        case 3:
+            SDL_RenderCopy(ren, pic[GAMER_BOTH], NULL, tmp_pos);
+            break;
+        default:
+            break;
+        }
+        tmp_pos->x += CARD_W;
+    }
+}
+
+void DrawPlace(SDL_Renderer *ren, SDL_Texture* *pic, SDL_Rect *pos)
+{
+    SDL_Rect *tmp_pos = pos;
+    tmp_pos->y += CARD_H;
+
+    SDL_RenderCopy(ren, pic[A], NULL, tmp_pos);
+    tmp_pos->x += CARD_W;
+    SDL_RenderCopy(ren, pic[B], NULL, tmp_pos);
+    tmp_pos->x += CARD_W;
+    SDL_RenderCopy(ren, pic[C], NULL, tmp_pos);
+    tmp_pos->x += CARD_W;
+    SDL_RenderCopy(ren, pic[D], NULL, tmp_pos);
+    tmp_pos->x += CARD_W;
+    SDL_RenderCopy(ren, pic[E], NULL, tmp_pos);
+}
+
+void DrawJewel(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos)
+{
+    SDL_Rect *tmp_pos = pos;
+    tmp_pos->y += (2 * CARD_H);
+    for(int i = 0; i < FIELD_CLM; ++i)
+    {
+        switch(field[JEWEL][i])
+        {
+        case 1: case 2: case 3: case 4:
+            SDL_RenderCopy(ren, pic[COLOR], NULL, tmp_pos);
+            break;
+        case 5:
+            SDL_RenderCopy(ren, pic[RED2], NULL, tmp_pos);
+            break;
+        case 6: case 7:
+            SDL_RenderCopy(ren, pic[RED3], NULL, tmp_pos);
+            break;
+        case 8: case 9:
+            SDL_RenderCopy(ren, pic[RED4], NULL, tmp_pos);
+            break;
+        case 10:
+            SDL_RenderCopy(ren, pic[RED5], NULL, tmp_pos);
+            break;
+        case 11:
+            SDL_RenderCopy(ren, pic[YELLOW2], NULL, tmp_pos);
+            break;
+        case 12: case 13:
+            SDL_RenderCopy(ren, pic[YELLOW3], NULL, tmp_pos);
+            break;
+        case 14: case 15:
+            SDL_RenderCopy(ren, pic[YELLOW4], NULL, tmp_pos);
+            break;
+        case 16:
+            SDL_RenderCopy(ren, pic[YELLOW5], NULL, tmp_pos);
+            break;
+        case 17:
+            SDL_RenderCopy(ren, pic[GREEN2], NULL, tmp_pos);
+            break;
+        case 18: case 19:
+            SDL_RenderCopy(ren, pic[GREEN3], NULL, tmp_pos);
+            break;
+        case 20: case 21:
+            SDL_RenderCopy(ren, pic[GREEN4], NULL, tmp_pos);
+            break;
+        case 22:
+            SDL_RenderCopy(ren, pic[GREEN5], NULL, tmp_pos);
+            break;
+        case 23:
+            SDL_RenderCopy(ren, pic[BLUE2], NULL, tmp_pos);
+            break;
+        case 24: case 25:
+            SDL_RenderCopy(ren, pic[BLUE3], NULL, tmp_pos);
+            break;
+        case 26: case 27:
+            SDL_RenderCopy(ren, pic[BLUE4], NULL, tmp_pos);
+            break;
+        case 28:
+            SDL_RenderCopy(ren, pic[BLUE5], NULL, tmp_pos);
+            break;
+        case 29: case 30: case 31:
+            SDL_RenderCopy(ren, pic[BONUS1], NULL, tmp_pos);
+            break;
+        case 32:
+            SDL_RenderCopy(ren, pic[BONUS2], NULL, tmp_pos);
+            break;
+        case 33: case 34:
+            SDL_RenderCopy(ren, pic[ANY], NULL, tmp_pos);
+            break;
+        case 35: case 36:
+            SDL_RenderCopy(ren, pic[RANDOM], NULL, tmp_pos);
+            break;
+        default:
+            break;
+        }
+        tmp_pos->w += CARD_W;
+    }
+
+}
+
+void DrawBurgular(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *pos)
+{
+    SDL_Rect *tmp_pos = pos;
+    tmp_pos->y += (3 * CARD_H);
+    for(int i = 0; i < FIELD_CLM; ++i)
+    {
+        switch (field[BURG][i])
+        {
+        case 0:
+            SDL_RenderCopy(ren, pic[EMPTY], NULL, tmp_pos);
+            break;
+        case 1:
+            SDL_RenderCopy(ren, pic[GAMER1], NULL, tmp_pos);
+            break;
+        case 2:
+            SDL_RenderCopy(ren, pic[GAMER2], NULL, tmp_pos);
+            break;
+        case 3:
+            SDL_RenderCopy(ren, pic[GAMER_BOTH], NULL, tmp_pos);
+            break;
+        default:
+            break;
+        }
+    tmp_pos->x += CARD_W;
+    }
+}
+
+void ShowField(SDL_Renderer *ren, int **field, SDL_Texture* *pic, SDL_Rect *cardPos)
+{
+    // фон
+    SDL_RenderCopy(ren, pic[EMPTY], NULL, NULL);
+    // картинка слева
+    SDL_Rect *left = {70,130,112,180};
+    SDL_RenderCopy(ren, pic[SCORE_l], NULL, left);
+    // картинка справа
+    SDL_Rect *right = {1010,130,112,180};
+    SDL_RenderCopy(ren, pic[CACHE_R], NULL, right);
+    //информаторы
+    DrawInformer(ren, field, pic, cardPos);
+    // места кражи
+    DrawPlace(ren, pic, cardPos);
+    //сокровища
+    DrawJewel(ren, field, pic, cardPos);
+    //воры
+    DrawInformer(ren, field, pic, cardPos);
+
+}
+
 SDL_Texture* LoadImage(const char *file, SDL_Renderer *ren)
 {
     SDL_Surface *img = IMG_Load(file);
     if(img == NULL)
     {
-        fprintf(stderr, "IMG_Load Error: %s\n", SDL_GetError());
-        exit(1);
+        //SDL_DestroyRenderer(ren);
+        //SDL_DestroyWindow(win);
+        fprintf(stderr, "SDL_LoadBMP Error: %s\n", SDL_GetError());
+        //SDL_Quit();
+        //exit(1);
     }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, img);
     SDL_FreeSurface(img);
     if(tex == NULL)
     {
+        //SDL_DestroyRenderer(ren);
+        //SDL_DestroyWindow(win);
         fprintf(stderr, "SDL_CreateTextureFromSurface Error: %s\n", SDL_GetError());
-        exit(1);
+        //SDL_Quit();
+        //exit(1);
     }
     return tex;
 }
 
-void ApplySurface(int x, int y, int w, int h, SDL_Texture *tex, SDL_Renderer *ren)
+SDL_Texture* LoadText(char *text, TTF_Font *font, SDL_Color color, SDL_Renderer *ren)
 {
-   SDL_Rect pos;
-   pos.x = x;
-   pos.y = y;
-   SDL_QueryTexture(tex, NULL, NULL, &w, &h);
-   SDL_RenderCopy(ren, tex, NULL, &pos);
-}
-
-void DrawInform(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer)
-{
-    for(int i = 0; i < FIELD_CLM; ++i)
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, color);
+    if(textSurface == NULL)
     {
-        int x = CARD_X + i * CARD_W;
-        switch(mas[i])
-        {
-        case 1:
-            ApplySurface(x, CARD_Y, CARD_W, CARD_H, pic[13], renderer); // gam1
-            break;
-        case 2:
-            ApplySurface(x, CARD_Y, CARD_W, CARD_H, pic[14], renderer); // gam2
-            break;
-        case 3:
-            ApplySurface(x, CARD_Y, CARD_W, CARD_H, pic[15], renderer); // gamBoth
-            break;
-        case 0:
-            ApplySurface(x, CARD_Y, CARD_W, CARD_H, pic[7], renderer); // empty
-            break;
-        default:
-            break;
-        }
+        printf("Unable to load textsurface: %s \n", SDL_GetError()); return false;
     }
-}
-
-void DrawBurg(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer)
-{
-    for(int i = 0; i < FIELD_CLM; ++i)
-    {
-        int x = CARD_X + i * CARD_W;
-        int y = CARD_Y + 3 * CARD_H;
-        switch(mas[i])
-        {
-        case 1:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[13], renderer);
-            break;
-        case 2:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[14], renderer);
-            break;
-        case 3:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[15], renderer);
-            break;
-        case 0:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[7], renderer);
-            break;
-        default:
-            break;
-        }
-    }
-}
-
-void DrawGold(const SDL_Texture **pic, const int *mas, SDL_Renderer *renderer)
-{
-    for(int i = 0; i < FIELD_CLM; ++i)
-    {
-        int x = CARD_X + i * CARD_W;
-        int y = CARD_Y + 2 * CARD_H;
-        switch(mas[i])
-        {
-        case 1: case 2: case 3: case 4:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[20], renderer); // color
-            break;
-        case 5:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[29], renderer); // r2
-            break;
-        case 6: case 7:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[30], renderer); // r3
-            break;
-        case 8: case 9:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[31], renderer); // r4
-            break;
-        case 10:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[32], renderer); // r5
-            break;
-        case 11:
-            ApplySurface(x, y, CARD_W, CARD_H, pic[33], renderer); // y2
-            break;
-        case 12: case 13:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[34], renderer); // y3
-            break;
-        case 14: case 15:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[35], renderer); // y4
-            break;
-        case 16:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[36], renderer); // y5
-            break;
-        case 17:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[25], renderer); // g2
-            break;
-        case 18: case 19:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[26], renderer); // g3
-            break;
-        case 20: case 21:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[27], renderer); // g4
-            break;
-        case 22:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[28], renderer); // g5
-            break;
-        case 23:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[21], renderer); // bl2
-            break;
-        case 24: case 25:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[22], renderer); // bl3
-            break;
-        case 26: case 27:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[23], renderer); // bl4
-            break;
-        case 28:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[24], renderer); // bl5
-            break;
-        case 29: case 30: case 31:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[16], renderer); // bonus1
-            break;
-        case 32:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[17], renderer); // bonus2
-            break;
-        case 33: case 34:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[10], renderer); // any
-            break;
-        case 35: case 36:
-            ApplySurface(x, y, CARD_W, CARD_H, &pic[18], renderer); // random
-            break;
-        default:
-            break;
-        }
-    }
-
-}
-
-void DrawPlace(const SDL_Texture **pic, SDL_Renderer *ren)
-{
-    int i = 0;
-    int x = CARD_X + i++ * CARD_W;
-    int y = CARD_Y + CARD_H;
-    ApplySurface(x, y, CARD_W, CARD_H, &pic[8], ren); // A
-    ApplySurface(x, y, CARD_W, CARD_H, &pic[9], ren); // B
-    ApplySurface(x, y, CARD_W, CARD_H, &pic[10], ren); // C
-    ApplySurface(x, y, CARD_W, CARD_H, &pic[11], ren); // D
-    ApplySurface(x, y, CARD_W, CARD_H, &pic[12], ren); // E
-}
-
-void ApplyTextSurface(SDL_Surface *textSurface, SDL_Renderer *ren, SDL_Rect textLocation)
-{
     SDL_Texture *tex = SDL_CreateTextureFromSurface(ren, textSurface);
-    SDL_QueryTexture(tex, NULL, NULL, &textLocation.w, &textLocation.h);
-    SDL_RenderCopy(ren, tex, NULL, &textLocation);
+    SDL_FreeSurface(textSurface); // освободим поверхность для текста
+    if(tex == NULL)
+    {
+        //SDL_DestroyRenderer(ren);
+        //SDL_DestroyWindow(win);
+        fprintf(stderr, "SDL_CreateTextureFromSurface Error(text): %s\n", SDL_GetError());
+        //SDL_Quit();
+        //exit(1);
+    }
+
+    return tex;
 }
 
-void Show_field(int **field, SDL_Texture **pic, SDL_Renderer *ren)
+void ApplayResults(const char *buf, int buf_lenth, TTF_Font *font, SDL_Color color, SDL_Renderer *ren,
+                 const int **your_score, const int **opponent_score, const int your_total, const int opponent_total)
 {
-    ApplySurface(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, pic[0], ren); // bg
-    ApplySurface(SIDE_LEFT_X, SIDE_LEFT_Y, SIDE_W, SIDE_H, pic[6], ren); //score
-    DrawInform(*pic, field[INFORM], ren);
-    DrawPlace(*pic, ren);
-    DrawGold(*pic, field[GOLD], ren);
-    DrawBurg(*pic, field[BURG], ren);
-    ApplySurface(SIDE_RIGHT_X, SIDE_RIGHT_Y, SIDE_W, SIDE_H, pic[1], ren); // cache
+    SDL_Texture *buf0_tex = LoadText(buf, font, color, ren);
+    SDL_Rect buf0_loc = { 20, 20, buf_lenth, 20 };
+    SDL_RenderCopy(ren, buf0_tex, NULL, &buf0_loc);
+
+    char buf1[256];
+    char buf2[256];
+    char buf3[256];
+    char buf4[256];
+    char buf5[256];
+    char buf6[256];
+    char buf7[256];
+
+    sprintf(buf1, "                     У ВАС    У СОПЕРНИКА:");
+    sprintf(buf2, "Синих:              %2d       %2d", your_score[BLUE], opponent_score[BLUE]);
+    sprintf(buf3, "Зеленых:            %2d       %2d", your_score[GREEN], opponent_score[GREEN]);
+    sprintf(buf4, "Красных:            %2d       %2d", your_score[RED], opponent_score[RED]);
+    sprintf(buf5, "Желтых:             %2d       %2d", your_score[YELLOW], opponent_score[YELLOW]);
+    sprintf(buf6, "-------------------------------");
+    sprintf(buf7, "Итого с бонусами:   %2d       %2d", your_total, opponent_total);
+
+    SDL_Texture *buf1_tex = LoadText(buf1, font, color, ren);
+    SDL_Rect buf1_loc = { 20, 65, 420, 20 };
+    SDL_RenderCopy(ren, buf1_tex, NULL, &buf1_loc);
+
+    SDL_Texture *buf2_tex = LoadText(buf2, font, color, ren);
+    SDL_Rect buf2_loc = { 20, 90, 330, 20 };
+    SDL_RenderCopy(ren, buf2_tex, NULL, &buf2_loc);
+
+    SDL_Texture *buf3_tex = LoadText(buf3, font, color, ren);
+    SDL_Rect buf3_loc = { 20, 115, 330, 20 };
+    SDL_RenderCopy(ren, buf3_tex, NULL, &buf3_loc);
+
+    SDL_Texture *buf4_tex = LoadText(buf4, font, color, ren);
+    SDL_Rect buf4_loc = { 20, 130, 330, 20 };
+    SDL_RenderCopy(ren, buf4_tex, NULL, &buf4_loc);
+
+    SDL_Texture *buf5_tex = LoadText(buf5, font, color, ren);
+    SDL_Rect buf5_loc = { 20, 155, 330, 20 };
+    SDL_RenderCopy(ren, buf5_tex, NULL, &buf5_loc);
+
+    SDL_Texture *buf6_tex = LoadText(buf6, font, color, ren);
+    SDL_Rect buf6_loc = { 20, 180, 330, 20 };
+    SDL_RenderCopy(ren, buf6_tex, NULL, &buf6_loc);
+
+    SDL_Texture *buf7_tex = LoadText(buf7, font, color, ren);
+    SDL_Rect buf7_loc = { 20, 205, 330, 20 };
+    SDL_RenderCopy(ren, buf7_tex, NULL, &buf7_loc);
+
+
+    SDL_Texture *again = LoadText("Хотите сыграть еще раз?", font, color, ren);
+    SDL_Rect again_loc = { 20, 270, 230, 20 };
+    SDL_RenderCopy(ren, again, NULL, &again_loc);
+
+    SDL_Texture *game = LoadText("1. Играть", font, color, ren);
+    SDL_Rect game_loc = { 20, 295, 90, 20 };
+    SDL_RenderCopy(ren, game, NULL, &game_loc);
+
+    SDL_Texture *exit = LoadText("2. Выход", font, color, ren);
+    SDL_Rect exit_loc = { 20, 320, 80, 20 };
+    SDL_RenderCopy(ren, exit, NULL, &exit_loc);
+}
+
+void ApplayChoise(TTF_Font *font, SDL_Color color, SDL_Renderer *ren)
+{
+    SDL_Texture* choise = LoadText("Что грабим и что охраняем?", font, color, ren);
+    SDL_Rect choise_loc = { 220, 440, 260, 20 };
+    SDL_RenderCopy(ren, choise, NULL, &choise_loc);
+
+    SDL_Texture* a = LoadText("1. А", font, color, ren);
+    SDL_Rect a_loc = { 220, 490, 40, 20 };
+    SDL_RenderCopy(ren, a, NULL, &a_loc);
+
+    SDL_Texture* b = LoadText("2. В", font, color, ren);
+    SDL_Rect b_loc = { 220, 515, 40, 20 };
+    SDL_RenderCopy(ren, b, NULL, &b_loc);
+
+    SDL_Texture* c = LoadText("3. С", font, color, ren);
+    SDL_Rect c_loc = { 220, 540, 40, 20 };
+    SDL_RenderCopy(ren, c, NULL, &c_loc);
+
+    SDL_Texture* d = LoadText("D", font, color, ren);
+    SDL_Rect d_loc = { 220, 565, 40, 20 };
+    SDL_RenderCopy(ren, d, NULL, &d_loc);
+
+    SDL_Texture* e = LoadText("E", font, color, ren);
+    SDL_Rect e_loc = { 220, 590, 40, 20 };
+    SDL_RenderCopy(ren, e, NULL, &e_loc);
+}
+
+void ApplayRound(TTF_Font *font, SDL_Color color, SDL_Renderer *ren,
+                 const int **your_score, const int **opponent_score,
+                 const int your_total, const int opponent_total)
+{
+    char buf1[256];
+    char buf2[256];
+    char buf3[256];
+    char buf4[256];
+    char buf5[256];
+    char buf6[256];
+    char buf7[256];
+    char buf8[256];
+
+    sprintf(buf1, "ВАШ СЧЕТ:               СЧЕТ СОПЕРНИКА:");
+    sprintf(buf2, "Синих:    %2d(%2d)      Синих:     %2d", your_score[GOLD][BLUE], your_score[CACHE][BLUE], opponent_score[GOLD][BLUE]);
+    sprintf(buf3, "Зеленых:  %2d(%2d)      Зеленых:   %2d", your_score[GOLD][GREEN], your_score[CACHE][GREEN], opponent_score[GOLD][GREEN]);
+    sprintf(buf4, "Красных:  %2d(%2d)      Красных:   %2d", your_score[GOLD][RED], your_score[CACHE][RED], opponent_score[GOLD][RED]);
+    sprintf(buf5, "Желтых:   %2d(%2d)      Желтых:    %2d", your_score[GOLD][YELLOW], your_score[CACHE][YELLOW], opponent_score[GOLD][YELLOW]);
+    sprintf(buf6, "                        В тайнике (%2d)", opponent_score[CACHE][BLUE] + opponent_score[CACHE][GREEN] + opponent_score[CACHE][RED] + opponent_score[CACHE][YELLOW]);
+    sprintf(buf7, "---------------         ------------");
+    sprintf(buf8, "БОНУСЫ:   %2d           БОНУСЫ     %2d", your_total, opponent_total);
+
+    SDL_Texture *buf1_tex = LoadText(buf1, font, color, ren);
+    SDL_Rect buf1_loc = { 220, 400, 370, 20 };
+    SDL_RenderCopy(ren, buf1_tex, NULL, &buf1_loc);
+
+    SDL_Texture *buf2_tex = LoadText(buf2, font, color, ren);
+    SDL_Rect buf2_loc = { 220, 425, 370, 20 };
+    SDL_RenderCopy(ren, buf2_tex, NULL, &buf2_loc);
+
+    SDL_Texture *buf3_tex = LoadText(buf3, font, color, ren);
+    SDL_Rect buf3_loc = { 220, 450, 370, 20 };
+    SDL_RenderCopy(ren, buf3_tex, NULL, &buf3_loc);
+
+    SDL_Texture *buf4_tex = LoadText(buf4, font, color, ren);
+    SDL_Rect buf4_loc = { 220, 475, 370, 20 };
+    SDL_RenderCopy(ren, buf4_tex, NULL, &buf4_loc);
+
+    SDL_Texture *buf5_tex = LoadText(buf5, font, color, ren);
+    SDL_Rect buf5_loc = { 220, 500, 370, 20 };
+    SDL_RenderCopy(ren, buf5_tex, NULL, &buf5_loc);
+
+    SDL_Texture *buf6_tex = LoadText(buf6, font, color, ren);
+    SDL_Rect buf6_loc = { 220, 525, 370, 20 };
+    SDL_RenderCopy(ren, buf6_tex, NULL, &buf6_loc);
+
+    SDL_Texture *buf7_tex = LoadText(buf7, font, color, ren);
+    SDL_Rect buf7_loc = { 220, 550, 370, 20 };
+    SDL_RenderCopy(ren, buf7_tex, NULL, &buf7_loc);
+
+    SDL_Texture *buf8_tex = LoadText(buf8, font, color, ren);
+    SDL_Rect buf8_loc = { 220, 575, 370, 20 };
+    SDL_RenderCopy(ren, buf8_tex, NULL, &buf8_loc);
+
+
+    SDL_Texture* back = LoadText("Продолжаем?", font, color, ren);
+    SDL_Rect back_loc = { 220,610, 80, 20 };
+    SDL_RenderCopy(ren, back, NULL, &back_loc);
+
+    SDL_Texture* back1 = LoadText("1. Да", font, color, ren);
+    SDL_Rect back1_loc = { 220, 635, 80, 20 };
+    SDL_RenderCopy(ren, back1, NULL, &back1_loc);
+
+    SDL_Texture* back2 = LoadText("2. Нет", font, color, ren);
+    SDL_Rect back2_loc = { 220, 660, 80, 20 };
+    SDL_RenderCopy(ren, back2, NULL, &back2_loc);
+}
+
+void ApplayRules(TTF_Font *font, SDL_Color font_color, SDL_Renderer *ren)
+{
+    SDL_Texture* rulse = LoadText("ПРАВИЛА: ...", font, font_color, ren);
+    SDL_Rect ruls_loc = { 20, 20, 120, 20 };
+    SDL_RenderCopy(ren, rulse, NULL, &ruls_loc);
+
+    SDL_Texture* back = LoadText("1. Назад", font, font_color, ren);
+    SDL_Rect back_loc = { 20, 45, 80, 20 };
+    SDL_RenderCopy(ren, back, NULL, &back_loc);
+
+    SDL_Texture* exit = LoadText("2. Выход", font, font_color, ren);
+    SDL_Rect exit_loc = { 20, 70, 80, 20 };
+    SDL_RenderCopy(ren, exit, NULL, &exit_loc);
 }

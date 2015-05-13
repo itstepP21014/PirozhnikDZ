@@ -4,10 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 QMAKE_CFLAGS = -std=c99
 SOURCES += main.c \
-    ../roberry_p.c
+    ../lib/roberry_p.c
 
 HEADERS += \
-    ../roberry_p.h
+    ../lib/roberry_p.h
 
 unix|win32: LIBS += -lSDL2
 

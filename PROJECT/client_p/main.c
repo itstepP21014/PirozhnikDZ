@@ -5,7 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
-#include <../roberry_p.h>
+#include <../lib/roberry_p.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
@@ -41,143 +41,150 @@ int main(int argc, char **argv)
         return 1;
     }
 
-
     //SDL
-    if (SDL_Init(SDL_INIT_EVERYTHING) == -1){
+    if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
+    {
         printf("SDL_GetError(): SDL_Init\n");
         return 1;
     }
-    SDL_Window *win = NULL;
-    SDL_Renderer *ren = NULL;
-    win = SDL_CreateWindow("ОГРАБЛЕНИЕ ПО...", SDL_WINDOWPOS_CENTERED,
+    SDL_Window *win = SDL_CreateWindow("ОГРАБЛЕНИЕ ПО...", SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-    if (!win){
+    if (!win)
+    {
         printf("SDL_GetError(): CreateWindow\n");
         return 2;
     }
-
-    ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!ren){
         printf("SDL_GetError(): CreateRenderer\n");
         return 3;
     }
-/*
-    // загружаем текст
-    TTF_Font* font = TTF_OpenFont("Old Comedy.ttf", 24);
+    if (TTF_Init() == -1)
+    {
+        printf("TTF_GetError(): TTF_Init\n");
+        return 4;
+    }
+    TTF_Font* font = TTF_OpenFont("199131.ttf", 24);
     if(font == NULL)
     {
-        printf("Unable to load font: %s \n", TTF_GetError());
-        return false;
+        printf("TTF_GetError(): TTF_OpenFont\n");
+        return 5;
     }
-    SDL_Color fore_color = {255, 0, 0, 255};
-    //SDL_Color back_color = { BLUE_COLOR };
-*/
+    SDL_Color font_color = {255, 150, 0, 255};
+
+    SDL_Rect *CardsRect = { 220, 40, 0, 0 };
+
     // загружаем картинки и заносим в массив текстур
     SDL_Texture *pictures[35];
-    int i = 0;
 
-    SDL_Texture *background = LoadImage("empty.jpg", ren);
-        pictures[i++] = background; //0
-    SDL_Texture *cache = LoadImage("cache.jpg", ren);
-        pictures[i++] = cache; //1
-    SDL_Texture *goldBlue = LoadImage("goldBlue.jpg", ren);
-        pictures[i++] = goldBlue; //2
-    SDL_Texture *goldGreen = LoadImage("goldGreen.jpg", ren);
-        pictures[i++] = goldGreen; //3
-    SDL_Texture *goldRed = LoadImage("goldRed.jpg", ren);
-        pictures[i++] = goldRed; //4
-    SDL_Texture *goldYellow = LoadImage("goldYellow.jpg", ren);
-        pictures[i++] = goldYellow; //5
-    SDL_Texture *score = LoadImage("score.jpg", ren);
-        pictures[i++] = score; //6
-    SDL_Texture *empty = LoadImage("empty.jpg", ren);
-        pictures[i++] = empty; //7
-    SDL_Texture *placeA = LoadImage("placeA.jpg", ren);
-        pictures[i++] = placeA; //8
-    SDL_Texture *placeB = LoadImage("placeB.jpg", ren);
-        pictures[i++] = placeB; //9
-    SDL_Texture *placeC = LoadImage("placeC.jpg", ren);
-        pictures[i++] = placeC; //10
-    SDL_Texture *placeD = LoadImage("placeD.jpg", ren);
-        pictures[i++] = placeD; //11
-    SDL_Texture *placeE = LoadImage("placeE.jpg", ren);
-        pictures[i++] = placeE; //12
-    SDL_Texture *gamer1 = LoadImage("gamer1.jpg", ren);
-        pictures[i++] = gamer1; //13
-    SDL_Texture *gamer2 = LoadImage("gamer2.jpg", ren);
-        pictures[i++] = gamer2; //14
-    SDL_Texture *gamerBoth = LoadImage("gamerBoth.jpg", ren);
-        pictures[i++] = gamerBoth; //15
-    SDL_Texture *bonus1 = LoadImage("bonus1.jpg", ren);
-        pictures[i++] = bonus1; //16
-    SDL_Texture *bonus2 = LoadImage("bonus2.jpg", ren);
-        pictures[i++] = bonus2; //17
-    SDL_Texture *random = LoadImage("random.jpg", ren);
-        pictures[i++] = random; //18
-    SDL_Texture *any = LoadImage("any.jpg", ren);
-        pictures[i++] = any; //19
-    SDL_Texture *color = LoadImage("color.jpg", ren);
-        pictures[i++] = color; //20
-    SDL_Texture *blue2 = LoadImage("blue2.jpg", ren);
-        pictures[i++] = blue2; //21
-    SDL_Texture *blue3 = LoadImage("blue3.jpg", ren);
-        pictures[i++] = blue3; //22
-    SDL_Texture *blue4 = LoadImage("blue4.jpg", ren);
-        pictures[i++] = blue4; //23
-    SDL_Texture *blue5 = LoadImage("blue5.jpg", ren);
-        pictures[i++] = blue5; //24
-    SDL_Texture *green2 = LoadImage("green2.jpg", ren);
-        pictures[i++] = green2; //25
-    SDL_Texture *green3 = LoadImage("green3.jpg", ren);
-        pictures[i++] = green3; //26
-    SDL_Texture *green4 = LoadImage("green4.jpg", ren);
-        pictures[i++] = green4; //27
-    SDL_Texture *green5 = LoadImage("green5.jpg", ren);
-        pictures[i++] = green5; //28
-    SDL_Texture *red2 = LoadImage("red2.jpg", ren);
-        pictures[i++] = red2; //29
-    SDL_Texture *red3 = LoadImage("red3.jpg", ren);
-        pictures[i++] = red3; //30
-    SDL_Texture *red4 = LoadImage("red4.jpg", ren);
-        pictures[i++] = red4; //31
-    SDL_Texture *red5 = LoadImage("red5.jpg", ren);
-        pictures[i++] = red5; //32
-    SDL_Texture *yellow2 = LoadImage("yellow2.jpg", ren);
-        pictures[i++] = yellow2; //33
-    SDL_Texture *yellow3 = LoadImage("yellow3.jpg", ren);
-        pictures[i++] = yellow3; //34
-    SDL_Texture *yellow4 = LoadImage("yellow4.jpg", ren);
-        pictures[i++] = yellow4; //35
-    SDL_Texture *yellow5 = LoadImage("yellow5.jpg", ren);
-        pictures[i++] = yellow5; //36
+    SDL_Texture *empty = LoadImage("../img/empty.jpg", ren);
+        pictures[EMPTY] = empty;
+    SDL_Texture *cache = LoadImage("../img/cache.jpg", ren);
+        pictures[CACHE_R] = cache;
+    SDL_Texture *goldBlue = LoadImage("../img/goldBlue.jpg", ren);
+        pictures[CACHE_BLUE] = goldBlue;
+    SDL_Texture *goldGreen = LoadImage("../img/goldGreen.jpg", ren);
+        pictures[CACHE_GREEN] = goldGreen;
+    SDL_Texture *goldRed = LoadImage("../img/goldRed.jpg", ren);
+        pictures[CACHE_RED] = goldRed;
+    SDL_Texture *goldYellow = LoadImage("../img/goldYellow.jpg", ren);
+        pictures[CACHE_YELLOW] = goldYellow;
+    SDL_Texture *score = LoadImage("../img/score.jpg", ren);
+        pictures[SCORE_l] = score;
+    SDL_Texture *placeA = LoadImage("../img/placeA.jpg", ren);
+        pictures[PLACE_A] = placeA;
+    SDL_Texture *placeB = LoadImage("../img/placeB.jpg", ren);
+        pictures[PLACE_B] = placeB;
+    SDL_Texture *placeC = LoadImage("../img/placeC.jpg", ren);
+        pictures[PLACE_C] = placeC;
+    SDL_Texture *placeD = LoadImage("../img/placeD.jpg", ren);
+        pictures[PLACE_D] = placeD;
+    SDL_Texture *placeE = LoadImage("../img/placeE.jpg", ren);
+        pictures[PLACE_E] = placeE;
+    SDL_Texture *gamer1 = LoadImage("../img/gamer1.jpg", ren);
+        pictures[GAMER1] = gamer1;
+    SDL_Texture *gamer2 = LoadImage("../img/gamer2.jpg", ren);
+        pictures[GAMER2] = gamer2;
+    SDL_Texture *gamerBoth = LoadImage("../img/gamerBoth.jpg", ren);
+        pictures[GAMER_BOTH] = gamerBoth;
+    SDL_Texture *bonus1 = LoadImage("../img/bonus1.jpg", ren);
+        pictures[BONUS1] = bonus1;
+    SDL_Texture *bonus2 = LoadImage("../img/bonus2.jpg", ren);
+        pictures[BONUS2] = bonus2;
+    SDL_Texture *random = LoadImage("../img/random.jpg", ren);
+        pictures[RANDOM] = random;
+    SDL_Texture *any = LoadImage("../img/any.jpg", ren);
+        pictures[ANY] = any;
+    SDL_Texture *color = LoadImage("../img/../img/color.jpg", ren);
+        pictures[COLOR] = color;
+    SDL_Texture *blue2 = LoadImage("../img/blue2.jpg", ren);
+        pictures[BLUE2] = blue2;
+    SDL_Texture *blue3 = LoadImage("../img/blue3.jpg", ren);
+        pictures[BLUE3] = blue3;
+    SDL_Texture *blue4 = LoadImage("../img/blue4.jpg", ren);
+        pictures[BLUE4] = blue4;
+    SDL_Texture *blue5 = LoadImage("../img/blue5.jpg", ren);
+        pictures[BLUE5] = blue5;
+    SDL_Texture *green2 = LoadImage("../img/green2.jpg", ren);
+        pictures[GREEN2] = green2;
+    SDL_Texture *green3 = LoadImage("../img/green3.jpg", ren);
+        pictures[GREEN3] = green3;
+    SDL_Texture *green4 = LoadImage("../img/green4.jpg", ren);
+        pictures[GREEN4] = green4;
+    SDL_Texture *green5 = LoadImage("../img/green5.jpg", ren);
+        pictures[GREEN5] = green5;
+    SDL_Texture *red2 = LoadImage("../img/red2.jpg", ren);
+        pictures[RED2] = red2;
+    SDL_Texture *red3 = LoadImage("../img/red3.jpg", ren);
+        pictures[RED3] = red3;
+    SDL_Texture *red4 = LoadImage("../img/red4.jpg", ren);
+        pictures[RED4] = red4;
+    SDL_Texture *red5 = LoadImage("../img/red5.jpg", ren);
+        pictures[RED5] = red5;
+    SDL_Texture *yellow2 = LoadImage("../img/yellow2.jpg", ren);
+        pictures[YELLOW2] = yellow2;
+    SDL_Texture *yellow3 = LoadImage("../img/yellow3.jpg", ren);
+        pictures[YELLOW3] = yellow3;
+    SDL_Texture *yellow4 = LoadImage("../img/yellow4.jpg", ren);
+        pictures[YELLOW4] = yellow4;
+    SDL_Texture *yellow5 = LoadImage("../img/yellow5.jpg", ren);
+        pictures[YELLOW5] = yellow5;
 
-    for(int i = 0; i < ALL_PICTURES; ++i)
-    {
-        if (pictures[i] == NULL)
-            return 4;
-    }
+    // ******ПОЕХАЛИ**********************************************************************************
 
-    // поехали **********************************************************************************
-
-    // приветственное окно - только текст, ждет выбор
-/*
-    //_________________________________________________________________________________________
+    // ____приветственное окно _______________________________________________________________________
     SDL_RenderClear(ren);
-    SDL_Surface* first_surf = TTF_RenderText_Solid(font, "Приветствую! 1Играем, 2правила, 3выходим?", fore_color);
-    if(first_surf == NULL)
-    {
-        printf("Unable to load textsurface: %s \n", SDL_GetError());
-        return false;
-    }
-    SDL_Rect first_loc = { 20, 0, 300, 50 };
-    ApplyTextSurface(first_surf, ren, first_loc);
-    SDL_RenderPresent(ren);
-    //_______________________________________________________________________________________
-*/
+
+    // фон
+    SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+    SDL_Texture* wlcm = LoadText("Приветствую!", font, font_color, ren);
+    SDL_Rect wlcm_loc = { 20, 20, 120, 20 };
+    SDL_RenderCopy(ren, wlcm, NULL, &wlcm_loc);
+
+    SDL_Texture* wlcm_qst = LoadText("Будем играть или нужна помощь?", font, font_color, ren);
+    SDL_Rect wlcm_qst_loc = { 20, 45, 300, 20 };
+    SDL_RenderCopy(ren, wlcm_qst, NULL, &wlcm_qst_loc);
+
     SDL_Event event;
     bool exit = false;
     while (!exit)
     {
+        SDL_Texture* wlcm_pl = LoadText("1. Играть", font, font_color, ren);
+        SDL_Rect wlcm_pl_loc = { 20, 80, 90, 20 };
+        SDL_RenderCopy(ren, wlcm_pl, NULL, &wlcm_pl_loc);
+
+        SDL_Texture* wlcm_rls = LoadText("2. Правила игры", font, font_color, ren);
+        SDL_Rect wlcm_rls_loc = { 20, 105, 150, 20 };
+        SDL_RenderCopy(ren, wlcm_rls, NULL, &wlcm_rls_loc);
+
+        SDL_Texture* wlcm_ext = LoadText("3. Выход", font, font_color, ren);
+        SDL_Rect wlcm_ext_loc = { 20, 130, 90, 20 };
+        SDL_RenderCopy(ren, wlcm_ext, NULL, &wlcm_ext_loc);
+
+        SDL_RenderPresent(ren);
+    //_______________________________________________________________________________________
+
         SDL_WaitEvent(&event);
         switch(event.type)
         {
@@ -202,55 +209,21 @@ int main(int argc, char **argv)
                     }
                     case SDLK_2:
                     {
-                        // ПРАВИЛА
-                        //__________________________________________________________________________
-/*
+
+                        //____правила______________________________________________________________________
                         SDL_RenderClear(ren);
-                        SDL_Surface* ruls_surf = TTF_RenderText_Solid(font, "ПРАВИЛА ИГРЫ. 1Назад 2Выход", fore_color);
-                        if(ruls_surf == NULL)
-                        {
-                            printf("Unable to load textsurface: %s \n", SDL_GetError());
-                            return false;
-                        }
-                        SDL_Rect ruls_loc = { 20, 0, 300, 50 };
-                        ApplyTextSurface(ruls_surf, ren, ruls_loc);
+
+                        //фон
+                        SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+                        ApplayRules(font, font_color, ren);
+
                         SDL_RenderPresent(ren);
                         //_________________________________________________________________________________
-*/
-                        SDL_WaitEvent(&event);
-                        switch(event.type)
-                        {
-                            case SDL_QUIT:
-                            {
-                                exit = true;
-                                break;
-                            }
-                            case SDL_KEYDOWN:
-                            {
-                                switch(event.key.keysym.sym)
-                                {
-                                    case SDLK_ESCAPE:
-                                    {
-                                        exit = true;
-                                        break;
-                                    }
-                                    case SDLK_1:
-                                    {
-                                        exit = true; // назад
-                                        break;
-                                    }
-                                    case SDLK_2:
-                                    {
-                                        exit = true;
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
-                        }
-                    }
+
+                        chose_back(exit);
                         break;
-                        // КОНЕЦ ПРАВИЛ
+                    }
                     case SDLK_1:
                     {
                         // ИГРА
@@ -280,7 +253,6 @@ int main(int argc, char **argv)
                                 bool pack_of_cards = true; // для проверки на конец колоды
 
                                 // восстановление поля
-
                                 pack_of_cards = restore_field(field, gold, g);
 
                                 if(!pack_of_cards) // говорит о том, что карт оказалось недостаточно
@@ -293,8 +265,7 @@ int main(int argc, char **argv)
                                         return 1;
                                     }
 
-                                    //переход к подсчету балов
-
+                                    //переход к подсчету своих балов
                                     scoring_total(your_score);
 
                                     // принимаем балы соперника
@@ -306,7 +277,7 @@ int main(int argc, char **argv)
                                     }
                                     else
                                     {
-                                        int tmp = strcmp(opponent_total, "exit\n");
+                                        char tmp = strcmp(opponent_total, "exit\n");
                                         if(!tmp)
                                         {
                                             system("/usr/bin/clear");
@@ -315,7 +286,7 @@ int main(int argc, char **argv)
                                         }
                                     }
 
-                                    // отправляем свои
+                                    // отправляем свои баллы
                                     error = write(aSocket, your_total, 1);
                                     if(error <= 0)
                                     {
@@ -332,108 +303,54 @@ int main(int argc, char **argv)
                                     {
                                         case 0:
                                         {
-                                        /*
                                             //______________________________________________________________________________________
                                             SDL_RenderClear(ren);
-                                            char buf[258];
-                                            sprintf(buf, "НИЧЬЯ...%d...", your_score[GOLD][GREEN]);
-                                            SDL_Surface* bothWin_surf = TTF_RenderText_Solid(font, buf, fore_color);
-                                            if(bothWin_surf == NULL)
-                                            {
-                                                printf("Unable to load textsurface: %s \n", SDL_GetError());
-                                                return false;
-                                            }
-                                            SDL_Rect bothWin_loc = { 20, 0, 300, 50 };
-                                            ApplyTextSurface(bothWin_surf, ren, bothWin_loc);
+
+                                            //фон
+                                            SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+                                            ApplayResults("ПОБЕДИЛА ДРУЖБА! :)", 190, font, font_color,ren,
+                                                        your_score, opponent_score, your_total, opponent_total);
+
                                             SDL_RenderPresent(ren);
-                                        */
                                             //__________________________________________________________________________________________
                                             break;
                                         }
                                         case 1:
                                         {
-                                        /*
                                             //______________________________________________________________________________________
                                             SDL_RenderClear(ren);
-                                            char buf[258];
-                                            sprintf(buf, "ВЫ ВЫЙГРАЛИ!!!...%d...", your_score[GOLD][GREEN]);
-                                            SDL_Surface* youWin_surf = TTF_RenderText_Solid(font, buf, fore_color);
-                                            if(youWin_surf == NULL)
-                                            {
-                                                printf("Unable to load textsurface: %s \n", SDL_GetError());
-                                                return false;
-                                            }
-                                            SDL_Rect youWin_loc = { 20, 0, 300, 50 };
-                                            ApplyTextSurface(youWin_surf, ren, youWin_loc);
+
+                                            //фон
+                                            SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+                                            ApplayResults("ВЫ ВЫЙГРАЛИ!!! Поздравляем.", 270, font, font_color,ren,
+                                                        your_score, opponent_score, your_total, opponent_total);
+
                                             SDL_RenderPresent(ren);
-                                            */
                                             //____________________________________________________________________
                                         }
                                         case 2:
                                         {
-                                        /*
                                             //______________________________________________________________________________________
                                             SDL_RenderClear(ren);
-                                            char buf[258];
-                                            sprintf(buf, "ВЫ ПРОИГРАЛИ (((...%d...", your_score[GOLD][GREEN]);
-                                            SDL_Surface* youLost_surf = TTF_RenderText_Solid(font, buf, fore_color);
-                                            if(youLost_surf == NULL)
-                                            {
-                                                printf("Unable to load textsurface: %s \n", SDL_GetError());
-                                                return false;
-                                            }
-                                            SDL_Rect youLost_loc = { 20, 0, 300, 50 };
-                                            ApplyTextSurface(youLost_surf, ren, youLost_loc);
+
+                                            //фон
+                                            SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+                                            ApplayResults("ВЫ ПРОИГРАЛИ... :(", 180, font, font_color,ren,
+                                                        your_score, opponent_score, your_total, opponent_total);
+
                                             SDL_RenderPresent(ren);
-                                            */
                                             //____________________________________________________________________
                                             break;
                                         }
                                     }
 
-                                    bool done = false;
-                                    while(!done) // для проверки на правильность ввода
-                                    {
-                                        done = true; // предполагаем что пользователь ввел правильно
-                                        SDL_WaitEvent(&event);
-                                        switch(event.type)
-                                        {
-                                            case SDL_QUIT:
-                                            {
-                                                exit = true;
-                                                break;
-                                            }
-                                            case SDL_KEYDOWN:
-                                            {
-                                                switch(event.key.keysym.sym)
-                                                {
-                                                    case SDLK_ESCAPE:
-                                                    {
-                                                        exit = true;
-                                                        break;
-                                                    }
-                                                    case SDLK_1:
-                                                    {
-                                                        resume = 2;
-                                                        break;
-                                                    }
-                                                    case SDLK_2:
-                                                    {
-                                                        resume = 2;
-                                                        new_game = 0;
-                                                        break;
-                                                    }
-                                                    default:
-                                                    {
-                                                        done = false;
-                                                        break;
-                                                    }
-                                                } //switch
-                                            } //case
-                                        } //switch
-                                    } //while done last
+                                    choise_again(exit, resume, new_game);
+
                                 }
-                                else // карт достаточно
+                                else // если карт достаточно
                                 {
                                     // отправляем сокровища
                                     error = write(aSocket, (char*)field[JEWEL], FIELD_CLM * sizeof(int));
@@ -443,21 +360,15 @@ int main(int argc, char **argv)
                                         return 1;
                                     }
 
-                                    // экран меняется на игровое поле и ждет выбор информаторов и воров
+                                    // показ игрового поля
+                                    // ____________________________________________________________________
                                     SDL_RenderClear(ren);
+
                                     //картинка
-                                    Show_field(field, pictures, ren);
-                                /*
-                                    // текст____________________________________________________________________
-                                    SDL_Surface* game_surf = TTF_RenderText_Solid(font, "кого грабим, что защищаем?", fore_color);
-                                    if(game_surf == NULL)
-                                    {
-                                        printf("Unable to load textsurface: %s \n", SDL_GetError());
-                                        return false;
-                                    }
-                                    SDL_Rect game_loc = { 0, 0, 300, 50 };
-                                    ApplyTextSurface(game_surf, ren, game_loc);
-                                */
+                                    ShowField(ren, field, pictures, CardsRect);
+                                    //текст
+                                    ApplayChoise(font, font_color, ren);
+
                                     SDL_RenderPresent(ren);
                                     //_________________________________________________________________________
 
@@ -467,8 +378,8 @@ int main(int argc, char **argv)
                                     // выбор воров
                                     chose_burgular(field, exit);
 
-                                    //принять выбор
-                                    int buf_informer[FIELD_CLM] = {0};
+                                    //принять выбор соперника
+                                    char buf_informer[FIELD_CLM] = {0};
                                     error = read(aSocket, buf_informer, FIELD_CLM * sizeof(int));
                                     if(error <= 0)
                                     {
@@ -477,7 +388,7 @@ int main(int argc, char **argv)
                                     }
                                     else
                                     {
-                                        int tmp = strcmp(buf_informer, "exit\n");
+                                        char tmp = strcmp(buf_informer, "exit\n");
                                         if(!tmp)
                                         {
                                             system("/usr/bin/clear");
@@ -486,7 +397,7 @@ int main(int argc, char **argv)
                                         }
                                     }
 
-                                    int buf_burgular[FIELD_CLM] = {0};
+                                    char buf_burgular[FIELD_CLM] = {0};
                                     error = read(aSocket, buf_burgular, FIELD_CLM * sizeof(int));
                                     if(error <= 0)
                                     {
@@ -495,7 +406,7 @@ int main(int argc, char **argv)
                                     }
                                     else
                                     {
-                                        int tmp = strcmp(buf_burgular, "exit\n");
+                                        char tmp = strcmp(buf_burgular, "exit\n");
                                         if(!tmp)
                                         {
                                             system("/usr/bin/clear");
@@ -547,25 +458,17 @@ int main(int argc, char **argv)
                                         }
                                     }
 
-                                    // обновляется поле, текст теперь с результатами и ждет продолжения
+                                    // результататы раунда
+                                    //__________________________________________________________________
                                     SDL_RenderClear(ren);
+
                                     // картинка
-                                    Show_field(field, pictures, ren);
-                                    // текст__________________________________________________________________-
-                                /*
-                                    char buf[258];
-                                    sprintf(buf, "текущ результаты...%d...", your_score[GOLD][GREEN]);
-                                    SDL_Surface* result_surf = TTF_RenderText_Solid(font, buf, fore_color);
-                                    if(result_surf == NULL)
-                                    {
-                                        printf("Unable to load textsurface: %s \n", SDL_GetError());
-                                        return false;
-                                    }
-                                    SDL_Rect result_loc = { 0, 0, 300, 50 };
-                                    ApplyTextSurface(result_surf, ren, result_loc);
-                                */
-                                    //_______________________________________________________________________
+                                    ShowField(ren, field, pictures, CardsRect);
+                                    // текст
+                                    ApplayRound(font, font_color, ren, your_score, opponent_score,
+                                                                       your_total, opponent_total);
                                     SDL_RenderPresent(ren);
+                                    //_______________________________________________________________________
 
                                     chose_continue(exit, new_game);
 
@@ -587,28 +490,26 @@ int main(int argc, char **argv)
         write(2, "ER: write\n", 10);
         return 1;
     }
-
     //окно обновляется на прощальное
-/*
     //__________________________________________________________________________
     SDL_RenderClear(ren);
-    SDL_Surface* bye_surf = TTF_RenderText_Solid(font, "Пока!", fore_color);
-    if(bye_surf == NULL)
-    {
-        printf("Unable to load textsurface: %s \n", SDL_GetError());
-        return false;
-    }
-    SDL_Rect bye_loc = { 0, 0, 300, 50 };
-    ApplyTextSurface(bye_surf, ren, bye_loc);
-*/
+
+    //фон
+    SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+    SDL_Texture* bye = LoadText("ВСЕГО ДОБРОГО!", font, font_color, ren);
+    SDL_Rect bye_loc = { 400, 305, 400, 45 };
+    SDL_RenderCopy(ren, bye, NULL, &bye_loc);
+
     SDL_RenderPresent(ren);
     //_________________________________________________________________________
-    SDL_Delay(1000);
+    SDL_Delay(2000);
 
+    //чистимся
     for(int i = 0; i < ALL_PICTURES; ++i)
         SDL_DestroyTexture(pictures[i]);
-    // все текстуры текста
-//    TTF_CloseFont(font);
+    // удалить все текстуры текста...
+    TTF_CloseFont(font);
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
     SDL_Quit();
