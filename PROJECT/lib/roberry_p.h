@@ -89,7 +89,7 @@
 void fill_place(int **field);
 bool restore_field(int **field, int *gold, int index);
 void sum_score(int **score);
-int check_total(const int **you, const int **opponent, int total);
+int check_total(int **you, int **opponent, int total);
 int check_winner(const int you, const int opponent);
 void scoring_gold(const int n, int **score, int total);
 void scoring_cache(int *score);
@@ -99,20 +99,20 @@ void chose_continue(bool exit, int new_game);
 void chose_back(bool exit);
 void choise_again(bool exit, int resume, int new_game);
 void swap_array(int *array, const int size);
-void get_prize(const int **field, int **your_score, int **opponent_score, int your_total, int opponent_total);
+void get_prize(int **field, int **your_score, int **opponent_score, int your_total, int opponent_total);
 
-void DrawInformer(SDL_Renderer *ren, const int **field, const SDL_Texture* *pic, const SDL_Rect pos);
-void DrawPlace(SDL_Renderer *ren, const SDL_Texture* *pic, const SDL_Rect pos);
-void DrawJewel(SDL_Renderer *ren, const int **field, const SDL_Texture* *pic, const SDL_Rect pos);
-void DrawBurgular(SDL_Renderer *ren, const int **field, const SDL_Texture* *pic, const SDL_Rect pos);
-void ShowField(SDL_Renderer *ren, const int **field, const SDL_Texture* *pic, const SDL_Rect cardPos);
+void DrawInformer(SDL_Renderer *ren, int **field, SDL_Texture* *pic, const SDL_Rect pos);
+void DrawPlace(SDL_Renderer *ren, SDL_Texture* *pic, const SDL_Rect pos);
+void DrawJewel(SDL_Renderer *ren, int **field, SDL_Texture* *pic, const SDL_Rect pos);
+void DrawBurgular(SDL_Renderer *ren, int **field, SDL_Texture* *pic, const SDL_Rect pos);
+void ShowField(SDL_Renderer *ren, int **field, SDL_Texture* *pic, const SDL_Rect cardPos);
 SDL_Texture* LoadImage(const char *file, SDL_Renderer *ren);
-SDL_Texture* LoadText(const char *text, const TTF_Font *font, const SDL_Color color, SDL_Renderer *ren);
-void ApplayChoise(const TTF_Font *font, const SDL_Color color, SDL_Renderer *ren);
-void ApplayResults(const char *buf, const int buf_lenth, const TTF_Font *font, const SDL_Color color, SDL_Renderer *ren,
-                 const int **your_score, const int **opponent_score, const int your_total, const int opponent_total);
-void ApplayRound(const TTF_Font *font, const SDL_Color color, SDL_Renderer *ren,
-                 const int **your_score, const int **opponent_score, const int your_total, const int opponent_total);
-void ApplayRules(const TTF_Font *font, const SDL_Color font_color, SDL_Renderer *ren);
+SDL_Texture* LoadText(const char *text, TTF_Font *font, const SDL_Color color, SDL_Renderer *ren);
+void ApplayChoise(TTF_Font *font, const SDL_Color color, SDL_Renderer *ren);
+void ApplayResults(const char *buf, const int buf_lenth, TTF_Font *font, const SDL_Color color, SDL_Renderer *ren,
+                 int **your_score, int **opponent_score, const int your_total, const int opponent_total);
+void ApplayRound(TTF_Font *font, const SDL_Color color, SDL_Renderer *ren,
+                 int **your_score, int **opponent_score, const int your_total, const int opponent_total);
+void ApplayRules(TTF_Font *font, const SDL_Color font_color, SDL_Renderer *ren);
 
 #endif // ROBERRY_H

@@ -72,18 +72,23 @@ int main()
         printf("TTF_GetError(): TTF_Init\n");
         return 4;
     }
-    TTF_Font* font = TTF_OpenFont("../ttf/Old Comedy.ttf", 24);
+    TTF_Font* font = TTF_OpenFont("Old Comedy.ttf", 24);
     if(font == NULL)
     {
         printf("TTF_GetError(): TTF_OpenFont\n");
         return 5;
     }
-    SDL_Color font_color = {255, 150, 0, 255};
+    SDL_Color font_color = {255, 255, 255, 255};
 
-    SDL_Rect *CardsRect = { 220, 40, 0, 0 };
+    SDL_Rect CardsRect = { 220, 40, 0, 0 };
 
     // загружаем картинки и заносим в массив текстур
-    SDL_Texture *pictures[ALL_PICTURES];
+    SDL_Texture* *pictures = (SDL_Texture**)malloc(ALL_PICTURES * sizeof(SDL_Texture**));
+      for(int i = 0; i < ALL_PICTURES; ++i)
+    {
+        pictures[i] = (SDL_Texture*)malloc(sizeof(SDL_Texture*));
+
+    }
 
     SDL_Texture *empty = LoadImage("../img/empty.jpg", ren);
         pictures[EMPTY] = empty;
@@ -99,15 +104,15 @@ int main()
         pictures[CACHE_YELLOW] = goldYellow;
     SDL_Texture *score = LoadImage("../img/score.jpg", ren);
         pictures[SCORE_l] = score;
-    SDL_Texture *placeA = LoadImage("../img/placeA.jpg", ren);
+    SDL_Texture *placeA = LoadImage("../img/a.jpg", ren);
         pictures[PLACE_A] = placeA;
-    SDL_Texture *placeB = LoadImage("../img/placeB.jpg", ren);
+    SDL_Texture *placeB = LoadImage("../img/b.jpg", ren);
         pictures[PLACE_B] = placeB;
-    SDL_Texture *placeC = LoadImage("../img/placeC.jpg", ren);
+    SDL_Texture *placeC = LoadImage("../img/c.jpg", ren);
         pictures[PLACE_C] = placeC;
-    SDL_Texture *placeD = LoadImage("../img/placeD.jpg", ren);
+    SDL_Texture *placeD = LoadImage("../img/d.jpg", ren);
         pictures[PLACE_D] = placeD;
-    SDL_Texture *placeE = LoadImage("../img/placeE.jpg", ren);
+    SDL_Texture *placeE = LoadImage("../img/e.jpg", ren);
         pictures[PLACE_E] = placeE;
     SDL_Texture *gamer1 = LoadImage("../img/gamer1.jpg", ren);
         pictures[GAMER1] = gamer1;
@@ -161,23 +166,24 @@ int main()
     // ******ПОЕХАЛИ**********************************************************************************
 
     // ____приветственное окно _______________________________________________________________________
+
     SDL_RenderClear(ren);
-
-    // фон
-    SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
-
-    SDL_Texture* wlcm = LoadText("Приветствую!", font, font_color, ren);
-    SDL_Rect wlcm_loc = { 20, 20, 120, 20 };
-    SDL_RenderCopy(ren, wlcm, NULL, &wlcm_loc);
-
-    SDL_Texture* wlcm_qst = LoadText("Будем играть или нужна помощь?", font, font_color, ren);
-    SDL_Rect wlcm_qst_loc = { 20, 45, 300, 20 };
-    SDL_RenderCopy(ren, wlcm_qst, NULL, &wlcm_qst_loc);
 
     SDL_Event event;
     bool exit = false;
     while (!exit)
     {
+        // фон
+        SDL_RenderCopy(ren, pictures[EMPTY], NULL, NULL);
+
+        SDL_Texture* wlcm = LoadText("Приветствую!", font, font_color, ren);
+        SDL_Rect wlcm_loc = { 20, 20, 120, 20 };
+        SDL_RenderCopy(ren, wlcm, NULL, &wlcm_loc);
+
+        SDL_Texture* wlcm_qst = LoadText("Будем играть или нужна помощь?", font, font_color, ren);
+        SDL_Rect wlcm_qst_loc = { 20, 45, 300, 20 };
+        SDL_RenderCopy(ren, wlcm_qst, NULL, &wlcm_qst_loc);
+
         SDL_Texture* wlcm_pl = LoadText("1. Играть", font, font_color, ren);
         SDL_Rect wlcm_pl_loc = { 20, 80, 90, 20 };
         SDL_RenderCopy(ren, wlcm_pl, NULL, &wlcm_pl_loc);
@@ -239,10 +245,38 @@ int main()
                         int new_game = 1;
                         while(new_game)
                         {
-                            int field[FIELD_STR][FIELD_CLM] = {{0}}; // игровое поле
+                            //игровое поле
+                            int **field = (int**)malloc(FIELD_STR * sizeof(int*));
+                            if(field == NULL)
+                                printf("Error: get memmory/n");
+                            for(int i = 0; i < FIELD_STR; ++i)
+                            {
+                                field[i] = (int*)malloc(FIELD_CLM * sizeof(int));
+                                if(field[i] == NULL)
+                                    printf("Error: get memmory/n");
+                            }
 
-                            int your_score[GOLD_STR][GOLD_CLM] = {{0}};
-                            int opponent_score[GOLD_STR][GOLD_CLM] = {{0}};
+                            // очки
+                            int **your_score = (int**)malloc(GOLD_STR * sizeof(int*));
+                            if(your_score == NULL)
+                                printf("Error: get memmory/n");
+                            for(int i = 0; i < GOLD_STR; ++i)
+                            {
+                                your_score[i] = (int*)malloc(GOLD_CLM * sizeof(int));
+                                if(your_score[i] == NULL)
+                                    printf("Error: get memmory/n");
+                            }
+
+                            int **opponent_score = (int**)malloc(GOLD_STR * sizeof(int*));
+                            if(opponent_score == NULL)
+                                printf("Error: get memmory/n");
+                            for(int i = 0; i < GOLD_STR; ++i)
+                            {
+                                opponent_score[i] = (int*)malloc(GOLD_CLM * sizeof(int));
+                                if(opponent_score[i] == NULL)
+                                    printf("Error: get memmory/n");
+                            }
+
                             int your_total = 0;
                             int opponent_total = 0;
 
@@ -254,7 +288,7 @@ int main()
                             {
 
                                 // принимаем сокровища
-                                int buf_jewel[FIELD_CLM] = {0};
+                                char buf_jewel[FIELD_CLM] = {0};
                                 error = read(aSocket, buf_jewel, FIELD_CLM * sizeof(int));
                                 if(error <= 0)
                                 {
@@ -263,7 +297,7 @@ int main()
                                 }
                                 else
                                 {
-                                    char tmp = strcmp(buf_jewel, "exit\n");
+                                    int tmp = strcmp(buf_jewel, "exit\n");
                                     if(!tmp)
                                     {
                                         system("/usr/bin/clear");
@@ -272,14 +306,14 @@ int main()
                                     }
                                     else
                                     {
-                                        char tmp = strcmp(buf_jewel, "over\n");
+                                        int tmp = strcmp(buf_jewel, "over\n");
                                         if(!tmp)
                                         {
                                             //переход к подсчету балов
                                             sum_score(your_score);
 
                                             // отправить баллы
-                                            error = write(aSocket, your_total, sizeof(int));
+                                            error = write(aSocket, &your_total, sizeof(int));
                                             if(error <= 0)
                                             {
                                                 write(2, "ER: write\n", 10);
@@ -287,7 +321,8 @@ int main()
                                             }
 
                                             // принять балы соперника
-                                            error = read(aSocket, opponent_total, sizeof(int));
+                                            char buf_opponent_total[1];
+                                            error = read(aSocket, buf_opponent_total, sizeof(int));
                                             if(error <= 0)
                                             {
                                                 write(2, "ER: read\n", 9);
@@ -295,7 +330,7 @@ int main()
                                             }
                                             else
                                             {
-                                                char tmp = strcmp(opponent_total, "exit\n");
+                                                int tmp = strcmp(buf_opponent_total, "exit\n");
                                                 if(!tmp)
                                                 {
                                                     system("/usr/bin/clear");
@@ -303,6 +338,7 @@ int main()
                                                     return 0;
                                                 }
                                             }
+                                            opponent_total = buf_opponent_total[0];
 
                                             // считаем победителя
                                             your_total = check_total(your_score, opponent_score, your_total);
@@ -400,7 +436,7 @@ int main()
                                             }
 
                                             //получили результат выбора соперника
-                                            int buf_informer[FIELD_CLM] = {0};
+                                            char buf_informer[FIELD_CLM];
                                             error = read(aSocket, buf_informer, FIELD_CLM * sizeof(int));
                                             if(error <= 0)
                                             {
@@ -409,7 +445,7 @@ int main()
                                             }
                                             else
                                             {
-                                                char tmp = strcmp(buf_informer, "exit\n");
+                                                int tmp = strcmp(buf_informer, "exit\n");
                                                 if(!tmp)
                                                 {
                                                     system("/usr/bin/clear");
@@ -418,7 +454,7 @@ int main()
                                                 }
                                             }
 
-                                            int buf_burgular[FIELD_CLM] = {0};
+                                            char buf_burgular[FIELD_CLM];
                                             error = read(aSocket, buf_burgular, FIELD_CLM * sizeof(int));
                                             if(error <= 0)
                                             {
@@ -427,7 +463,7 @@ int main()
                                             }
                                             else
                                             {
-                                                char tmp = strcmp(buf_burgular, "exit\n");
+                                                int tmp = strcmp(buf_burgular, "exit\n");
                                                 if(!tmp)
                                                 {
                                                     system("/usr/bin/clear");
@@ -463,6 +499,12 @@ int main()
                                     } //else
                                 } // else
                             } //while resume
+                            free(field);
+                            field = NULL;
+                            free(your_score);
+                            your_score = NULL;
+                            free(opponent_score);
+                            opponent_score = NULL;
                         } //while new_game
                         //КОНЕЦ ИГРЫ
                         break;
@@ -498,6 +540,8 @@ int main()
     for(int i = 0; i < ALL_PICTURES; ++i)
         SDL_DestroyTexture(pictures[i]);
     // удалить все текстуры текста...
+    free(pictures);
+    pictures = NULL;
     TTF_CloseFont(font);
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
