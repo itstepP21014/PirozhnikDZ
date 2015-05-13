@@ -55,7 +55,8 @@ int main(int argc, char **argv)
         return 2;
     }
     SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (!ren){
+    if (!ren)
+    {
         printf("SDL_GetError(): CreateRenderer\n");
         return 3;
     }
@@ -64,7 +65,7 @@ int main(int argc, char **argv)
         printf("TTF_GetError(): TTF_Init\n");
         return 4;
     }
-    TTF_Font* font = TTF_OpenFont("199131.ttf", 24);
+    TTF_Font* font = TTF_OpenFont("../ttf/Old Comedy.ttf", 24);
     if(font == NULL)
     {
         printf("TTF_GetError(): TTF_OpenFont\n");
@@ -72,10 +73,10 @@ int main(int argc, char **argv)
     }
     SDL_Color font_color = {255, 150, 0, 255};
 
-    SDL_Rect *CardsRect = { 220, 40, 0, 0 };
+    SDL_Rect CardsRect = { 220, 40, 0, 0 };
 
     // загружаем картинки и заносим в массив текстур
-    SDL_Texture *pictures[35];
+    SDL_Texture *pictures[ALL_PICTURES];
 
     SDL_Texture *empty = LoadImage("../img/empty.jpg", ren);
         pictures[EMPTY] = empty;
@@ -266,10 +267,10 @@ int main(int argc, char **argv)
                                     }
 
                                     //переход к подсчету своих балов
-                                    scoring_total(your_score);
+                                    sum_score(your_score);
 
                                     // принимаем балы соперника
-                                    error = read(aSocket, opponent_total, 1);
+                                    error = read(aSocket, opponent_total, sizeof(int));
                                     if(error <= 0)
                                     {
                                         write(2, "ER: read\n", 9);
@@ -365,7 +366,7 @@ int main(int argc, char **argv)
                                     SDL_RenderClear(ren);
 
                                     //картинка
-                                    ShowField(ren, field, pictures, CardsRect);
+                                    ShowField(ren, field, pictures, &CardsRect);
                                     //текст
                                     ApplayChoise(font, font_color, ren);
 
@@ -437,36 +438,16 @@ int main(int argc, char **argv)
                                     }
 
                                     // разбор полетов
-                                    for(int i = 0; i < FIELD_CLM; ++i)
-                                    {
-                                        if(field[INFORM][i] == 0)
-                                        {
-                                            if(field[BURG][i] != 3)
-                                            {
-                                                if(field[BURG][i] == 1)
-                                                    scoring_gold(field[JEWEL][i], your_score, your_total); // вы получаете добычу
-                                                else if(field[BURG][i] == 2)
-                                                    scoring_gold(field[JEWEL][i], opponent_score, opponent_total); // аппонент получает добычу
-                                                field[JEWEL][i] = 0;
-                                            }
-                                            else
-                                            {
-                                                // игроки получают тайник
-                                                scoring_cache(your_score[CACHE]);
-                                                scoring_cache(opponent_score[CACHE]);
-                                            }
-                                        }
-                                    }
+                                    get_prize(field, your_score, opponent_score, your_total, opponent_total);
 
                                     // результататы раунда
                                     //__________________________________________________________________
                                     SDL_RenderClear(ren);
 
                                     // картинка
-                                    ShowField(ren, field, pictures, CardsRect);
+                                    ShowField(ren, field, pictures, &CardsRect);
                                     // текст
-                                    ApplayRound(font, font_color, ren, your_score, opponent_score,
-                                                                       your_total, opponent_total);
+                                    ApplayRound(font, font_color, ren, your_score, opponent_score, your_total, opponent_total);
                                     SDL_RenderPresent(ren);
                                     //_______________________________________________________________________
 
