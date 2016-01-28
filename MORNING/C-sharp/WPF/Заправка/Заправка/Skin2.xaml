@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="DockPanel">
+        <Setter Property="Background" Value="Black"/>
+    </Style>
+   
+    <Style TargetType="Button">
+        <Setter Property="Background"  Value="{DynamicResource BrushForButton}"/>
+    </Style>
+
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="LightCoral"/>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Times New Roman"/>
+        <Setter Property="Foreground" Value="#330000"/>
+    </Style>
+
+    <LinearGradientBrush x:Key="BrushForButton" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="Gray" Offset="0.9"/>
+    </LinearGradientBrush>
+</ResourceDictionary>

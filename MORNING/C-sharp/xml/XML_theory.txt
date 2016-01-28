@@ -1,0 +1,96 @@
+09.09.15 (вторник) /////////////////////////////////////////////////////////////////////////////////////////////////////
+eXtensible Markup Language - язык описания данных
+беззаговорочно самый популярный формат хранения файлов
+
+w3school.com XML
+
+<?xml version="1.0"?> - первая строчка в xml документе
+
+<корневой узел> - может называться как угодно, имя тега
+.
+.(внутри могут быть дочерние узлы)
+.
+</корневой узел>
+
+<node/> сам себя открывает и закрывает
+у узламогут быть аттрибуты: <img srce="pic.img"/>
+комментарии <!-- ... -->
+имя узла не может содержать пробел, >, ', ",
+кавычки могут быть двойными и одиночными
+
+сущности:
+&lt; соответствует <
+&quot; соответствует кавычке
+&amp; соответствует &
+
+кодировка документа:
+encoding="utf-8" - это надо писать в заголовке документа (<?xml version="1.0 encoding="utf-8"?> )
+
+Document Type Decloration (DTD)
+еще один способ, более современный, описать Xml: с помощью другого xml документа (XML Schema)
+
+XML довольно избыточный (за счет закрывающих тегов), поэтому их сжимают 
+
+parser - читает по элементам (тегам, аттрибутам)
+Document Object Model - парсер который строит целиком для вашего файла объектую модель документа
+.getElementsByTagName("cell") - вернет список всех объектов
+.Children
+.Attributes
+.Name (если узел тег, будет заполнено Name)
+.Value (то что между тегами, детеныш тега)
+
+xml состояния:
+- ошибочное: не закрытие тега или использование запрещенных символов
+- корректно соформированнный документ - соответствует правилам, все как положено, но ничему не соответствует
+- валидный - тогда когда документ правилно сформирован и соответствует либо деклорации документа, либо xml схеме
+
+xml более строгий чем html
+
+Добавление элемента:
+XmlElement car = doc.CreateElement("Car");
+root.AppendChild(car);
+var Year = doc.CreateElement("Year");
+car.AppendChild(Year);
+var text = doc.CreateTextNode("2011");
+Year.AppendChild(text);
+Concole.Writeline(doc.InnerXml); (Concole.Writeline(doc.InnerText);)
+
+более халявный способ:
+car.InnerXml="<Year>1999</Year><Manufacturer>jhfuygh</Manufacturer";
+недостатки:
+- не стандартное
+- удаляет предыдущее
+- время на заполнение
+- время на парсинг
+
+
+23.09.15 (среда) //////////////////////////////////////////////////////////////////////////////////////////////////////
+данные характеризуют объект,а мета-данные характеризуют сами данные (у человека имя - это данные, а номер паспорта - мета-данные; у файля его имя и содержимое - это данные, а кодировка файла - мета-данные)
+<person>
+<name></name> - данные
+</person>
+
+<person name="..."></person> - мета-данные
+
+Сериализация - перевод объекта в последовательность байт, десериализация - наоборот.
+Три вида сериализации:
+1. не читабельная пачка байт (каждый класс должен быть [Serializable], поля могуть быть  [NonSerialized])
+  FileStream file = new FileStream("C:/users/st/binary_serialization.dat", FileMode.Create);
+  BinaryFormatter formatter = new BinaryFormatter();
+  try
+    formatter.Serialize(file, object_of_MyClass);
+  catch (SerializationException e)
+  {
+    Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+    throw;
+  }
+  finally
+    file.Close();
+
+2. xml сериализация (каждый класс д/б [Serializable], public и иметь обязательно к-тор по умолчанию, поля м/б [XmlIgnore])
+  XmlSerializer formatter = new XmlSerializer(typeof(MyClass));
+  // using (FileStream file = new FileStream("1.xml", FileMode.OpenOrCreate)){formatter.Serialize(file, object_of_MyClass);}
+  StreamWriter file = new StreamWriter("C:/users/st/xml_serialization.xml");
+  formatter.Serialize(file, object_of_MyClass);
+  file.Close();
+3. SOAP сериализация - единый протокол передачи объектов между программами

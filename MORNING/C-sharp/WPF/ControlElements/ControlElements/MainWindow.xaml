@@ -1,0 +1,12 @@
+﻿<Window x:Class="ControlElements.MainWindow"
+        xmlns:UC="clr-namespace:ControlElements"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <UC:NumericUpDown Data="{Binding ElementName=slDDd, Path=Value}" x:Name="UC" ></UC:NumericUpDown>
+        <Slider x:Name="slDDd" Maximum="10" Minimum="-10" ValueChanged="slDDd_ValueChanged"></Slider>
+        <Button Click="Button_Click">111</Button>
+    </StackPanel>
+
+</Window>

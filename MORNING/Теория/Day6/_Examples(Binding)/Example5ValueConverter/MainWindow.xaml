@@ -1,0 +1,22 @@
+﻿<Window x:Class="Example5ValueConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:my="clr-namespace:Example5ValueConverter"   
+    Title="MainWindow" Height="350" Width="525">
+
+    <!--Подключение конвертера MyConverter--> 
+    <Window.Resources>
+        <my:MyConverter x:Key="MyConverter" />
+    </Window.Resources>
+
+    <StackPanel DataContext="{Binding ElementName=sliderFontSize}">
+        <Slider Name="sliderFontSize" Margin="10" Minimum="15" Maximum="72" 
+                TickFrequency="1" TickPlacement="TopLeft"></Slider>
+        <TextBox Name="tbText" Text="Пример текста" 
+                FontSize="{Binding Path=Value}" ></TextBox>
+        
+        <!--Использование конвертера-->
+        <Button Content="{Binding Path=Value, Converter={StaticResource MyConverter}}" Margin="50,10,50,10"></Button>
+
+    </StackPanel>
+</Window>

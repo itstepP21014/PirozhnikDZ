@@ -1,0 +1,25 @@
+﻿<Window x:Class="ExampleCommandCustom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ExampleCommandCustom.Custom"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding
+            Command="local:CustomCommands.CreateReport"
+            Executed="CreateReport_Executed"
+            ></CommandBinding>
+        <CommandBinding
+            Command="local:CustomCommands.UpdateData"
+            Executed="UpdateData_Executed"
+            ></CommandBinding>
+    </Window.CommandBindings>
+    
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Данные">
+                <MenuItem  Command="local:CustomCommands.CreateReport"></MenuItem>
+                <MenuItem  Command="local:CustomCommands.UpdateData"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </DockPanel>
+</Window>

@@ -1,0 +1,167 @@
+﻿<Window x:Class="ERP_System.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:charting="clr-namespace:System.Web.UI.DataVisualization.Charting;assembly=System.Web.DataVisualization"
+        xmlns:my="clr-namespace:ERP_System" 
+        xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:wpf_toolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
+        Title="MainWindow" Height="500" Width="700">
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border Name="Bd" Margin="{TemplateBinding Control.Padding}">
+                                <ContentPresenter></ContentPresenter>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="TextBlock.FontSize" Value="16"></Setter>
+                                    <Setter TargetName="Bd" Property="BorderThickness" Value="1"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="#393939"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <my:DateConverter x:Key="DateConverter"/>
+            <my:StatusOfProjectConverter x:Key="StatusOfProjectConverter"/>
+
+            <HierarchicalDataTemplate x:Key="OrdersTreeTemplate" ItemsSource="{Binding Path=Children}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding Path=Logo}" Margin="3,0,3,0" Width="20" Height="20"></Image>
+                    <TextBlock Text="{Binding Path=Text, Mode=TwoWay}" Foreground="Black"   />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+                
+            <DataTemplate x:Key="dtStuffView">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border BorderThickness="2" Padding="3" CornerRadius="10" Background="#FFFD9804">
+                        <Image Grid.Column="0" Source="{Binding Path=Photo}" Stretch="Uniform"  MaxHeight="100"/>
+                    </Border>
+
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Background="{StaticResource ControlLightBackground}">
+                        <Label Content="{Binding Path=Name}" Style="{StaticResource ForLableStyle}"></Label>
+                        <Label Content="{Binding Path=Department}" Style="{StaticResource ForLableStyle}"></Label>
+                    </StackPanel> 
+                </Grid>
+            </DataTemplate>
+                
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Source="Images\TNW_logo.png" Margin="5, 5, 0, 5"/>
+            <Label Grid.Column="1" VerticalAlignment="Center" Margin="0, 10" Style="{StaticResource ForLableStyle}" Background="{StaticResource ControlLightBackground}">Название или девиз</Label>
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom" x:Name="gMain">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  MinWidth="270"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5">
+                <Label DockPanel.Dock="Top">Сотрудники</Label>
+                <CheckBox DockPanel.Dock="Top">fdhbfgt</CheckBox>
+                <CheckBox DockPanel.Dock="Top">fdhbfgt</CheckBox>
+                <CheckBox DockPanel.Dock="Top">fdhbfgt</CheckBox>
+                <CheckBox DockPanel.Dock="Top">fdhbfgt</CheckBox>
+                <ListBox x:Name="lbStuff" ItemTemplate="{StaticResource dtStuffView}">
+                </ListBox>
+            </DockPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" DataContext="{Binding ElementName=lbStuff, Path=SelectedItem}">
+                <Image Source="{Binding Path=Photo}" MaxWidth="50" Stretch="Fill" HorizontalAlignment="Left"></Image>
+                <Label Content="{Binding Path=Name}" ContentStringFormat="Имя: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Birthday, Converter={StaticResource DateConverter}}" ContentStringFormat="Дата рождения: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Adress}" ContentStringFormat="Адресс: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Department}" ContentStringFormat="Отдел: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Post}" ContentStringFormat="Должность: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Salary}" ContentStringFormat="Доход: {0}" Padding="0"></Label>
+                <Label Content="{Binding Path=Rating}" ContentStringFormat="Рейтинг: {0}" Padding="0"></Label>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2">
+                <wpf_toolkit:Chart Name="mcChart" Background="LightSteelBlue">
+                    <wpf_toolkit:Chart.Series>
+                        <wpf_toolkit:PieSeries Title="Experience" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}"/>
+                    </wpf_toolkit:Chart.Series>
+                </wpf_toolkit:Chart>
+            </StackPanel>
+            
+            
+            <DockPanel Grid.Column="1" Grid.Row="1" Margin="5" MinWidth="150" LastChildFill="True">
+                <Label DockPanel.Dock="Top">Filter</Label>
+                <DockPanel DockPanel.Dock="Top">
+                    <Image Grid.Column="1" Source="Images\search.png" Width="20" DockPanel.Dock="Right" Height="20"/>
+                    <TextBox Grid.Column="0" Height="25"></TextBox>
+                </DockPanel>
+                <Button Margin="0, 5" DockPanel.Dock="Top">View all</Button>
+                <TreeView  x:Name="tvOrdersGroup" ItemTemplate="{StaticResource OrdersTreeTemplate}"/> 
+            </DockPanel>
+            
+            
+
+            <DockPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" LastChildFill="True" Margin="5" Background="#FF878585">
+                <Label DockPanel.Dock="Top">Brose Orders</Label>
+                <DockPanel DockPanel.Dock="Top" DataContext="{Binding ElementName=lbStuff, Path=SelectedItem}" MinHeight="225">
+                    <DataGrid x:Name="dgProjects" ItemsSource="{Binding DoneProjects}" AutoGenerateColumns="False" ColumnWidth="*">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Project" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Customer" Binding="{Binding Customer}"/>
+                            <DataGridTextColumn Header="Start Date" Binding="{Binding StartTime, Converter={StaticResource DateConverter}}"/>
+                            <DataGridTextColumn Header="Finish Date" Binding="{Binding FinishTime, Converter={StaticResource DateConverter}}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status, Converter={StaticResource StatusOfProjectConverter}}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+                <Grid DockPanel.Dock="Bottom" DataContext="{Binding ElementName=dgProjects, Path=SelectedItem}" Background="{StaticResource ControlLightBackground}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding Logo}"></Image>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=Customer}" ContentStringFormat="Customer: {0}"></Label>
+                    <Label Grid.Column="2" Grid.Row="0" Content="{Binding Path=StartTime, Converter={StaticResource DateConverter}}" ContentStringFormat="Start Date: {0}"></Label>
+                    <Label Grid.Column="2" Grid.Row="1" Content="{Binding Path=FinishTime, Converter={StaticResource DateConverter}}" ContentStringFormat="Finish Date: {0}"></Label>
+                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=Status, Converter={StaticResource StatusOfProjectConverter}}" ContentStringFormat="Status: {0}"></Label>
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </DockPanel> 
+    
+</Window>

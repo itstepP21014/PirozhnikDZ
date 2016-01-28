@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advertising", "advertising\advertising.csproj", "{32FABFBA-626E-4BC7-BFCF-B347F031448E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{32FABFBA-626E-4BC7-BFCF-B347F031448E}.Release|Win32.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

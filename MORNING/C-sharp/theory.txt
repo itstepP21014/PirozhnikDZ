@@ -1,0 +1,81 @@
+31.08.15 (понедельник)
+Вот такие вот стандарты были внесены .NET
+CLR (Common Language Runtime) - виртуальная машина, способная выполнять программы на всех языках поддерживаемых Майкрософт.
+CLS (Common Language Specification) - библиотека стандартов для CLR. Нет диструкторов.
+CLI (Common Language Interface).
+
+Отличия С# от С
+Не поддерживается пергрузка операторов (ограничена только математическими действиями), нет деструкторов, в конструкторах нет списков инициализации (туда пишется только конструктор базового класса), нет конструкторов копирования и перемещения
+float x = 1.0f;
+float x = 7.0; - так нельзя
+float pi = 4*(float) atan(1);
+string 
+
+minGW - компилирует под видовтосом unix-штуки
+все типы данных наследованны от object (можно в массив запихнуть разные типы данных)
+
+нет компиляции, нет inline, нет .h
+
+msdn (техническое описание), rsdn (пользовательское мнение)
+
+var Pi = Math.Atan(1)*4;
+object z = Pi;
+double q = (double)z;
+float q = (float)z; - так не получится
+float q = (float) (double)z;
+
+
+02.09.15 (среда)
+шиблоны
+public class Vector2D<T> {
+
+}
+
+интерфейсы
+interface IFlyer {
+  void fly();
+  string Name {get; set}
+  int this [int index] {get; set}
+}
+class Bird:Animal, IFlyer {
+  void fly() {
+    
+  }
+}
+
+08.09.15 (вторник)
+делегат
+delegate int Compare(string x, string y);
+.
+.
+.
+Compare cmp = myFun
+Compare cmp = myObj.method
+
+Compare cmpanan = delegate(string ...) {
+
+}
+
+Лямбда функция
+delegate int IntFun (int x);
+.
+.
+.
+IntFun lambda = x => x * x
+
+
+17.09.15 (четверг)
+Скалярные(int, float и т.п. кроме string) и структуры (по-другому все это можно назвать встроенные данные) передаются в функцию на прямую. Все, что отнаследовано от Object, передается по ссылке.
+
+передача по ссылке:
+main.add(ref int x){
+  x+=7;
+}
+int z = 1;
+main.add(ref z);
+
+main.getPi(out float p){
+  p = 3.145;
+}
+float x;
+main.getPi(out x);

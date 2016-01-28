@@ -1,0 +1,5 @@
+ <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Salory}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Date}"></DataGridTextColumn>
+            </DataGrid.Columns>
