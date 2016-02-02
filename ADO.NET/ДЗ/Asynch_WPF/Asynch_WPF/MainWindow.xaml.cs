@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace Asynch_WPF
         SqlConnection connection = new SqlConnection();
 
         List<Orders> orders_info = new List<Orders>();
+
+        List<Employees> employees_info = new List<Employees>();
 
         public MainWindow()
         {
@@ -129,5 +132,68 @@ namespace Asynch_WPF
             }
         }
 
+        async private void btnEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                dgEmployees.Items.Clear();
+
+                connection.ConnectionString = @"Data Source=(localdb)\v11.0;Initial Catalog=Northwind;Integrated Security=True";
+
+                await connection.OpenAsync();
+
+                pbEmployees.IsIndeterminate = true;
+
+                SqlCommand cmdSelect = connection.CreateCommand();
+                cmdSelect.CommandText = "WAITFOR DELAY '0:0:05' SELECT FirstName, LastName, BirthDate, Address, HomePhone, Photo FROM Employees";
+
+                SqlDataReader reader = await cmdSelect.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Employees employees = new Employees();
+                    employees.LastName = reader[0].ToString();
+                    employees.FirstName = reader[1].ToString();
+                    employees.Birthday = reader[2] == DBNull.Value ? DateTime.Now : DateTime.Parse(reader[2].ToString());
+                    employees.Adress = reader[3].ToString();
+                    employees.Phone = reader[4].ToString();
+                    employees.Photo.Source = BytesToImageSourse((byte[])reader[5]);
+
+                    employees_info.Add(employees);
+                }
+
+                foreach (var obj in employees_info)
+                {
+                    dgEmployees.Items.Add(obj);
+                }
+
+                pbEmployees.IsIndeterminate = false;
+
+
+                //MessageBox.Show("Типо все загрузилось");
+
+            }
+        }
+
+
+
+
+        public static ImageSource BytesToImageSourse(byte[] mb)
+        {
+            // формирование массива для хранения преобразованного массива
+            byte[] arr = new byte[mb.Length - 78];
+            // копирование массива, прочитанного из базы, во временный массив 
+            // т.к. в базе данных фото хранится в виде Image (Ole bytes)
+            // необходимо пропустить 78 байт с начала и не получать 78 байтов с конца
+            Array.Copy(mb, 78, arr, 0, mb.Length - 78);
+
+            BitmapImage bi = new BitmapImage();
+            MemoryStream ms = new MemoryStream(arr);
+            bi.BeginInit();
+            ms.Seek(0, SeekOrigin.Begin);
+            bi.StreamSource = ms;
+            bi.EndInit();
+            return bi;
+        }
     }
 }

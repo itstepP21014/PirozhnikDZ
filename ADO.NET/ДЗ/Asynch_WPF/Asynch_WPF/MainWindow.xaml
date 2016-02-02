@@ -28,14 +28,14 @@
                     <DataGrid x:Name="dg_Orders" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding orders_info}" AutoGenerateColumns="False">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Имя компании" Binding="{Binding ConpanyName}"/>
+                            <DataGridTextColumn Header="Имя компании" Binding="{Binding CompanyName}"/>
                             <DataGridTextColumn Header="Контактное имя" Binding="{Binding ContactName}"/>
                             <DataGridTextColumn Header="Адрес" Binding="{Binding Adress}"/>
                             <DataGridTextColumn Header="Город" Binding="{Binding City}"/>
                             <DataGridTextColumn Header="Страна" Binding="{Binding Country}"/>
                             <DataGridTextColumn Header="Телефон" Binding="{Binding Phon}"/>
-                            <DataGridTextColumn Header="Дата заказа" Binding="{Binding Data_of_order, Converter={StaticResource DateConverter}}"/>
-                            <DataGridTextColumn Header="Дата поставки" Binding="{Binding Data_of_supply, Converter={StaticResource DateConverter}}"/>
+                            <DataGridTextColumn Header="Дата заказа" Binding="{Binding Date_of_order, Converter={StaticResource DateConverter}}"/>
+                            <DataGridTextColumn Header="Дата поставки" Binding="{Binding Date_of_supply, Converter={StaticResource DateConverter}}"/>
                             <DataGridTextColumn Header="Стоимость перевозки" Binding="{Binding City_of_supply}"/>
                             <DataGridTextColumn Header="Город поставки" Binding="{Binding City_of_supply}"/>
                             <DataGridTextColumn Header="Страна поставки" Binding="{Binding Country_of_supply}"/>
@@ -61,9 +61,16 @@
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"></DataGrid>
-                    <Button Grid.Column="0" Grid.Row="1" Margin="50, 20">Кнопка</Button>
-                    <ProgressBar Grid.Column="1" Grid.Row="1" Margin="50, 20"></ProgressBar>
+                    <DataGrid x:Name="dgEmployees" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding employees_info}" AutoGenerateColumns="False">
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"/>
+                        <DataGridTextColumn Header="Адрес" Binding="{Binding Adress}"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                        <DataGridTextColumn Header="Фото" Binding="{Binding Photo}"/>
+                    </DataGrid>
+                    <Button x:Name="btnEmployees" Grid.Column="0" Grid.Row="1" Margin="50, 20" Click="btnEmployees_Click">Кнопка</Button>
+                    <ProgressBar x:Name="pbEmployees" Grid.Column="1" Grid.Row="1" Margin="50, 20"></ProgressBar>
                 </Grid>
             </TabItem>
             <TabItem Header="Продукты">
@@ -80,19 +87,6 @@
                     <DataGrid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding orders_info}" AutoGenerateColumns="False" ColumnWidth="*">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding ConpanyName}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding ContactName}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Adress}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding City}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Country}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Phon}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Data_of_order, Converter={StaticResource DateConverter}}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Data_of_supply, Converter={StaticResource DateConverter}}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding City_of_supply}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Country_of_supply}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Region_of_supply}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Price}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Count}"/>
-                            <DataGridTextColumn Header="Название" Binding="{Binding Cost}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Grid.Column="0" Grid.Row="1" Margin="50, 20">Кнопка</Button>
