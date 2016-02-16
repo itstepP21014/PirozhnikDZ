@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankNavigation", "BankNavigation\BankNavigation.csproj", "{0FF9749B-DDAE-459B-8D59-427A4AB7AC3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary", "MyLibrary\MyLibrary.csproj", "{941A4CD3-2055-4DF1-992A-590B76735EE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0FF9749B-DDAE-459B-8D59-427A4AB7AC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF9749B-DDAE-459B-8D59-427A4AB7AC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF9749B-DDAE-459B-8D59-427A4AB7AC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941A4CD3-2055-4DF1-992A-590B76735EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941A4CD3-2055-4DF1-992A-590B76735EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941A4CD3-2055-4DF1-992A-590B76735EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941A4CD3-2055-4DF1-992A-590B76735EE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

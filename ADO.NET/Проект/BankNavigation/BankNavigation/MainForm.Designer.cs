@@ -28,7 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.cmsCreate_Delete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deteteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCreate_Delete.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cmsCreate_Delete
+            // 
+            this.cmsCreate_Delete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createToolStripMenuItem,
+            this.deteteToolStripMenuItem});
+            this.cmsCreate_Delete.Name = "cmsCreate_Delete";
+            this.cmsCreate_Delete.Size = new System.Drawing.Size(153, 70);
+            // 
+            // createToolStripMenuItem
+            // 
+            this.createToolStripMenuItem.Name = "createToolStripMenuItem";
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createToolStripMenuItem.Text = "Create";
+            this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
+            // 
+            // deteteToolStripMenuItem
+            // 
+            this.deteteToolStripMenuItem.Name = "deteteToolStripMenuItem";
+            this.deteteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deteteToolStripMenuItem.Text = "Detete";
+            this.deteteToolStripMenuItem.Click += new System.EventHandler(this.deteteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -39,11 +66,16 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.cmsCreate_Delete.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ContextMenuStrip cmsCreate_Delete;
+        private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deteteToolStripMenuItem;
     }
 }
 

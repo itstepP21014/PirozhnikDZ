@@ -20,6 +20,7 @@ namespace Transport
 
             string CS = @"Data Source=(localdb)\v11.0;AttachDbFilename=D:\KIN\DB\Transport.Context.mdf;Integrated Security=True";
             //Initial Catalog=Name.mdf вместо AttachDbFilename=D:\KIN\DB\Name.Context.mdf
+            //Data Source = |DataDirectory|\MapProject.Context.mdf
             Context db = new Context(CS);
 
             

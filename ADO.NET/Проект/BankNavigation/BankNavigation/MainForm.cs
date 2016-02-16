@@ -136,15 +136,31 @@ namespace BankNavigation
 
         void gMapControl1_MouseClick(object sender, MouseEventArgs e)
         {
-            double X = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
-            double Y = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
-            GMapOverlay markersOverlay = new GMapOverlay("NewMarkers");
-            GMarkerGoogle markerG = new GMarkerGoogle
-                                           (new GMap.NET.PointLatLng(Y, X), GMarkerGoogleType.green);
-            markerG.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapBaloonToolTip(markerG);
-            markerG.ToolTipText = "Новый объект";
-            markersOverlay.Markers.Add(markerG);
-            gMapControl1.Overlays.Add(markersOverlay);
+            if (e.Button == MouseButtons.Right)
+            {
+                cmsCreate_Delete.Show(MousePosition);
+            }
+            //double X = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
+            //double Y = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
+            //GMapOverlay markersOverlay = new GMapOverlay("NewMarkers");
+            //GMarkerGoogle markerG = new GMarkerGoogle
+            //                               (new GMap.NET.PointLatLng(Y, X), GMarkerGoogleType.green);
+            //markerG.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapBaloonToolTip(markerG);
+            //markerG.ToolTipText = "Новый объект";
+            //markersOverlay.Markers.Add(markerG);
+            //gMapControl1.Overlays.Add(markersOverlay);
         }
+
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deteteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
