@@ -7,20 +7,15 @@ using System.Threading.Tasks;
 
 namespace MyLibrary
 {
-    public class Context : DbContext
+    public class BankNavigationContext : DbContext
     {
-        static Context()
+        static BankNavigationContext()
         {
-           Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+           //Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
         }
 
-        public Context()
-        {
-
-        }
-
-        public Context(string ConnecStr)
-            : base(ConnecStr)
+        public BankNavigationContext()
+            : base("ConnectionString")
         {
 
         }

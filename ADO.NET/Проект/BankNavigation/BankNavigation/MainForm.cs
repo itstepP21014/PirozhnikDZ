@@ -16,10 +16,7 @@ namespace BankNavigation
     public partial class MainForm : Form
     {
         GMapControl gMapControl1;
-        string connectionString = @"Data Source=(localdb)\v11.0;Initial Catalog=MapProject.Context.mdf;Integrated Security=True";
-        Context db;
-            
-
+        
         public MainForm()
         {
             InitializeComponent();
@@ -29,7 +26,6 @@ namespace BankNavigation
         void MainForm_Load(object sender, EventArgs e)
         {
             SetParamsMap();
-            //db = new Context(connectionString);
         }
 
 
@@ -160,12 +156,12 @@ namespace BankNavigation
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateObjectForm createObjectForm = new CreateObjectForm();
-            createObjectForm.Show();
+            createObjectForm.ShowDialog();
         }
 
         private void deteteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
     }

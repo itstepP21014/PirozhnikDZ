@@ -31,7 +31,7 @@
             this.lbObjectName = new System.Windows.Forms.Label();
             this.tbOjectName = new System.Windows.Forms.TextBox();
             this.lbObjectBank = new System.Windows.Forms.Label();
-            this.cbObjectsBank = new System.Windows.Forms.ComboBox();
+            this.cbBank = new System.Windows.Forms.ComboBox();
             this.lbObjectsPhone = new System.Windows.Forms.Label();
             this.tbObjectsPhone = new System.Windows.Forms.TextBox();
             this.lbObjectsAdress = new System.Windows.Forms.Label();
@@ -80,13 +80,13 @@
             this.lbObjectBank.TabIndex = 2;
             this.lbObjectBank.Text = "Bank:";
             // 
-            // cbObjectsBank
+            // cbBank
             // 
-            this.cbObjectsBank.FormattingEnabled = true;
-            this.cbObjectsBank.Location = new System.Drawing.Point(102, 52);
-            this.cbObjectsBank.Name = "cbObjectsBank";
-            this.cbObjectsBank.Size = new System.Drawing.Size(121, 21);
-            this.cbObjectsBank.TabIndex = 3;
+            this.cbBank.FormattingEnabled = true;
+            this.cbBank.Location = new System.Drawing.Point(102, 52);
+            this.cbBank.Name = "cbBank";
+            this.cbBank.Size = new System.Drawing.Size(121, 21);
+            this.cbBank.TabIndex = 3;
             // 
             // lbObjectsPhone
             // 
@@ -287,7 +287,7 @@
             this.Controls.Add(this.lbObjectsAdress);
             this.Controls.Add(this.tbObjectsPhone);
             this.Controls.Add(this.lbObjectsPhone);
-            this.Controls.Add(this.cbObjectsBank);
+            this.Controls.Add(this.cbBank);
             this.Controls.Add(this.lbObjectBank);
             this.Controls.Add(this.tbOjectName);
             this.Controls.Add(this.lbObjectName);
@@ -303,7 +303,7 @@
         private System.Windows.Forms.Label lbObjectName;
         private System.Windows.Forms.TextBox tbOjectName;
         private System.Windows.Forms.Label lbObjectBank;
-        private System.Windows.Forms.ComboBox cbObjectsBank;
+        private System.Windows.Forms.ComboBox cbBank;
         private System.Windows.Forms.Label lbObjectsPhone;
         private System.Windows.Forms.TextBox tbObjectsPhone;
         private System.Windows.Forms.Label lbObjectsAdress;
