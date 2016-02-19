@@ -16,6 +16,8 @@ namespace BankNavigation
     public partial class MainForm : Form
     {
         GMapControl gMapControl1;
+        double mousePositionX;
+        double mousePositionY;
         
         public MainForm()
         {
@@ -28,6 +30,29 @@ namespace BankNavigation
             SetParamsMap();
         }
 
+        void ShowObjects(List<Branch> objs)
+        {
+            GMap.NET.WindowsForms.Markers.GMarkerGoogle marker;
+            foreach (var item in objs)
+            {
+                marker = new GMarkerGoogle(new GMap.NET.PointLatLng(item.XPosition, item.YPositon), GMarkerGoogleType.yellow);
+                marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
+                marker.ToolTipText = item.Id.ToString() + "\n"
+                                   + item.Name.ToString() + "\n"
+                                   + "Bank: " + item.Bank.Name.ToString() + "\n"
+                                   + "$ sell: " + item.Bank.DollarSell.ToString() + "\n"
+                                   + "$ buy: " + item.Bank.DollarBuy.ToString() + "\n"
+                                   + "Э sell: " + item.Bank.EuroSell.ToString() + "\n"
+                                   + "Э buy: " + item.Bank.EuroBuy.ToString() + "\n"
+                                   + "R sell: " + item.Bank.RussSell.ToString() + "\n"
+                                   + "R buy: " + item.Bank.RussBuy.ToString() + "\n"
+                                   + "Phone: " + item.Phone.ToString() + "\n"
+                                   + item.Adress.City + ", " + item.Adress.City + ", " + item.Adress.Build + "/" + item.Adress.Body + "-" + item.Adress.Cabinet + "\n"
+                                   + "Working time: " + item.Time.ToString() + "\n"
+                                   + "Cashier: " + item.Cashier.FirstName.ToString() + " " + item.Cashier.LastName.ToString() + "\n"
+                                   + "Provided services: ";
+            }
+        }
 
         // ПРИМЕР РАБОТЫ С КАРТОЙ ! 
         // (данный код используйте по своему усмотрению!)
@@ -90,6 +115,10 @@ namespace BankNavigation
             //в котором они будут использоваться и названием списка.
             GMap.NET.WindowsForms.GMapOverlay markersOverlay =
                 new GMap.NET.WindowsForms.GMapOverlay("marker");
+
+
+
+
             //Инициализация нового ЗЕЛЕНОГО маркера, с указанием его координат.
             GMap.NET.WindowsForms.Markers.GMarkerGoogle markerG =
                 new GMarkerGoogle(
@@ -100,6 +129,12 @@ namespace BankNavigation
             //Текст отображаемый при наведении на маркер.
             markerG.ToolTipText = "Объект №1";
 
+            ShowObjects(DBHandler.getObjects());
+            
+            
+
+
+
             //Инициализация нового КРАСНОГО маркера, с указанием его координат.
             GMap.NET.WindowsForms.Markers.GMarkerGoogle markerR =
                 new GMarkerGoogle(
@@ -109,6 +144,9 @@ namespace BankNavigation
                 new GMap.NET.WindowsForms.ToolTips.GMapBaloonToolTip(markerR);
             //Текст отображаемый при наведении на маркер.
             markerR.ToolTipText = "Объект №2";
+
+
+
 
             //Добавляем маркеры в список маркеров.
             //Зеленый маркер
@@ -140,6 +178,8 @@ namespace BankNavigation
             if (e.Button == MouseButtons.Right)
             {
                 cmsCreate_Delete.Show(MousePosition);
+                mousePositionX = e.X;
+                mousePositionY = e.Y;
             }
             //double X = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lng;
             //double Y = gMapControl1.FromLocalToLatLng(e.X, e.Y).Lat;
@@ -157,6 +197,8 @@ namespace BankNavigation
         {
             CreateObjectForm createObjectForm = new CreateObjectForm();
             createObjectForm.ShowDialog();
+            createObjectForm.PositionX = mousePositionX;
+            createObjectForm.PositionY = mousePositionY;
         }
 
         private void deteteToolStripMenuItem_Click(object sender, EventArgs e)

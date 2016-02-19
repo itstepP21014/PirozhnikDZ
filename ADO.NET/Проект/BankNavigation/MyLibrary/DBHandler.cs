@@ -11,6 +11,13 @@ namespace MyLibrary
     static public class DBHandler
     {
         static BankNavigationContext db;
+
+        //static double XPosition(double value)
+        //{
+            
+        //}
+        //static double YPosition { get; set; }
+
         static DBHandler()
         {
             db = new BankNavigationContext();
@@ -20,15 +27,24 @@ namespace MyLibrary
         {
             return db.Banks.ToList();
         }
-        public static List<Cashier> getCashiers()
-        {
-            return db.Casheirs.ToList();
-        }
+
         public static List<Service> getServices()
         {
             return db.Servives.ToList();
         }
 
+        public static void add(Branch obj)
+        {
+            db.Adresses.Add(obj.Adress);
+            db.Casheirs.Add(obj.Cashier);
+            db.Objects.Add(obj);
+            db.SaveChanges();
+        }
+
+        public static List<Branch> getObjects()
+        {
+            return db.Objects.ToList();
+        }
 
     }
 }

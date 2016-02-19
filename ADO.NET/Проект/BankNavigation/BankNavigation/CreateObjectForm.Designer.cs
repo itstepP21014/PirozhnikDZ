@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbObjectName = new System.Windows.Forms.Label();
-            this.tbOjectName = new System.Windows.Forms.TextBox();
+            this.lbName = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.lbObjectBank = new System.Windows.Forms.Label();
             this.cbBank = new System.Windows.Forms.ComboBox();
-            this.lbObjectsPhone = new System.Windows.Forms.Label();
-            this.tbObjectsPhone = new System.Windows.Forms.TextBox();
+            this.lbPhone = new System.Windows.Forms.Label();
+            this.tbPhone = new System.Windows.Forms.TextBox();
             this.lbObjectsAdress = new System.Windows.Forms.Label();
             this.tbCity = new System.Windows.Forms.TextBox();
             this.tbStreet = new System.Windows.Forms.TextBox();
@@ -48,28 +48,31 @@
             this.lbWorkTime = new System.Windows.Forms.Label();
             this.tbWorkTime = new System.Windows.Forms.TextBox();
             this.lbCashier = new System.Windows.Forms.Label();
-            this.cbCashier = new System.Windows.Forms.ComboBox();
             this.lbServices = new System.Windows.Forms.Label();
             this.chlbServices = new System.Windows.Forms.CheckedListBox();
             this.btnReady = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
+            this.tbLastName = new System.Windows.Forms.TextBox();
+            this.lbFirstName = new System.Windows.Forms.Label();
+            this.lbLastName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lbObjectName
+            // lbName
             // 
-            this.lbObjectName.AutoSize = true;
-            this.lbObjectName.Location = new System.Drawing.Point(34, 26);
-            this.lbObjectName.Name = "lbObjectName";
-            this.lbObjectName.Size = new System.Drawing.Size(38, 13);
-            this.lbObjectName.TabIndex = 0;
-            this.lbObjectName.Text = "Name:";
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(34, 26);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(38, 13);
+            this.lbName.TabIndex = 0;
+            this.lbName.Text = "Name:";
             // 
-            // tbOjectName
+            // tbName
             // 
-            this.tbOjectName.Location = new System.Drawing.Point(102, 26);
-            this.tbOjectName.Name = "tbOjectName";
-            this.tbOjectName.Size = new System.Drawing.Size(121, 20);
-            this.tbOjectName.TabIndex = 1;
+            this.tbName.Location = new System.Drawing.Point(102, 26);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(121, 20);
+            this.tbName.TabIndex = 1;
             // 
             // lbObjectBank
             // 
@@ -88,21 +91,21 @@
             this.cbBank.Size = new System.Drawing.Size(121, 21);
             this.cbBank.TabIndex = 3;
             // 
-            // lbObjectsPhone
+            // lbPhone
             // 
-            this.lbObjectsPhone.AutoSize = true;
-            this.lbObjectsPhone.Location = new System.Drawing.Point(34, 82);
-            this.lbObjectsPhone.Name = "lbObjectsPhone";
-            this.lbObjectsPhone.Size = new System.Drawing.Size(41, 13);
-            this.lbObjectsPhone.TabIndex = 4;
-            this.lbObjectsPhone.Text = "Phone:";
+            this.lbPhone.AutoSize = true;
+            this.lbPhone.Location = new System.Drawing.Point(34, 82);
+            this.lbPhone.Name = "lbPhone";
+            this.lbPhone.Size = new System.Drawing.Size(41, 13);
+            this.lbPhone.TabIndex = 4;
+            this.lbPhone.Text = "Phone:";
             // 
-            // tbObjectsPhone
+            // tbPhone
             // 
-            this.tbObjectsPhone.Location = new System.Drawing.Point(102, 79);
-            this.tbObjectsPhone.Name = "tbObjectsPhone";
-            this.tbObjectsPhone.Size = new System.Drawing.Size(121, 20);
-            this.tbObjectsPhone.TabIndex = 5;
+            this.tbPhone.Location = new System.Drawing.Point(102, 79);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(121, 20);
+            this.tbPhone.TabIndex = 5;
             // 
             // lbObjectsAdress
             // 
@@ -218,18 +221,10 @@
             this.lbCashier.TabIndex = 19;
             this.lbCashier.Text = "Cashier:";
             // 
-            // cbCashier
-            // 
-            this.cbCashier.FormattingEnabled = true;
-            this.cbCashier.Location = new System.Drawing.Point(101, 209);
-            this.cbCashier.Name = "cbCashier";
-            this.cbCashier.Size = new System.Drawing.Size(121, 21);
-            this.cbCashier.TabIndex = 20;
-            // 
             // lbServices
             // 
             this.lbServices.AutoSize = true;
-            this.lbServices.Location = new System.Drawing.Point(34, 236);
+            this.lbServices.Location = new System.Drawing.Point(34, 254);
             this.lbServices.Name = "lbServices";
             this.lbServices.Size = new System.Drawing.Size(51, 13);
             this.lbServices.TabIndex = 21;
@@ -238,39 +233,76 @@
             // chlbServices
             // 
             this.chlbServices.FormattingEnabled = true;
-            this.chlbServices.Location = new System.Drawing.Point(101, 236);
+            this.chlbServices.Location = new System.Drawing.Point(100, 254);
             this.chlbServices.Name = "chlbServices";
-            this.chlbServices.Size = new System.Drawing.Size(122, 94);
+            this.chlbServices.Size = new System.Drawing.Size(122, 64);
             this.chlbServices.TabIndex = 22;
             // 
             // btnReady
             // 
-            this.btnReady.Location = new System.Drawing.Point(12, 336);
+            this.btnReady.Location = new System.Drawing.Point(12, 324);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(185, 23);
             this.btnReady.TabIndex = 23;
             this.btnReady.Text = "Ready";
             this.btnReady.UseVisualStyleBackColor = true;
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(203, 336);
+            this.btnCancel.Location = new System.Drawing.Point(203, 324);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(185, 23);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tbFirstName
+            // 
+            this.tbFirstName.Location = new System.Drawing.Point(101, 228);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(121, 20);
+            this.tbFirstName.TabIndex = 25;
+            // 
+            // tbLastName
+            // 
+            this.tbLastName.Location = new System.Drawing.Point(228, 228);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.Size = new System.Drawing.Size(121, 20);
+            this.tbLastName.TabIndex = 26;
+            // 
+            // lbFirstName
+            // 
+            this.lbFirstName.AutoSize = true;
+            this.lbFirstName.Location = new System.Drawing.Point(99, 212);
+            this.lbFirstName.Name = "lbFirstName";
+            this.lbFirstName.Size = new System.Drawing.Size(55, 13);
+            this.lbFirstName.TabIndex = 27;
+            this.lbFirstName.Text = "First name";
+            // 
+            // lbLastName
+            // 
+            this.lbLastName.AutoSize = true;
+            this.lbLastName.Location = new System.Drawing.Point(225, 212);
+            this.lbLastName.Name = "lbLastName";
+            this.lbLastName.Size = new System.Drawing.Size(56, 13);
+            this.lbLastName.TabIndex = 28;
+            this.lbLastName.Text = "Last name";
             // 
             // CreateObjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 368);
+            this.ClientSize = new System.Drawing.Size(399, 352);
+            this.Controls.Add(this.lbLastName);
+            this.Controls.Add(this.lbFirstName);
+            this.Controls.Add(this.tbLastName);
+            this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnReady);
             this.Controls.Add(this.chlbServices);
             this.Controls.Add(this.lbServices);
-            this.Controls.Add(this.cbCashier);
             this.Controls.Add(this.lbCashier);
             this.Controls.Add(this.tbWorkTime);
             this.Controls.Add(this.lbWorkTime);
@@ -285,12 +317,12 @@
             this.Controls.Add(this.tbStreet);
             this.Controls.Add(this.tbCity);
             this.Controls.Add(this.lbObjectsAdress);
-            this.Controls.Add(this.tbObjectsPhone);
-            this.Controls.Add(this.lbObjectsPhone);
+            this.Controls.Add(this.tbPhone);
+            this.Controls.Add(this.lbPhone);
             this.Controls.Add(this.cbBank);
             this.Controls.Add(this.lbObjectBank);
-            this.Controls.Add(this.tbOjectName);
-            this.Controls.Add(this.lbObjectName);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.lbName);
             this.Name = "CreateObjectForm";
             this.Text = "Creation of new object";
             this.ResumeLayout(false);
@@ -300,12 +332,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbObjectName;
-        private System.Windows.Forms.TextBox tbOjectName;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label lbObjectBank;
         private System.Windows.Forms.ComboBox cbBank;
-        private System.Windows.Forms.Label lbObjectsPhone;
-        private System.Windows.Forms.TextBox tbObjectsPhone;
+        private System.Windows.Forms.Label lbPhone;
+        private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.Label lbObjectsAdress;
         private System.Windows.Forms.TextBox tbCity;
         private System.Windows.Forms.TextBox tbStreet;
@@ -320,10 +352,13 @@
         private System.Windows.Forms.Label lbWorkTime;
         private System.Windows.Forms.TextBox tbWorkTime;
         private System.Windows.Forms.Label lbCashier;
-        private System.Windows.Forms.ComboBox cbCashier;
         private System.Windows.Forms.Label lbServices;
         private System.Windows.Forms.CheckedListBox chlbServices;
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox tbFirstName;
+        private System.Windows.Forms.TextBox tbLastName;
+        private System.Windows.Forms.Label lbFirstName;
+        private System.Windows.Forms.Label lbLastName;
     }
 }
