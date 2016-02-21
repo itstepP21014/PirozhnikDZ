@@ -56,6 +56,18 @@
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.lbFirstName = new System.Windows.Forms.Label();
             this.lbLastName = new System.Windows.Forms.Label();
+            this.lbStar1 = new System.Windows.Forms.Label();
+            this.lbStar3 = new System.Windows.Forms.Label();
+            this.lbStar4 = new System.Windows.Forms.Label();
+            this.lbStar5 = new System.Windows.Forms.Label();
+            this.lbStar6 = new System.Windows.Forms.Label();
+            this.lbStar9 = new System.Windows.Forms.Label();
+            this.lbStar2 = new System.Windows.Forms.Label();
+            this.lbStar8 = new System.Windows.Forms.Label();
+            this.lbStar7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbStar10 = new System.Windows.Forms.Label();
+            this.lbWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbName
@@ -143,6 +155,7 @@
             this.tbBody.Name = "tbBody";
             this.tbBody.Size = new System.Drawing.Size(49, 20);
             this.tbBody.TabIndex = 10;
+            this.tbBody.Text = " ";
             // 
             // tbCabinete
             // 
@@ -150,6 +163,7 @@
             this.tbCabinete.Name = "tbCabinete";
             this.tbCabinete.Size = new System.Drawing.Size(49, 20);
             this.tbCabinete.TabIndex = 11;
+            this.tbCabinete.Text = " ";
             // 
             // lbCity
             // 
@@ -240,7 +254,7 @@
             // 
             // btnReady
             // 
-            this.btnReady.Location = new System.Drawing.Point(12, 324);
+            this.btnReady.Location = new System.Drawing.Point(12, 363);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(185, 23);
             this.btnReady.TabIndex = 23;
@@ -250,7 +264,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(203, 324);
+            this.btnCancel.Location = new System.Drawing.Point(203, 363);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(185, 23);
             this.btnCancel.TabIndex = 24;
@@ -290,11 +304,142 @@
             this.lbLastName.TabIndex = 28;
             this.lbLastName.Text = "Last name";
             // 
+            // lbStar1
+            // 
+            this.lbStar1.AutoSize = true;
+            this.lbStar1.ForeColor = System.Drawing.Color.Red;
+            this.lbStar1.Location = new System.Drawing.Point(17, 26);
+            this.lbStar1.Name = "lbStar1";
+            this.lbStar1.Size = new System.Drawing.Size(11, 13);
+            this.lbStar1.TabIndex = 29;
+            this.lbStar1.Text = "*";
+            // 
+            // lbStar3
+            // 
+            this.lbStar3.AutoSize = true;
+            this.lbStar3.ForeColor = System.Drawing.Color.Red;
+            this.lbStar3.Location = new System.Drawing.Point(17, 79);
+            this.lbStar3.Name = "lbStar3";
+            this.lbStar3.Size = new System.Drawing.Size(11, 13);
+            this.lbStar3.TabIndex = 30;
+            this.lbStar3.Text = "*";
+            // 
+            // lbStar4
+            // 
+            this.lbStar4.AutoSize = true;
+            this.lbStar4.ForeColor = System.Drawing.Color.Red;
+            this.lbStar4.Location = new System.Drawing.Point(84, 102);
+            this.lbStar4.Name = "lbStar4";
+            this.lbStar4.Size = new System.Drawing.Size(11, 13);
+            this.lbStar4.TabIndex = 31;
+            this.lbStar4.Text = "*";
+            // 
+            // lbStar5
+            // 
+            this.lbStar5.AutoSize = true;
+            this.lbStar5.ForeColor = System.Drawing.Color.Red;
+            this.lbStar5.Location = new System.Drawing.Point(84, 141);
+            this.lbStar5.Name = "lbStar5";
+            this.lbStar5.Size = new System.Drawing.Size(11, 13);
+            this.lbStar5.TabIndex = 32;
+            this.lbStar5.Text = "*";
+            // 
+            // lbStar6
+            // 
+            this.lbStar6.AutoSize = true;
+            this.lbStar6.ForeColor = System.Drawing.Color.Red;
+            this.lbStar6.Location = new System.Drawing.Point(212, 141);
+            this.lbStar6.Name = "lbStar6";
+            this.lbStar6.Size = new System.Drawing.Size(11, 13);
+            this.lbStar6.TabIndex = 33;
+            this.lbStar6.Text = "*";
+            // 
+            // lbStar9
+            // 
+            this.lbStar9.AutoSize = true;
+            this.lbStar9.ForeColor = System.Drawing.Color.Red;
+            this.lbStar9.Location = new System.Drawing.Point(212, 212);
+            this.lbStar9.Name = "lbStar9";
+            this.lbStar9.Size = new System.Drawing.Size(11, 13);
+            this.lbStar9.TabIndex = 34;
+            this.lbStar9.Text = "*";
+            // 
+            // lbStar2
+            // 
+            this.lbStar2.AutoSize = true;
+            this.lbStar2.ForeColor = System.Drawing.Color.Red;
+            this.lbStar2.Location = new System.Drawing.Point(17, 52);
+            this.lbStar2.Name = "lbStar2";
+            this.lbStar2.Size = new System.Drawing.Size(11, 13);
+            this.lbStar2.TabIndex = 35;
+            this.lbStar2.Text = "*";
+            // 
+            // lbStar8
+            // 
+            this.lbStar8.AutoSize = true;
+            this.lbStar8.ForeColor = System.Drawing.Color.Red;
+            this.lbStar8.Location = new System.Drawing.Point(85, 212);
+            this.lbStar8.Name = "lbStar8";
+            this.lbStar8.Size = new System.Drawing.Size(11, 13);
+            this.lbStar8.TabIndex = 36;
+            this.lbStar8.Text = "*";
+            // 
+            // lbStar7
+            // 
+            this.lbStar7.AutoSize = true;
+            this.lbStar7.ForeColor = System.Drawing.Color.Red;
+            this.lbStar7.Location = new System.Drawing.Point(17, 183);
+            this.lbStar7.Name = "lbStar7";
+            this.lbStar7.Size = new System.Drawing.Size(11, 13);
+            this.lbStar7.TabIndex = 37;
+            this.lbStar7.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(17, 254);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 13);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "*";
+            // 
+            // lbStar10
+            // 
+            this.lbStar10.AutoSize = true;
+            this.lbStar10.ForeColor = System.Drawing.Color.Red;
+            this.lbStar10.Location = new System.Drawing.Point(28, 337);
+            this.lbStar10.Name = "lbStar10";
+            this.lbStar10.Size = new System.Drawing.Size(11, 13);
+            this.lbStar10.TabIndex = 39;
+            this.lbStar10.Text = "*";
+            // 
+            // lbWarning
+            // 
+            this.lbWarning.AutoSize = true;
+            this.lbWarning.Location = new System.Drawing.Point(45, 337);
+            this.lbWarning.Name = "lbWarning";
+            this.lbWarning.Size = new System.Drawing.Size(198, 13);
+            this.lbWarning.TabIndex = 40;
+            this.lbWarning.Text = "-  поле обязательное для заполнения";
+            // 
             // CreateObjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 352);
+            this.ClientSize = new System.Drawing.Size(399, 398);
+            this.Controls.Add(this.lbWarning);
+            this.Controls.Add(this.lbStar10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lbStar7);
+            this.Controls.Add(this.lbStar8);
+            this.Controls.Add(this.lbStar2);
+            this.Controls.Add(this.lbStar9);
+            this.Controls.Add(this.lbStar6);
+            this.Controls.Add(this.lbStar5);
+            this.Controls.Add(this.lbStar4);
+            this.Controls.Add(this.lbStar3);
+            this.Controls.Add(this.lbStar1);
             this.Controls.Add(this.lbLastName);
             this.Controls.Add(this.lbFirstName);
             this.Controls.Add(this.tbLastName);
@@ -360,5 +505,17 @@
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label lbFirstName;
         private System.Windows.Forms.Label lbLastName;
+        private System.Windows.Forms.Label lbStar1;
+        private System.Windows.Forms.Label lbStar3;
+        private System.Windows.Forms.Label lbStar4;
+        private System.Windows.Forms.Label lbStar5;
+        private System.Windows.Forms.Label lbStar6;
+        private System.Windows.Forms.Label lbStar9;
+        private System.Windows.Forms.Label lbStar2;
+        private System.Windows.Forms.Label lbStar8;
+        private System.Windows.Forms.Label lbStar7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbStar10;
+        private System.Windows.Forms.Label lbWarning;
     }
 }

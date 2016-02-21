@@ -11,9 +11,9 @@ namespace MyLibrary
         public int Id { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
-        public int Build { get; set; }
-        public int Body { get; set; }
-        public int Cabinet { get; set; }
+        public string Build { get; set; }
+        public string Body { get; set; }
+        public string Cabinet { get; set; }
         public ICollection<Branch> Objects { get; set; }
         
     }

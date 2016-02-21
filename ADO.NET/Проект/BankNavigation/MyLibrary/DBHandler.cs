@@ -12,12 +12,6 @@ namespace MyLibrary
     {
         static BankNavigationContext db;
 
-        //static double XPosition(double value)
-        //{
-            
-        //}
-        //static double YPosition { get; set; }
-
         static DBHandler()
         {
             db = new BankNavigationContext();
@@ -44,6 +38,14 @@ namespace MyLibrary
         public static List<Branch> getObjects()
         {
             return db.Objects.ToList();
+        }
+        public static void deleteObject(Branch obj)
+        {
+            if (obj != null)
+            {
+                db.Objects.Remove(obj);
+                db.SaveChanges();
+            }
         }
 
     }

@@ -11,7 +11,7 @@ namespace MyLibrary
     {
         static BankNavigationContext()
         {
-           //Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<BankNavigationContext>());
         }
 
         public BankNavigationContext()
