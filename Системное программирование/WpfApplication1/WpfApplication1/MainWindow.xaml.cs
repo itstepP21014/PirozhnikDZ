@@ -81,17 +81,17 @@ namespace WpfApplication1
                 {
                     using (var inputFile = File.OpenWrite(destination))
                     {
-                        int CopyBufferSize = (int)outputFile.Length / 100;
+                        int CopyBufferSize = 100;
                         var buffer = new byte[CopyBufferSize];
                         int bytesRead;
                         do
                         {
+                            Thread.Sleep(10);
                             bytesRead = outputFile.Read(buffer, 0, CopyBufferSize);
                             if (bytesRead != 0)
                             {
                                 inputFile.Write(buffer, 0, bytesRead);
                             }
-                            Thread.Sleep(10);
                             value = (inputFile.Length * 1.0) * 100 / (outputFile.Length * 1.0);
                            
                         } while (bytesRead != 0);
