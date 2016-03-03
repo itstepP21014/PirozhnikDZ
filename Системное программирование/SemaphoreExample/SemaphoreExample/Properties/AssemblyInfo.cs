@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MatrixProject")]
+[assembly: AssemblyTitle("SemaphoreExample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MatrixProject")]
+[assembly: AssemblyProduct("SemaphoreExample")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("811ee565-c361-4353-ab0e-d9eb9bc5bee3")]
+[assembly: Guid("2c75128a-db9a-4122-86c0-c5262eb9d6ca")]
 
 // Version information for an assembly consists of the following four values:
 //

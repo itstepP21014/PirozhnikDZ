@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixProject", "MatrixProject\MatrixProject.csproj", "{F41C18C4-4579-4BD5-B4C8-7A4DBE329CC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectanglesSq", "RectanglesSq\RectanglesSq.csproj", "{FBAFA5DF-A72B-4C96-A04D-6E38520FC2EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F41C18C4-4579-4BD5-B4C8-7A4DBE329CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F41C18C4-4579-4BD5-B4C8-7A4DBE329CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F41C18C4-4579-4BD5-B4C8-7A4DBE329CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F41C18C4-4579-4BD5-B4C8-7A4DBE329CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBAFA5DF-A72B-4C96-A04D-6E38520FC2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBAFA5DF-A72B-4C96-A04D-6E38520FC2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBAFA5DF-A72B-4C96-A04D-6E38520FC2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBAFA5DF-A72B-4C96-A04D-6E38520FC2EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
