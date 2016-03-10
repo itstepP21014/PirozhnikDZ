@@ -1,0 +1,29 @@
+﻿<Window x:Class="StartupManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnInstal" Content="Установить калькулятор" Grid.Column="0" Grid.Row="0" Height="50" Margin="20" Click="btnInstal_Click"/>
+        <Button x:Name="btnUnInstal" Content="Удалить калькулятор" Grid.Column="1" Grid.Row="0" Height="50" Margin="20" Click="btnUnInstal_Click"/>
+        <Button x:Name="btnShowProgramm" Content="Показать список программ" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Height="50" Margin="20" Click="btnShowProgramm_Click"/>
+        <ListView x:Name="lvProgramm" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Background="Beige">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding DisplayName}" />
+                    <GridViewColumn Header="Sourse" Width="auto" DisplayMemberBinding="{Binding InstallSource}" />
+                    <GridViewColumn Header="Uinstall string" Width="auto" DisplayMemberBinding="{Binding UnInstallString}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
