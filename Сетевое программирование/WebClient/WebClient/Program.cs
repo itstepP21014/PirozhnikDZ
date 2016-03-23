@@ -12,11 +12,6 @@ namespace WebClient_3Lessons
     {
         static void Main(string[] args)
         {
-            //htmlAgilityPack
-
-
-
-
             // создание объекта web-клиент
             WebClient client = new WebClient();
             // получение содержимого странички
