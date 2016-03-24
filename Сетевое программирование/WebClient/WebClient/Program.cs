@@ -38,7 +38,7 @@ namespace WebClient_3Lessons
 
             // для передачи данных серверу используется метод OpenWrite(), возвращающий поток доступный для записи
             string TextToUpload = "User=Vasia&passwd=okna";
-            string urlString_2 = "http://"; //.....................................................
+            string urlString_2 = "http://www.yandex.ru/page22.aspx"; //.....................................................
             // преобразуем текст в массив байтов
             byte[] uploadData = Encoding.ASCII.GetBytes(TextToUpload);
             // связываем URL с потоком записи
