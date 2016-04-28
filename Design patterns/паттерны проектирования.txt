@@ -1,0 +1,29 @@
+Паттерны проектирования (Design Patterns) - решения часто встречающихся проблем в области разработки программного обеспечения.
+Фабричный метод - 
+Патерн одиночка (Singleton)- используется для созданиия класса с единственным экземпляром
+
+public class Singleton
+{
+	private Singleton(){}
+
+	private static Singleton instance;
+
+	private static Object lockObject = new Object(); // для многопоточного приложения
+
+	public static Singleton getInstatnce()
+	{
+		if(instance == null)
+		{
+			lock(lockObject)
+			{
+				if(instance == null) // дополнительная проверка для второго потока
+				{
+					instance = new Singleton();
+				}
+			}
+		}
+		return instatnce;
+	}
+}
+
+Абстрактная фабрика - паттерн, порождающий семейство объектов
