@@ -1,0 +1,27 @@
+﻿<Window x:Class="TextParser_CompositePattern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Загрузите файл</Label>
+        <Label Grid.Column="0" Grid.Row="1">или введите текст:</Label>
+        <TextBlock x:Name="tb_InputText" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Background="Beige" Margin="5"></TextBlock>
+        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="20, 10">Парсить!</Button>
+        <Label Grid.Column="0" Grid.Row="4">Распарсенный текст:</Label>
+        <TextBlock x:Name="tb_OutputText" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Background="Beige" Margin="5"></TextBlock>
+        
+    </Grid>
+</Window>
