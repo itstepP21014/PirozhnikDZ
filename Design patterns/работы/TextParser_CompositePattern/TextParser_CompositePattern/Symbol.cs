@@ -8,14 +8,15 @@ namespace TextParser_CompositePattern
 {
     public class Symbol: Leaf
     {
-        public override void parse()
+        public string Str { get; set; }
+        public override void parse(string str)
         {
-            // пустой
+            Str = str;
         }
 
         public override void show()
         {
-
+            Console.Write(Str);
         }
     }
 }

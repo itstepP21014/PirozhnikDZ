@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace TextParser_CompositePattern
 {
@@ -10,19 +11,24 @@ namespace TextParser_CompositePattern
     {
         public override void parse(string str)
         {
+            string[] paragraph_collection = str.Split('\n');
 
-            // разбиваю текст на абзацы регулярным выражением
-            // в итоге я получу коллекцию абзацев
-            // каждый абзац я парщу
-
-            this.Components.Add(new Sentance());
-            //абзацу передаю абзац
-            
+            foreach(var coll_el in paragraph_collection)
+            {
+                Paragraph par = new Paragraph();
+                this.Components.Add(par);
+                par.parse(coll_el);
+            }
+      
+            // занести стринги в коллекцию!!!
         }
 
         public override void show()
         {
-
+            foreach(var p in Components)
+            {
+                p.show();
+            }
         }
 
     }

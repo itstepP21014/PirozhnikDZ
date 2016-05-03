@@ -8,7 +8,7 @@ namespace TextParser_CompositePattern
 {
     public abstract class Component
     {
-        public void parse(string str);
-        public void show();
+        public abstract void parse(string str);
+        public abstract void show();
     }
 }
