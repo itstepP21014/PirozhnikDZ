@@ -8,6 +8,7 @@ namespace TextParser_CompositePattern
 {
     public class Symbol: Leaf
     {
+        public string InnerText { get; set; }
         public string Str { get; set; }
         public override void parse(string str)
         {
@@ -16,7 +17,7 @@ namespace TextParser_CompositePattern
 
         public override void show()
         {
-            Console.Write(Str);
+            InnerText = Str;
         }
     }
 }

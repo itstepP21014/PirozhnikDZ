@@ -11,17 +11,14 @@ namespace TextParser_CompositePattern
     {
         public override void parse(string str)
         {
-            // написать регулярку!!!
+            var words = Regex.Matches(str, @"");
 
-            Regex WordsRegex = new Regex(@"([\t\S.\r\n ]+?[.!?])(\s+|$)(\r\n)*|.?$", RegexOptions.Singleline);
-            foreach (Match CurrentMatch in WordsRegex.Matches(str))
+            foreach (var word in words)
             {
                 Word w = new Word();
                 this.Components.Add(w);
-                w.parse(CurrentMatch.Value.ToString());
+                w.parse(word.ToString());
             }
-
-            // занести стринги в коллекцию!!!
         }
 
         public override void show()

@@ -11,15 +11,14 @@ namespace TextParser_CompositePattern
     {
         public override void parse(string str)
         {
-            Regex SentencesRegex = new Regex(@"[\w].{15,}?(\.|\!|?)(?=\ |\r|\n|$)", RegexOptions.Singleline);
-            foreach (Match CurrentMatch in SentencesRegex.Matches(str))
+           var sentences = Regex.Matches(str, @"[\w].{15,}?(\.|\!|\?)(?=\ |\r|\n|$)");
+
+            foreach (var sentence in sentences)
             {
                 Sentance sen = new Sentance();
                 this.Components.Add(sen);
-                sen.parse(CurrentMatch.Value.ToString());
+                sen.parse(sentence.ToString());
             }
-
-            // занести стринги в коллекцию!!!
         }
 
         public override void show()
@@ -32,6 +31,6 @@ namespace TextParser_CompositePattern
     }
 }
 
-220-27 = 193 * 0.65 = 125
-193 * 0.75 = 145
-с 20 минуты горит жир
+//220-27 = 193 * 0.65 = 125
+//193 * 0.75 = 145
+//с 20 минуты горит жир

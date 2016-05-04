@@ -16,7 +16,7 @@ namespace TextParser_CompositePattern
             foreach(var coll_el in paragraph_collection)
             {
                 Paragraph par = new Paragraph();
-                this.Components.Add(par);
+                Components.Add(par);
                 par.parse(coll_el);
             }
       

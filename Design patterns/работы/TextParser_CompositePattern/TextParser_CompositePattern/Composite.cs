@@ -9,5 +9,11 @@ namespace TextParser_CompositePattern
     public abstract class Composite : Component
     {
         public List<Component> Components { get; set; }
+
+
+        public Composite()
+        {
+            Components = new List<Component>();
+        }
     }
 }
