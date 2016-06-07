@@ -1,0 +1,25 @@
+﻿<Window x:Class="TicketsBuy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="ticketsGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="30"/>
+                <DataGridTextColumn Binding="{Binding Dispatch_station}" Header="Отправление" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Arrival_station}" Header="Прибытие" Width="110"/>
+                <DataGridTextColumn Binding="{Binding Time}" Header="Время" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Count}" Header="Количество билетов" Width="140"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
+            <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
