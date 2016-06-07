@@ -1,0 +1,31 @@
+﻿<Window x:Class="registry.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"
+        Width="525"
+        Height="350"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="274*" />
+            <RowDefinition Height="45*" />
+        </Grid.RowDefinitions>
+        <ListView x:Name="lstView" Grid.Row="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="200"
+                                    DisplayMemberBinding="{Binding DisplayName}"
+                                    Header="DisplayName" />
+                    <GridViewColumn DisplayMemberBinding="{Binding InstallSource}" Header="InstallSource" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="1"
+                MinWidth="100"
+                Margin="10"
+                HorizontalAlignment="Right"
+                Click="Button_Click"
+                Content="Uninstall" />
+    </Grid>
+</Window>
