@@ -1,0 +1,127 @@
+/*ПСЕВДОКЛАССЫ*/
+
+/*Все h2 непосредственно только внутри article*/
+article > h2 {
+    color: red;
+}
+
+/*те h2 которые после дива*/
+div ~ h2 {
+    color: blue;
+}
+
+/*все h2  сразу после div, если что-то есть между, то не сработает*/
+div + h2 {
+    color: red;
+}
+
+/*только те ссылки в которых есть target*/
+a[target] {
+    font-size: 30pt;
+}
+
+/*все ссылки которые содержат этот текст*/
+a[href*="yandex.ru"] {
+    font-size: 30pt;
+}
+
+/*все ссылки которые содержат этот текст, совпадение полное*/
+a[href="yandex.ru"] {
+    font-size: 30pt;
+}
+
+/*все ссылки которые начинаются с этого текста*/
+a[href^="yandex.ru"] {
+    font-size: 30pt;
+}
+
+/*все ссылки которые заканчиваются с этого текста*/
+a[href$="yandex.ru"] {
+    font-size: 30pt;
+}
+
+/*ищет текстовое значение, разделенное пробелом*/
+a[rel~="tag"] {
+    font-size: 30pt;
+}
+
+/*ищет текстовое значение, разделенное дефисом*/
+a[rel|="tag"] {
+    font-size: 30pt;
+}
+
+a:link {
+    color: aqua;
+}
+
+/*при нажатии на ссылку и не отпускании*/
+a:active {
+    color: blue;
+}
+
+/**если до ссылки дошли табом**/
+a:focus {
+    color: darkorchid;
+}
+
+/*те h3 которые не класс awesome*/
+h3:not(.awesome) {
+    color: darkgoldenrod;
+}
+
+/*только к текстовым элементам*/
+.alpha:first-letter,
+.beta:first-line {
+    color: coral;
+}
+
+/*добавляем к ссылке текст с ее адресом, ну или любой другой*/
+a:after {
+    color: red;
+    content: "(" attr(href)")";
+    font-size: 12pt;
+}
+
+/*что будет происходить с выделенным текстом*/
+::selection {
+    background-color: crimson;
+}
+
+/*h2 первый ребенок каждого элемента, то же самое с only-child и last-child*/
+h2:first-child {
+    color: green;
+}
+
+/*h2 первый ребенок типа h2*/
+h2:first-child {
+    color: green;
+}
+
+/*каждый второй элемент*/
+h2:nth-child(2n) {
+    color: green;
+}
+
+/*каждый второй до конца (2,4,6,8)*/
+h2:nth-child(2n+1) {
+    color: green;
+}
+
+/*третий с конца*/
+h2:last-nth-child(3n) {
+    color: green;
+}
+
+
+/*ФОРМЫ*/
+
+label {
+    color: red;
+}
+
+textarea {
+    /*или overflow: scroll;*/
+    overflow-x: scroll;
+    overflow-y: scroll;
+    resize: none;
+}

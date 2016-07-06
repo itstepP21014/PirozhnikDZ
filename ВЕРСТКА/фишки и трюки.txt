@@ -1,0 +1,4 @@
+#main>ul.menu>li*5>a.menuitem+span
+
+lorem (сгенерировать пример текста)
+

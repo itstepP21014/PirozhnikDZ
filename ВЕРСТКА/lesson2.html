@@ -1,0 +1,156 @@
+<!DOCTYPE html> <!--указыввает тип текущего документа, а именно какая версия html используется-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--говорит о том, что кодировка относится только к контенту в виде текста-->
+    <meta http-equiv="content-type" content="text/html"; charset="utf-8"/>
+    <meta http-equiv="content-language" content="ru"/>
+    <meta name="autor" content="zed"/>
+    <meta name="copyright" content="IT-step"/>
+    <!--то в чем создавалось, чтобы увидеть код так как мы его писали-->
+    <meta name="generator" content="Notepad Plus Plus"/>
+    <meta name="description" content="Автор: А.Л.Дронов, Категория: Книги, Цена: 17р.7к., Объем: 765 страниц"/> <!--не более 200 символов, должен быть один-->
+    <meta name="keywords" content="уроки, музыка, пианино"/> <!--не более 1000 символов, может быть несколько-->
+    <meta name="publisher-email" content="zed@gmail.com"/>
+    <meta name="publisher-url" content="zed.com"/>
+    <meta name="revisit-after" content="7 days"/>
+    <meta http-equiv="expires" content="Mon, 4 Jui 2016 13:00:00 GMT +03:00"/> <!--долго не держать-->
+    <!--запрет на кэширование страницы, браузер всегда будет грузить ее с сервера-->
+    <meta http-equiv="expires" content="0"/>
+    <!--если сайт перенесли и надо дать возможность пользователю увидеть текст сообщения о предупреждении-->
+    <meta http-equiv="refresh" content="10; url=http://new.zed.com"/>
+    <!--если онлайн трансляции перезагружать страницу-->
+    <meta http-equiv="refresh" content="60"/>
+
+    <!--ИСПОЛЬЗУЙТЕ meta property с адресом, широтой и долготой-->
+    <!--ИСПОЛЬЗУЙТЕ meta property для фейсбука (og) и прочее, если кто-то расшарит ссылку на ваш сайт-->
+
+
+    <title>Title</title>
+    <link rel="stylesheet" href="lesson2.css">
+</head>
+<body>
+
+<!--сайт caniuse.com-->
+<!--w3с.org/validator -  проверяем работу страницы-->
+<!--statcounter.com - статистика использования приложений-->
+
+<!--xhtml - более строгий код html (закрывающие теги, большие буквы, с ошибками не работает, спецсимволы)-->
+
+<!--ФОРМЫ-->
+<!--формы используются только для перессылки полученных данных-->
+
+<!--метод post и get-->
+<!--action - ссылка на документ который будет обрабатывать результат-->
+<form action="/send" method="post" accept-charset="utf-8" name="myform" target="/formresult">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="username" maxlength="20">
+
+    <input type="date" name="birthday">
+    <input type="time" name="makeuptime">
+    <input type="email" name="email">
+    <input type="url" name="website" value="yandex.ru" readonly>
+    <input type="number" name="number" max="20" min="-5">
+
+    <input type="checkbox" name="checkbox" value="222" checked> 222
+    <input type="checkbox" name="checkbox" value="333"> 333
+
+    <label>
+        <!--имя должно быть одно-->
+        <input type="radio" name="radiobutton" value="4444" disabled>4444
+        <input type="radio" name="radiobutton" value="5555">5555
+        <input type="radio" name="radiobutton" value="4444">4444
+        <input type="radio" name="radiobutton" value="5555">5555
+    </label>
+
+    <fieldset>
+        <legend>Number</legend>
+        <!--имя должно быть одно-->
+        <input type="radio" name="radiobutton" value="4444">4444
+        <input type="radio" name="radiobutton" value="5555">5555
+    </fieldset>
+
+    <textarea name="comment" rows="4">Add your comment</textarea>
+
+    <select name="day">
+        <option value="monday">monday</option>
+        <option value="friday">friday</option>
+    </select>
+    <!--можно выбрать несколько значений-->
+    <select name="day" multiple>
+        <option value="monday">monday</option>
+        <option value="friday">friday</option>
+    </select>
+    <!--отображает нужное количество имеющихся элементов-->
+    <select name="day" size="4">
+        <option value="monday" tabindex="1">monday</option>
+        <option value="friday" tabindex="3">friday</option>
+        <option value="monday" tabindex="2">monday</option>
+        <option value="friday" tabindex="4">friday</option>
+
+        <optgroup label="хорошие дни">
+            <option value="monday" tabindex="1">monday</option>
+            <option value="friday" tabindex="3">friday</option>
+        </optgroup>
+
+        <option value="monday" tabindex="2">monday</option>
+        <option value="friday" tabindex="4">friday</option>
+
+    </select>
+
+    <!--на эту кнопку нельзя добавить картинку-->
+    <input type="button" name="button">
+    <input type="submit"  value="SEND" disabled>
+    <!--на button можно добавить картинку-->
+    <button name="submit"><img src="icon.png"/>Отправить</button>
+    <button name="submit"><img src="icon.png"/></button>
+
+    <!--required - обязательно для заполнения-->
+    <input type="password" required>
+    <!--элемент скрыт от пользователя-->
+    <input type="hidden">
+    <input type="file">
+
+</form>
+
+<!--СПЕЦСИМВОЛЫ-->
+&nbsp;
+&ndash;
+&lt;
+&gt;
+&acute;
+&deg;
+&sup2;
+&le;
+&ge;
+&ne;
+&pi;
+
+
+<!--СЕМАНТИЧЕСКИЕ ТЕГИ-->
+
+        <!--блочные:-->
+<header></header>
+<main></main>
+<nav></nav>
+<menu></menu>
+<footer></footer>
+
+<figure>
+    <p><img src="lesson2.jpg" alt=""></p>
+    <figcaption>описание картинки</figcaption>
+</figure>
+
+<article>
+    <section></section> <!--одна статья может разбиваться на несколько секций-->
+</article>
+
+<aside></aside> <!--для того, что стоит в стороне-->
+
+            <!--инлайновые:-->
+<p>тут какой-то текст<mark>а тут отметка</mark></p>
+
+
+
+</body>
+</html>
