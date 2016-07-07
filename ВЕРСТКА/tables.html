@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="lesson2.css">
+    <title>Title</title>
+</head>
+<p>
+    <!--якорная ссылка-->
+    <a href="#to_text">To text</a>
+
+<meter value="20" min="0" max="100" low="10" high="70">какой-то текст</meter>
+<progress value="24" max="100">Этот элемент не работает в нашем браузере</progress>
+<details>
+    <summary>Здесь прячется...</summary>
+    <p>...этот текст</p>
+</details>
+<code>
+    pthead {<br/>
+        &emsp;background: #456;<br/>
+        &emsp;color: #fff;<br/>
+        &emsp;text-transform: uppercase;<br/>
+        &emsp;background:  linear-gradient(90deg, #600, #cccccc);<br/>
+        &emsp;background-attachment: fixed; /*чтобы разлилось на всю строку*/<br/>
+    }
+</code>
+
+<p>H<sub>2</sub>O</p>
+<p><sup>2</sup>-2x=0</p>
+
+<div class="iamclass"></div>
+
+<img class="image" src="img.jpg"/><br/>
+
+<!--<audio src="audio_example.mp3#t=10,13" controls loop muted>
+Teг audio не поддерживается браузером <!--этот текст выйдет если не сработает аудио
+</audio>-->
+<audio controls>
+    <source src="audio_example.mp3" type="audio/mpeg">
+    <source src="audio_example.ogg" type="audio/ogg"> <!--откроет второй файл если не сработает первый-->
+    Teг audio не поддерживается браузером <!--этот текст выйдет если не сработает аудио-->
+</audio>
+<!--тоже самое с видео-->
+<video controls width="300" height="300" poster="img.jpg" preload="metadata">
+   <!-- использовать несколько сорсов и подбирать кодеки -->
+    <source src="video_example.mp4"  type="video/ogg">
+    Teг video не поддерживается браузером <!--этот текст выйдет если не сработает аудио-->
+</video>
+
+<iframe src="http://auto.tut.by/news/road/503543.html" width="320" height="200">
+</iframe>
+
+<p class="strange">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam consectetur esse hic in, iste libero minima nobis nulla quasi qui sit totam unde vero, voluptates. Autem reprehenderit sapiente soluta.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Наличие</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>book 1</td>
+            <td>in shop</td>
+            <td>2</td>
+            <td>36.50</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>book 2</td>
+            <td>in shop</td>
+            <td>2</td>
+            <td>36.50</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>book 3</td>
+            <td>in shop</td>
+            <td>2</td>
+            <td>36.50</td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>book 4</td>
+            <td>in shop</td>
+            <td>2</td>
+            <td>36.50</td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">Всего</td>
+            <td>32 000 руб</td>
+        </tr>
+    </tfoot>
+</table>
+
+<p id="to_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi assumenda autem delectus deserunt dignissimos eum harum ipsa itaque natus obcaecati officia, perferendis provident quasi quod repellendus repudiandae sed veniam!</p>
+
+<blockquote>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deserunt eligendi illum laboriosam, laborum necessitatibus quas quisquam ut vero voluptate. Asperiores aspernatur exercitationem impedit incidunt minus nesciunt nulla perferendis sequi.
+</blockquote>
+
+</body>
+</html>
