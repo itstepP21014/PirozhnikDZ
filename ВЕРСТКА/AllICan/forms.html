@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="allican.css">
+</head>
+<body>
+<div class="container">
+
+
+    <header>
+        <div class="header_content"><h1>Добро пожаловать!</h1></div>
+    </header>
+
+    <menu>
+        <ul class="navbar">
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="table.html">Таблица</a></li>
+            <li><a href="#">Списки</a>
+                <ul class="subs">
+                    <li><a href="numbered_list.html">Нумерованный</a></li>
+                    <li><a href="labled_list.html">Маркированный</a></li>
+                </ul>
+            </li>
+            <li><a href="forms.html">Формы</a></li>
+        </ul>
+    </menu>
+    <main>
+
+
+        <div class="content">
+
+            <form action="/send" method="post" accept-charset="utf-8" name="myform" target="/formresult">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="username" maxlength="20">
+
+                <input type="date" name="birthday">
+                <input type="time" name="makeuptime">
+                <input type="email" name="email">
+                <input type="url" name="website" value="yandex.ru" readonly>
+                <input type="number" name="number" max="20" min="-5">
+
+                <input type="checkbox" name="checkbox" value="222" checked> 222
+                <input type="checkbox" name="checkbox" value="333"> 333
+
+                <fieldset>
+                    <legend>Number</legend>
+                    <!--имя должно быть одно-->
+                    <input type="radio" name="radiobutton" value="4444">4444
+                    <input type="radio" name="radiobutton" value="5555">5555
+                </fieldset>
+
+                <textarea name="comment" rows="4">Add your comment</textarea>
+
+                <select name="day">
+                    <option value="monday">monday</option>
+                    <option value="friday">friday</option>
+                </select>
+                <!--можно выбрать несколько значений-->
+                <select name="day" multiple>
+                    <option value="monday">monday</option>
+                    <option value="friday">friday</option>
+                </select>
+                <!--отображает нужное количество имеющихся элементов-->
+                <select name="day" size="4">
+                    <option value="monday" tabindex="1">monday</option>
+                    <option value="friday" tabindex="3">friday</option>
+                    <option value="monday" tabindex="2">monday</option>
+                    <option value="friday" tabindex="4">friday</option>
+
+                    <optgroup label="хорошие дни">
+                        <option value="monday" tabindex="1">monday</option>
+                        <option value="friday" tabindex="3">friday</option>
+                    </optgroup>
+
+                    <option value="monday" tabindex="2">monday</option>
+                    <option value="friday" tabindex="4">friday</option>
+
+                </select>
+
+                <!--на эту кнопку нельзя добавить картинку-->
+                <input type="button" name="button">
+                <input type="submit"  value="SEND" disabled>
+                <!--на button можно добавить картинку-->
+                <button name="submit"><img src="img.jpg"/>Отправить</button>
+                <button name="submit"><img src="img.jpg"/></button>
+
+                <!--required - обязательно для заполнения-->
+                <input type="password" required>
+                <!--элемент скрыт от пользователя-->
+                <input type="hidden">
+                <input type="file">
+
+            </form>
+
+
+        </div>
+
+        <aside>
+            <p>ОПИСАНИЕ</p>
+            <p>. . .</p>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer_content">Copyright 2016</div>
+    </footer>
+</div>
+</body>
+</html>
