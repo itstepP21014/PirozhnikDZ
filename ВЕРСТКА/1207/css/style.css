@@ -1,0 +1,87 @@
+/* цель/контекст = результат */
+
+.container {
+	background: #ddd;
+}
+
+.container-60 {
+	width: 60%;
+}
+
+.container:before,
+.container:after {
+	display: table;
+	content: "";
+}
+
+.container:after {
+	clear: both;
+}
+section, aside {
+	margin: 1.25%;
+}
+
+section {
+	float:left;
+	width: 62.5%;
+	background: #cc4;
+}
+aside {
+	float: right;
+	width: 32.5%;
+	background: #4cc;
+}
+
+.div-33 {
+	float:left;
+	width: 31.333333333%;
+	margin: 1%;
+	background: #b1b;
+}
+
+img, video, canvas {
+	max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* clearfix technic
+
+.box-set:before,
+.box-set:after {
+	display: table;
+	content: "";
+}
+
+.box-set:after {
+	clear: both;
+}
+*/
+
+/* вариант с overflow
+.box-set {
+	background: #ccc;
+	overflow: auto;
+}
+*/
+/* дочерний элемент
+.box {
+	background: #44e;
+	color: #fff;
+	text-align:center;
+	width: 23%;
+	margin: 1%;
+	float: left;
+}
+*/
+
+
