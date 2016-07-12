@@ -1,0 +1,56 @@
+/*1ый вариант
+.box-set {
+    overflow: auto;
+}*/
+
+/*2ой вариант
+.box-set:before, .box-set:after {
+    display: table;
+    content: "";
+}
+.box-set:after {
+    clear: both;
+}*/
+
+.box-set {
+    background: #bdd;
+    position: relative;
+}
+
+/*
+.box {
+    background: #44e;
+    color: #fff;
+    text-align: center;
+    width: 23%;
+    margin: 1%;
+    float: left;
+}*/
+
+.box {
+    background: #44e;
+    color: #fff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: 2px solid #c33;
+    position: absolute;
+}
+
+.box1 {
+    left: 20px;
+    top: 30px;
+}
+
+.box2 {
+    left: 30px;
+}
+
+/*относительно себя relative*/
+/*относительн экрана absolute*/
+/*относительно родительноского: в родительском relative, в дочернем absolute*/
+/*fixed конкретное место относительно экрана*/
+/*z-index на static position НЕ ставится!*/
+
+/*использовать normalise.css чтобы убрать автоматические падинги, марджины и т.п.*/
