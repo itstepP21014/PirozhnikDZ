@@ -1,0 +1,108 @@
+.container {
+    width: 98%;
+    height: auto;
+    margin: auto;
+}
+
+li a.instagram {
+    background: url(images/instagram.png) no-repeat;
+    background-size: 10px auto;
+    padding-left: 19px;
+}
+
+li a.twitter {
+    background: url(images/twitter.png) no-repeat;
+    background-size: 10px auto;
+    padding-left: 19px;
+}
+
+.top{
+    height:35px;
+    width:100%;
+    float: left;
+}
+
+ul {
+    display: inline-block;
+    float: left;
+    margin: 0px;
+}
+
+li {
+    display: inline-block;
+}
+
+.top input {
+    float: right;
+    background: url(images/search.png) no-repeat;
+    background-size: 10px auto;
+    margin-right: 1%;
+    border-bottom: 1px solid rgb(211,213,213);
+    border-top: 0px;
+    border-left: 0px;
+
+}
+
+menu a{
+    display: inline-block;
+}
+
+.header-logo {
+    display: inline-block;
+    width: 200px;
+    height: 39px;
+    float: left;
+}
+
+.navigation {
+    display: inline-block;
+    float: right;
+}
+
+menu, div.top {
+    margin-bottom: 10px;
+}
+
+ul.nav-menu li {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+div.top ul li {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+div.top ul li a, ul.nav-menu li a{
+    text-decoration: none;
+}
+
+.welcome-picture img{
+    width: 100%;
+}
+
+div.nav {
+    border-top: 1px solid rgb(211,213,213);
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+div.nav span {
+    height: 30px;
+    margin-top: -15px;
+    display: table;
+    margin: 0 auto;
+    background: #FFF;
+    padding: 0 30px;
+    text-transform: uppercase;
+    color: rgb(167,165,166);
+    letter-spacing: 8px;
+    font-size: 0.7em;
+    font-family: "Raleway";
+    text-align: center;
+}
