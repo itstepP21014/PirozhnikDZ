@@ -7,6 +7,7 @@
 main {
     width: 95%;
     margin: auto;
+    clear: both;
 }
 
 body {
@@ -264,10 +265,10 @@ p {
 
 /*CONTACT*/
 .contacts a {
-    width: 80%;
+    width: 60%;
     margin: auto;
     display: block;
-    background-color: rgb(241,244,245);
+    background-color: rgb(167,165,166);
     padding: 10px 0;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -293,4 +294,86 @@ p {
 
 .contact-email {
     color: blue;
+}
+
+/*ABOUT*/
+
+
+/*THE ARTICLE*/
+.autor-photo img {
+    -webkit-border-radius: 100%;
+}
+
+.autor-photo {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 0;
+    float: left;
+    margin-right: 20px;
+}
+
+.autor-info {
+    color: rgb(167,165,166);
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-size: 0.6em;
+}
+.asside {
+    display: inline-block;
+    width: 35%;
+    height: 300px;
+    background: #654;
+    margin: 0 2%;
+}
+.art {
+    width: 60%;
+    display: inline-block;
+}
+
+.add-comment {
+    display: block;
+    text-transform: uppercase;
+    color: rgb(167,165,166);
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    top: 41px;
+    height: 50px;
+}
+
+.comment-textbox {
+    border: 1px solid rgb(167,165,166);
+    padding: 8px 10px;
+    background: white;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-size: 12px;
+    width: 45%;
+    margin-bottom: 15px;
+    margin-left: 4%;
+}
+
+.submit {
+    display: block;
+    width: 15%;
+    height: 30px;
+    line-height: 25px;
+    background-color: rgb(167,165,166);
+    color: #FFF;
+    letter-spacing: 2px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-right: 2%;
+    float: right;
+    font-family: 'MinionPro-Bold';
+    text-transform: uppercase;
 }

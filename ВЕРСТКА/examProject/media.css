@@ -48,3 +48,15 @@
         padding: 0;
     }
 }
+
+@media (min-width: 900px) {
+    .photo-autor {
+        width: 60%;
+        margin:auto;
+    }
+    .inner-singup {
+        display: inline-block;
+        width: 40%;
+        margin: 0 4.5%;
+    }
+}
