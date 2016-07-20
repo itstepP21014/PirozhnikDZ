@@ -1,25 +1,47 @@
 .container {
-    width: 98%;
+    width: 100%;
     height: auto;
     margin: auto;
 }
 
-li a.instagram {
+main {
+    width: 95%;
+    margin: auto;
+}
+
+body {
+    margin-top: -16px;
+    line-height: 1.8;
+    font-size: 11pt;
+    font-family: "Lato";
+    line-height: 2;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #7C7878;
+}
+
+li a.instagram{
     background: url(images/instagram.png) no-repeat;
     background-size: 10px auto;
     padding-left: 19px;
+    font-size: 10px;
+    color: black;
 }
 
-li a.twitter {
+li a.twitter{
     background: url(images/twitter.png) no-repeat;
     background-size: 10px auto;
     padding-left: 19px;
+    font-size: 10px;
+    color: black;
 }
 
 .top{
     height:35px;
     width:100%;
     float: left;
+    background: #F1F4F5;
+    padding-top: 10px;
 }
 
 ul {
@@ -40,18 +62,47 @@ li {
     border-bottom: 1px solid rgb(211,213,213);
     border-top: 0px;
     border-left: 0px;
+    border-right: 0px;
+    padding-left: 19px;
 
+}
+
+input:focus {
+    outline: none;
 }
 
 menu a{
     display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    letter-spacing: 2px;
 }
+
+
 
 .header-logo {
     display: inline-block;
     width: 200px;
-    height: 39px;
+    height: auto;
     float: left;
+}
+
+.compact-nav {
+    display: none;
+    width: 90%;
+    margin: auto;
+    height: 30px;
+    background: #A7A5A6;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .navigation {
@@ -59,17 +110,21 @@ menu a{
     float: right;
 }
 
-menu, div.top {
-    margin-bottom: 10px;
+.header-logo {
+    margin-top: 20px;
 }
 
-ul.nav-menu li {
+.nav-menu li {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-right: 10px;
 }
 
-div.top ul li {
+.nav-menu {
+    margin-top: 25px;
+}
+
+.top ul li {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-right: 10px;
@@ -77,32 +132,165 @@ div.top ul li {
     text-decoration: none;
 }
 
-div.top ul li a, ul.nav-menu li a{
+.top ul li a, .nav-menu li a{
     text-decoration: none;
 }
 
-.welcome-picture img{
+img{
     width: 100%;
 }
 
-div.nav {
+.nav {
     border-top: 1px solid rgb(211,213,213);
     width: 100%;
     margin-bottom: 16px;
     margin-top: 16px;
 }
 
-div.nav span {
-    height: 30px;
-    margin-top: -15px;
-    display: table;
+.line-span{
     margin: 0 auto;
+    margin-top: -15px;
+    height: 30px;
+    display: table;
     background: #FFF;
-    padding: 0 30px;
     text-transform: uppercase;
     color: rgb(167,165,166);
     letter-spacing: 8px;
-    font-size: 0.7em;
+    font-size: 11px;
     font-family: "Raleway";
     text-align: center;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.articles {
+    display: inline-block;
+    width: 32%;
+    float: left;
+    margin: 0 0.66%;
+
+}
+
+.read-more {
+    display: block;
+    color: #a7a5a6;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'MinionPro-Regular';
+    font-size: 0.7em;
+    border: 2px solid #cecece;
+    float: left;
+    padding: 12px 30px 10px 30px;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    display: block;
+    /*-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;*/
+}
+
+.latest-title {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #000;
+    font-family: 'MontserratRegular';
+}
+
+.latest-date {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgb(123,121,121);
+    font-family: 'MinionPro-It';
+}
+
+.block {
+    margin-bottom: 25px;
+}
+
+.textbox-footer {
+    border: 1px solid #cecece;
+    padding: 6px 10px;
+    background: white;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-family: 'MinionPro-Regular';
+    line-height: 1;
+    width: 100%;
+}
+
+.singup {
+    width: 95%;
+    margin: auto;
+    overflow: visible;
+    border: 1px solid #cecece;
+    padding-bottom: 40px;
+}
+
+.inner-singup {
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.enter-footer {
+    float: right;
+    margin: 7px 0;
+    width: 30%;
+    line-height: 22px;
+    background-color: rgb(167,165,166);
+    color: white;
+    letter-spacing: 2px;
+    font-size: 10px;
+    cursor: pointer;
+    font-family: 'MinionPro';
+    border: 0;
+}
+
+
+
+/*CONTACT*/
+.contacts a {
+    width: 80%;
+    margin: auto;
+    display: block;
+    background-color: rgb(241,244,245);
+    padding: 10px 0;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'MinionPro-Regular';
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.contact-title {
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.contact-email {
+    color: blue;
 }

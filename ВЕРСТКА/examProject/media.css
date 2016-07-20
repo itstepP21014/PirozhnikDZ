@@ -1,0 +1,50 @@
+@media (max-width: 800px) {
+    .articles {
+        display: block;
+        width: 95%;
+        margin: auto;
+    }
+
+    .compact-nav {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+    .header-logo {
+        display: block;
+        width: 60%;
+        margin: auto;
+        float: none;
+        margin-top: 20px;
+
+    }
+
+    menu {
+        padding: 0;
+    }
+}
+
+
+@media (max-width: 462px) {
+    .top input {
+        visibility: hidden;
+    }
+}
+
+
+@media (max-width: 300px) {
+    .line-span {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 275px) {
+    li a.twitter, li a.instagram {
+        font-size: 7px;
+    }
+    .top {
+        padding: 0;
+    }
+}
