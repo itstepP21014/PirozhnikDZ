@@ -1,0 +1,11 @@
+/* clearfix technic */
+
+.box-set:before,
+.box-set:after {
+	display: table;
+	content: "";
+}
+
+.box-set:after {
+	clear: both;
+}

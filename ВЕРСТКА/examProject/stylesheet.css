@@ -11,7 +11,7 @@ main {
 }
 
 body {
-    margin-top: -16px;
+    margin-top: 0;
     line-height: 1.8;
     font-size: 11pt;
     font-family: "Lato";
@@ -40,7 +40,6 @@ li a.twitter{
 .top{
     height:35px;
     width:100%;
-    float: left;
     background: #F1F4F5;
     padding-top: 10px;
 }
@@ -79,8 +78,6 @@ menu a{
     font-size: 14px;
     letter-spacing: 2px;
 }
-
-
 
 .header-logo {
     display: inline-block;
@@ -151,6 +148,7 @@ img{
 .line-span{
     margin: 0 auto;
     margin-top: -15px;
+    margin-bottom: 20px;
     height: 30px;
     display: table;
     background: #FFF;
@@ -220,6 +218,17 @@ p {
 .block {
     margin-bottom: 25px;
 }
+
+.block:before, .block:after {
+    display: table;
+    content: "";
+}
+
+.block:after {
+    clear: both;
+}
+
+
 
 .textbox-footer {
     border: 1px solid #cecece;
@@ -326,45 +335,23 @@ p {
     font-size: 0.6em;
 }
 .asside {
-    display: inline-block;
-    width: 35%;
-    height: 300px;
-    background: #654;
-    margin: 0 2%;
+    margin-top: 40px;
+    width: 30%;
+    padding-left: 2%;
+    float: right;
+    border-left: 1px solid rgb(211,213,213);
 }
 .art {
-    width: 60%;
+    float: left;
+    width: 65%;
     display: inline-block;
+    padding-right: 2%;
 }
 
-.add-comment {
-    display: block;
-    text-transform: uppercase;
-    color: rgb(167,165,166);
-    letter-spacing: 2px;
-    font-size: 12px;
-    font-weight: 400;
-    margin-left: 40px;
-    margin-bottom: 20px;
-    top: 41px;
-    height: 50px;
-}
-
-.comment-textbox {
-    border: 1px solid rgb(167,165,166);
-    padding: 8px 10px;
-    background: white;
-    display: inline-block;
-    letter-spacing: 2px;
-    font-size: 12px;
-    width: 45%;
-    margin-bottom: 15px;
-    margin-left: 4%;
-}
 
 .submit {
     display: block;
-    width: 15%;
+    width: 20%;
     height: 30px;
     line-height: 25px;
     background-color: rgb(167,165,166);
@@ -372,8 +359,37 @@ p {
     letter-spacing: 2px;
     font-size: 11px;
     cursor: pointer;
-    margin-right: 2%;
     float: right;
     font-family: 'MinionPro-Bold';
     text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.articles-page div{
+    display: inline-block;
+    width: 45%;
+    margin: 2.3%;
+    float: left;
+}
+
+.hidden-menu li {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-weight: normal;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(211,213,213);
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;
+}
+
+
+.hidden-menu {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
 }
