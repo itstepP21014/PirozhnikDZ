@@ -31,6 +31,16 @@
     }
 }
 
+@media (max-width: 610px) {
+    .art-asside {
+        display: block;
+        width: 100%;
+    }
+    .asside {
+        border-left: 0;
+    }
+}
+
 @media (max-width: 510px) {
     .art h1 {
         font-size: 20px;
