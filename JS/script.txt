@@ -1,0 +1,3 @@
+window.onload = function(){
+document.getElementById("text").innerText = "123";
+}
