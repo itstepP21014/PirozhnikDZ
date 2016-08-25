@@ -1,0 +1,9 @@
+var el = document.createElement("div");
+var parent = document.getElementById("");
+parent.appendChild(el);
+
+// аналогичный вариант, но улчне не использовать
+parent.innerHTML = parent.innerHTML + "<div/>";
+
+
+parent.removeChild();
