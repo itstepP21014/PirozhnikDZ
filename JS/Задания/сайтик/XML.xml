@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  
+  <dish>
+    <category>hot_dish</category>
+    <name>Empire </name>
+    <composition>Bob </composition>
+    <portion>330</portion>
+    <price>9.30</price>
+    <kkal>250</kkal>
+    <pic>img/1.jpg</pic>
+  </dish>
+  <dish>
+    <category>hot_dish</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+    <pic>img/2.jpg</pic>
+  </dish>
+  <dish>
+    <category>hot_dish</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>hot_dish</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+
+  <dish>
+    <category>salad</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>salad</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>salad</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>salad</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>rall</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+
+  <dish>
+    <category>desert</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>desert</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>desert</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+
+  <dish>
+    <category>drink</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>drink</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>drink</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>drink</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+
+  <dish>
+    <category>soup</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  <dish>
+    <category>soup</category>
+    <name>Empire Burlesque</name>
+    <composition>Bob Dylan</composition>
+    <portion>450</portion>
+    <price>10.90</price>
+    <kkal>360</kkal>
+  </dish>
+  
+</catalog>

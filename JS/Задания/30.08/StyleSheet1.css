@@ -1,0 +1,20 @@
+﻿body {
+}
+
+.image {
+    display: inline;
+    margin: 5px;
+    width: auto;
+}
+img {
+    margin: auto;
+}
+
+#container {
+    margin: auto;
+    width: 80%;
+}
+
+a {
+    position: center;
+}
