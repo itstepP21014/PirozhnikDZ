@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Scooshy | Galery</title>
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="media.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="scriptForGalery.js"></script>
 </head>
 <body>
 
@@ -71,7 +74,18 @@
 
             </div>
 
-            <div>ПУСТО :(</div>
+            <div id="scrollable" class="galery">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+                <img class="galeryImg" src="images/joe.jpg" alt="Joe in a board">
+            </div>
+
+        </div>
     </main>
 
     <footer>
@@ -81,9 +95,9 @@
             <div class="inner-singup"><p>If you want, leave your email with us and we’ll let you know when something interesting crops up. We’ll never spam you.</p></div>
             <div class="inner-singup">
                 <form action="#" method="post" name="sign-up-form">
-                    <input type="text" value name="FNAME" class="textbox-footer" placeholder="FIRST NAME"/>
-                    <input type="text" value name="SNAME" class="textbox-footer" placeholder="SECOND NAME"/>
-                    <input type="text" value name="EMAIL" class="textbox-footer" placeholder="ENTER EMAIL ADRESS"/>
+                    <input type="text" name="FNAME" class="textbox-footer" placeholder="FIRST NAME"/>
+                    <input type="text" name="SNAME" class="textbox-footer" placeholder="SECOND NAME"/>
+                    <input type="text" name="EMAIL" class="textbox-footer" placeholder="ENTER EMAIL ADRESS"/>
                     <input type="submit" value="ENTER" name="subscribe" class="submit-button"/>
                 </form>
             </div>

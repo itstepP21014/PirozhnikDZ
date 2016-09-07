@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="Script.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="inbox" class="col-sm-5">
+            <h1>Принятые</h1>
+            <button id="loadEmail">Загрузить сообщения</button>
+            <div id="divForInboxСorrespondence">
+                <img src="img/1.jpg" alt="" class="draggable sortable" />
+                <img src="img/2.jpg" alt="" class="draggable sortable" />
+                <img src="img/3.jpg" alt="" class="draggable sortable" />
+            </div>
+        </div>
+
+        <div id="divForDepartment" class="col-sm-7">
+            <div class="department droppable">
+                <h1>Кадры</h1>
+            </div>
+            <div class="department droppable">
+                <h1>Бухгалтерия</h1>
+            </div>
+            <div class="department droppable">
+                <h1>Цэх</h1>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

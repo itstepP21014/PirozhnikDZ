@@ -1,0 +1,17 @@
+h1 {
+	line-height: 300px;
+}
+
+#infobox  {
+	position: fixed;
+	left: 300px;
+	width: 400px;
+	height: 300px;
+	border: 1px solid;
+	font-size: 30px;
+}
+
+#scrollable {
+	height: 200px;
+	overflow: scroll;
+}
