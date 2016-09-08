@@ -380,6 +380,12 @@ menu a{
 /*FOR VIDEO PAGE*/
 
 .galery {
-    width: 20%;
+    width: 100%;
+}
+
+.galeryImg {
+    display: block;
+    width: 40%;
     margin: auto;
+    margin-bottom: 10px;
 }
