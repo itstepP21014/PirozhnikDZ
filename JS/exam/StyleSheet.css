@@ -1,0 +1,40 @@
+﻿.square {
+    display: inline-block;
+    background: #99ccff;
+    width: 100px;
+    height: 100px;
+}
+
+#field {
+    width:415px;
+    margin:auto;
+    margin-top: 100px;
+}
+
+.front {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    position: absolute;
+    z-index: 1; 
+    height: 100%; 
+    width: 100%; 
+    transition: all 0.5s ease-out; 
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(-180deg);
+    z-index: 0;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s ease-out;
+}
+
+.card-grid {
+    perspective: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+}
