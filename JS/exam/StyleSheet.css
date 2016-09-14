@@ -1,40 +1,52 @@
-﻿.square {
-    display: inline-block;
-    background: #99ccff;
-    width: 100px;
-    height: 100px;
+﻿
+.flip-container {
+	perspective: 1000px;
+    position: absolute;
 }
 
-#field {
-    width:415px;
-    margin:auto;
-    margin-top: 100px;
+#container {
+    width: 415px;
+    margin: auto;
+    position: relative;
+
+}
+
+
+.flip-container, .front, .back, .flipper {
+	width: 100px;
+	height: 100px;
+}
+
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
 }
 
 .front {
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    position: absolute;
-    z-index: 1; 
-    height: 100%; 
-    width: 100%; 
-    transition: all 0.5s ease-out; 
-    transform: rotateY(0deg);
+    background: #ff4d4d;
+	transform: rotateY(0deg);
 }
+
 
 .back {
-    transform: rotateY(-180deg);
-    z-index: 0;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    transition: all 0.5s ease-out;
+    background: #fff;
+	transform: rotateY(180deg);
 }
 
-.card-grid {
-    perspective: 200px;
-    position: relative;
-    transform-style: preserve-3d;
+
+
+/*.flip-container:hover .flipper, .flip-container.hover .flipper{
+	transform: rotateY(180deg);
+}*/
+
+img {
+    width: 100px;
+    height: 100px;
 }
