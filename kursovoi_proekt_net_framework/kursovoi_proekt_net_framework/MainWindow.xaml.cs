@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 using System.Security.Cryptography;
+using System.Collections.ObjectModel;
 
 namespace kursovoi_proekt_net_framework
 {
@@ -23,11 +24,12 @@ namespace kursovoi_proekt_net_framework
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<MyFile> fileCollection = new List<MyFile>();
+        ObservableCollection<MyFile> fileCollection = new ObservableCollection<MyFile>();
 
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void btn_choose_folder_Click(object sender, RoutedEventArgs e)
@@ -38,35 +40,56 @@ namespace kursovoi_proekt_net_framework
             {
                 tb_path.Text = dlg.SelectedPath;
             }
+
+            pathToFolder = tb_path.Text;
         }
+
+        string pathToFolder;
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_path.Text != "")
+            //lstw.ItemsSource = fileCollection;
+
+            pathToFolder = @"C:\Users\admin\Desktop\PirozhnikDZ\WCF";
+
+            if (!string.IsNullOrEmpty(pathToFolder))
             {
-                lb_info.Items.Clear();
-                var filesCollection = fun(tb_path.Text);
-                foreach(var file in filesCollection)
+                pb.IsIndeterminate = true;
+                var filesColl = fun(pathToFolder);
+                foreach(var file in filesColl)
                 {
-                    //lb_info.Items.Add(file);
-                    fileCollection.Add(new MyFile(){Path = file, MD5sum = ComputeMD5Checksum(file)});
+                    fileCollection.Add(new MyFile(){FilePath = file, MD5sum = ComputeMD5Checksum(file), Clone = false});
                 }
 
-                for(var i = 0; i < fileCollection.Count; ++i)
+                //сортировка
+                IList<MyFile> sortedFileColl = fileCollection.OrderBy(x => x.MD5sum).ToList();
+                lstw.ItemsSource = sortedFileColl;
+                for (var i = 0; i < sortedFileColl.Count - 1; ++i)
                 {
-                    for (var j = i + 1; j < fileCollection.Count - 1; j++)
+                    if(sortedFileColl[i].MD5sum == sortedFileColl[i+1].MD5sum)
                     {
-                        if (fileCollection[i].MD5sum == fileCollection[j].MD5sum)
-                        {
-                            if (compareFilesByByte(fileCollection[i].Path, fileCollection[j].Path))
-                            {
-                                lb_info.Items.Add("Одинаковые файлы:");
-                                lb_info.Items.Add(fileCollection[i].Path);
-                                lb_info.Items.Add(fileCollection[j].Path);
-                            }
-                        }
-                    }                             
+                        sortedFileColl[i + 1].Clone = true;
+                    }
                 }
+
+                //for (var i = 0; i < fileCollection.Count; ++i)
+                //{
+                //    for (var j = i + 1; j < fileCollection.Count - 1; j++)
+                //    {
+                //        if (fileCollection[i].MD5sum == fileCollection[j].MD5sum)
+                //        {
+                //            if (compareFilesByByte(fileCollection[i].FilePath, fileCollection[j].FilePath))
+                //            {
+                //                //lb_info.Items.Add("Одинаковые файлы:______________________________________________");
+                //                //lb_info.Items.Add(fileCollection[i].Path);
+                //                //lb_info.Items.Add(fileCollection[j].Path);
+                //            }
+                //        }
+                //    }
+                //}
+                pb.IsIndeterminate = false;
+                //lb_info.Items.Add("Поиск окончен.");
+
             } 
         }
 
@@ -75,19 +98,26 @@ namespace kursovoi_proekt_net_framework
         {
             // получаю все файлы
             var collection = new List<string>();
-            foreach (var item in Directory.GetFileSystemEntries(_path))
+            try
             {
-                if (System.IO.File.Exists(item))
+                foreach (var item in Directory.GetFileSystemEntries(_path))
                 {
-                    collection.Add(item);
-                }
-                else if (System.IO.Directory.Exists(item))
-                {
-                    foreach (var el in fun(item))
+                    if (System.IO.File.Exists(item))
                     {
-                        collection.Add(el);
+                        collection.Add(item);
+                    }
+                    else if (System.IO.Directory.Exists(item))
+                    {
+                        foreach (var el in fun(item))
+                        {
+                            collection.Add(el);
+                        }
                     }
                 }
+            }
+            catch(UnauthorizedAccessException)
+            {
+                //ignore
             }
 
             return collection;
@@ -108,38 +138,33 @@ namespace kursovoi_proekt_net_framework
 
         private bool compareFilesByByte(string file_1, string file_2)
         {
-            byte[] byte1 = new byte[1024];
-            byte[] byte2 = new byte[1024];
+            int file1byte;
+            int file2byte;
+            FileStream fs1 = null, fs2 = null;
+            try
+            {
+                fs1 = new FileStream(file_1, FileMode.Open);
+                fs2 = new FileStream(file_2, FileMode.Open);
 
-            var fs1 = new FileStream(file_1, FileMode.Open);
-            var fs2 = new FileStream(file_2, FileMode.Open);
+                do
+                {
+                    file1byte = fs1.ReadByte();
+                    file2byte = fs2.ReadByte();
+                }
+                while ((file1byte == file2byte) && (file1byte != -1));
 
-            if (fs1.Length != fs2.Length)
+            }
+            catch (IOException ex)
+            {
+                //lb_info.Items.Add(String.Format("Failed to compare {0} and {1}: {2}", file_1, file_2, ex.Message));
+                return false;
+            }
+            finally
             {
                 fs1.Close();
                 fs2.Close();
-                return false;
             }
-            else
-            {
-                int res1, res2;
-                do
-                {
-                    res1 = fs1.Read(byte1, 0, byte1.Length);
-                    res2 = fs2.Read(byte2, 0, byte2.Length);
-
-                    //for (int i = 0; i < byte1.Length; i++)
-                    //{
-                    //    if (byte1[i] != byte2[i])
-                    //    {
-                    //        return false;
-                    //    }
-                    //}
-
-                } while (res1 != 0 && res2 != 0);
-
-                return true;
-            }
+            return ((file1byte - file2byte) == 0);
  
         }
 
