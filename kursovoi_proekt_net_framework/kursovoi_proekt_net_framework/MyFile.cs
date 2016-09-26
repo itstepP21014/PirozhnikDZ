@@ -10,15 +10,21 @@ namespace kursovoi_proekt_net_framework
     {
         public string FilePath { get; set; }
 
+        public string Name { get; set; }
+
         public string MD5sum { get; set; }
 
         public bool Clone { get; set; }
 
         public MyFile()
         {
-            FilePath = "";
-            MD5sum = "";
+            FilePath = null;
+            Name = null;
+            MD5sum = null;
             Clone = false;
         }
+
     }
+
+    
 }

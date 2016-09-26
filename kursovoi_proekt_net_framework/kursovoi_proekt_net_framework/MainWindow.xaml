@@ -3,29 +3,42 @@
         xmlns:my="clr-namespace:kursovoi_proekt_net_framework"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="600" Width="850">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DarkBlue/Brushes.xaml"/>
+                <ResourceDictionary Source="Themes/DarkBlue/Core.xaml"/>
+                <ResourceDictionary Source="Themes/DarkBlue/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0"  Grid.Row="0"  Grid.ColumnSpan="2" Margin="10" Orientation="Horizontal">
+        <StackPanel Grid.Column="0"  Grid.Row="0"  Grid.ColumnSpan="3" Margin="10" Orientation="Horizontal">
             <Label VerticalAlignment="Center">Выберете целевую папку:</Label>
-            <TextBox x:Name="tb_path" Width="400" Height="20" Margin="10"/>
-            <Button x:Name="btn_choose_folder" Width="100" Height="20" Click="btn_choose_folder_Click">Открыть</Button>
+            <TextBox x:Name="tb_path" Width="500" Margin="10" TextChanged="tb_path_TextChanged"/>
+            <Button x:Name="btn_choose_folder" Grid.Column="2"  Grid.Row="0" Width="100" Height="25" Click="btn_choose_folder_Click">Открыть</Button>
         </StackPanel>
-        <ProgressBar x:Name="pb" Grid.Column="0"  Grid.Row="1"></ProgressBar>
-        <Button x:Name="btn_start" Grid.Column="2"  Grid.Row="1"  Grid.ColumnSpan="2" Width="200" Click="btn_start_Click">Поиск</Button>
+        
+        <Button x:Name="btn_start" Grid.Column="2"  Grid.Row="1"  Grid.ColumnSpan="2" Width="200" Height="25" Click="btn_start_Click" IsEnabled="False" Margin="10">Поиск</Button>
 
-        <ListView Name="lstw" Margin="5,5,5,-125" Grid.Column="0"  Grid.Row="2"  Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ListView Name="lstw" Grid.Column="0"  Grid.Row="2"  Grid.ColumnSpan="3" MinHeight="300">
             <ListView.View>
-                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=MD5sum}" Header="MD5 сумма" Width="300"/>
+                <GridView>
                     <GridViewColumn Header="Файлы на удаление">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -33,10 +46,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя файла" Width="200"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=FilePath}" Header="Путь к файлу" Width="300"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=MD5sum}" Header="MD5 сумма" Width="250"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        
+        <Label x:Name="lb_total" Grid.Column="0"  Grid.Row="3"></Label>
+        <Label x:Name="lb_delete" Grid.Column="1"  Grid.Row="3"></Label>
+        <Label x:Name="lb_fin" Grid.Column="2"  Grid.Row="3"></Label>
+        <Button x:Name="btn_delete" Grid.Column="0"  Grid.Row="4"  Grid.ColumnSpan="3" Width="200" Height="25" Click="btn_delete_Click" Margin="20">Удалить</Button>
 
 
     </Grid>

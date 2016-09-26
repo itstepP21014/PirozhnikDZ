@@ -12,6 +12,14 @@
 		 parent2.innerHTML += "<ul><li>" + nodes[i].type + "</li></ul>";
 	 }
 
+var size = 70;
+    var newsContent = $('.short-description');
+    var newsText = newsContent.text();
+     
+    if (newsText.length > size) {
+      $('.short-description').text() = newsContent.text(newsText.slice(0, size) + ' ...');
+    }
+
  }
  
  
