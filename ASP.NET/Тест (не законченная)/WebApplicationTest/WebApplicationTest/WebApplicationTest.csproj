@@ -68,6 +68,7 @@
     <Compile Include="Test.cs" />
     <Compile Include="TestControl.ascx.cs">
       <DependentUpon>TestControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TestControl.ascx.designer.cs">
       <DependentUpon>TestControl.ascx</DependentUpon>
