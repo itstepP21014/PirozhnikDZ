@@ -57,22 +57,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestControl.ascx" />
+    <Content Include="ControlCheck.ascx" />
+    <Content Include="ControlRadio.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebFormForTest.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
+    <Compile Include="ControlCheck.ascx.cs">
+      <DependentUpon>ControlCheck.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlCheck.ascx.designer.cs">
+      <DependentUpon>ControlCheck.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlRadio.ascx.cs">
+      <DependentUpon>ControlRadio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlRadio.ascx.designer.cs">
+      <DependentUpon>ControlRadio.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Test.cs" />
-    <Compile Include="TestControl.ascx.cs">
-      <DependentUpon>TestControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestControl.ascx.designer.cs">
-      <DependentUpon>TestControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="WebFormForTest.aspx.cs">
       <DependentUpon>WebFormForTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

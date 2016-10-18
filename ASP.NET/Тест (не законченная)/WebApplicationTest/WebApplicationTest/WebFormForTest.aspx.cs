@@ -11,6 +11,22 @@ namespace WebApplicationTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Test test = new Test();
+            contr
+        }
+
+        protected void ButtonBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonCancel_Click(object sender, EventArgs e)
+        {
 
         }
     }

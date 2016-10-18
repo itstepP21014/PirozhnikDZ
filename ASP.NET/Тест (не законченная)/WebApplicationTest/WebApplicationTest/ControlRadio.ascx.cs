@@ -7,16 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationTest
 {
-    public partial class TestControl : System.Web.UI.UserControl
+    public partial class ControlRadio : System.Web.UI.UserControl
     {
-        Test test = new Test();
-        int numberOfQuestion = 0;
-
         public object DataSource
         {
             get
             {
-                return test.QuestionCollection[numberOfQuestion];
+                return DataSource;
             }
             set
             {
@@ -29,23 +26,6 @@ namespace WebApplicationTest
             var coll = DataSource as Question;
             foreach (var i in coll.AnswersCollection)
                 RadioButtonList1.Items.Add(i.AnswerText);
-        }
-
-        protected void ButtonBack_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void ButtonNext_Click(object sender, EventArgs e)
-        {
-            numberOfQuestion++;
-            DataSource = test.QuestionCollection[numberOfQuestion];     
-            
-        }
-
-        protected void ButtonCancel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

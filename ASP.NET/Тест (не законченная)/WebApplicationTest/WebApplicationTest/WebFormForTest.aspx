@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebFormForTest.aspx.cs" Inherits="WebApplicationTest.WebFormForTest" %>
-<%@ Register Src="~/TestControl.ascx" TagName="testcontrol" TagPrefix="Ttestcontrol" %>
+<%@ Register Src="~/ControlCheck.ascx" TagName="controlcheck" TagPrefix="Tcontrolcheck" %>
+<%@ Register Src="~/ControlRadio.ascx" TagName="controlradio" TagPrefix="Tcontrolradio" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +13,10 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <Ttestcontrol:testcontrol ID="control1" runat="server" />
+                <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+                <asp:Button ID="ButtonBack" runat="server" Text="Back" OnClick="ButtonBack_Click"/>
+                <asp:Button ID="ButtonNext" runat="server" Text="Next" OnClick="ButtonNext_Click" />
+                <asp:Button ID="ButtonCancel" runat="server" Text="Cancel" OnClick="ButtonCancel_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:UpdateProgress ID="UpdateProgress1" runat="server">
@@ -29,3 +33,23 @@
     </form>
 </body>
 </html>
+
+
+
+ladcontrol(question)
+{
+switch()questiontype
+case check : this.loadControl("control1")
+case radio : this.loadControl("control2")
+}
+
+
+
+updatepanel
+{
+panel (куда будет загружаться control)
+{
+
+}
+buttons
+}
