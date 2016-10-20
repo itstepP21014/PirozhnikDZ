@@ -1,0 +1,14 @@
+﻿<Window x:Class="SearchBank.WindowServices"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавление сервиса" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox  x:Name="lbxServ" SelectionMode="Multiple">
+        </ListBox>
+        <Button Grid.Row="1" Margin="2" Click="Button_Click">Добавить</Button>
+    </Grid>
+</Window>
