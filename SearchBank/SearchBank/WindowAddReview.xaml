@@ -1,0 +1,24 @@
+﻿<Window x:Class="SearchBank.WindowAddReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SearchBank"
+        mc:Ignorable="d"
+        Title="Добавление отзыва" Height="180" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock> Объект </TextBlock>
+            <ComboBox x:Name="cmbxBranchs" ></ComboBox>
+            <TextBlock> Ваше имя </TextBlock>
+            <TextBox x:Name="tbxCommentator"></TextBox>
+            <TextBlock> Ваш отзыв </TextBlock>
+            <TextBox x:Name="tbxReview"></TextBox>
+        </StackPanel>
+        <Button Grid.Row="1" Click="Button_Click">Добавить</Button>
+    </Grid>
+</Window>
