@@ -1,0 +1,10 @@
+﻿@model WebApplication5.Message
+
+<div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <p>@Html.TextBoxFor(m => m.Text2, new { value=Model.Text2 })</p>
+        @Html.TextBoxFor(m => m.Text, new { value = Model.Text })
+        <input type="submit" value="Send" />
+    }
+</div>
