@@ -1,0 +1,56 @@
+﻿@model   List<DomainObjects.News>
+
+@{
+    ViewBag.Title = "User Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Header
+        </th>
+        <th>
+            Body
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                Пока пусто...
+                @*@if (item.Status == Infrastruction.CarStatus.Free)
+                    {
+                        @:You can rent this car:
+                    }
+                    @Html.DisplayFor(modelItem => item.CarName)<br/>
+
+                    @Html.Partial("CarStatus", item)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Header)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.Label("Your Comment:", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Hot)
+                        @Html.ValidationMessageFor(model => model.Hot)*@
+                    </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add comment" class="btn btn-default" />
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+
+
+</table>
