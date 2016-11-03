@@ -20,32 +20,40 @@ namespace NewsSite.Areas.AdminArea.Controllers
             return View(_news);
         }
 
-        public ActionResult Details(int _id)
+        public ActionResult Details(int? id)
         {
-            return Details(_id);
+            var news = service.GetNewsById(id.Value);
+            return View(news);
         }
 
         [HttpPost]
-        public ActionResult Delete(int _id)
+        public ActionResult Delete(int? id)
         {
-            return Delete(_id);
+            return View(id);
         }
+
+        //public ActionResult Update()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult Update(News _news)
         {
-            return Update(_news);
+            service.Update(_news);
+            return RedirectToAction("Details", new { id = _news.NewsID });
         }
 
         public ActionResult Create()
         {
-            return Create();
+            return View();
         }
 
         [HttpPost]
         public ActionResult Create(News _news)
         {
-            return Create(_news);
+            var n = service.Create(_news.Header, _news.Body, _news.Hot, _news.Type);
+            return RedirectToAction("Details", new { id = n.NewsID });
         }
     }
 }

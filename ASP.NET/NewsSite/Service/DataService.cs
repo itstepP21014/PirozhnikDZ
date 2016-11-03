@@ -24,12 +24,31 @@ namespace Service
         
         {
             //db.Database.Initialize(true);
-            db.News.Add(new News());
-            db.News.Add(new News());
-            db.News.Add(new News());
-            db.SaveChanges();
-
             return db.News.Select(p => p).ToList();
+        }
+
+        public News GetNewsById(int _id)
+        {
+            //db.Database.Initialize(true);
+            return db.News.Where(n => n.NewsID == _id).ToList().First();
+        }
+
+        public News Create(string _header, string _body, bool _hot, TypeEnum _type)
+        {
+            News n = new News() { Header = _header, Body = _body, CreateData = DateTime.Now, Hot = _hot, Type = _type, Comments = new List<Comment>()};
+            db.News.Add(n);
+            db.SaveChanges();
+            return db.News.Where(p => p.Header == _header).First();
+        }
+
+        public void Update(News _news)
+        {
+            var n = db.News.Where(p => p.NewsID == _news.NewsID).First();
+            n.Header = _news.Header;
+            n.Body = _news.Body;
+            n.Hot = _news.Hot;
+            n.Type = _news.Type;
+            db.SaveChanges();
         }
 
         //public DataObject GetItem(int id_item)

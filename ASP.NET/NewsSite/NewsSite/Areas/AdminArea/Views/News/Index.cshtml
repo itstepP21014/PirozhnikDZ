@@ -11,25 +11,25 @@
 <table class="table">
     <tr>
         <th>
-            ftgcfr
+            Заголовок новости
         <th>
-            rdgtfnj
+            Тело новости
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 Пока пусто...
-                @*@if (item.Status == Infrastruction.CarStatus.Free)
+                @if (item.Status == Infrastruction.CarStatus.Free)
                 {
                     @:You can rent this car:
                 }
                 @Html.DisplayFor(modelItem => item.CarName)<br/>
 
-                @Html.Partial("CarStatus", item)*@
-            </td>
+                @Html.Partial("CarStatus", item)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Header)
             </td>
