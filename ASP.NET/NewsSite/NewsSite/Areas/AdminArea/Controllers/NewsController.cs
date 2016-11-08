@@ -20,22 +20,37 @@ namespace NewsSite.Areas.AdminArea.Controllers
             return View(_news);
         }
 
+
+        [HttpPost]
+        public ActionResult Index(List<News> _news)
+        {
+            return View(_news);
+        }
+
         public ActionResult Details(int? id)
         {
             var news = service.GetNewsById(id.Value);
             return View(news);
         }
 
-        [HttpPost]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            return View(id);
+            return DeleteNews(id);
         }
 
-        //public ActionResult Update()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult DeleteNews(int id)
+        {
+            service.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Update(int id)
+        {
+            var news = service.GetNewsById(id);
+            return View(news);
+        }
 
         [HttpPost]
         public ActionResult Update(News _news)
@@ -55,5 +70,13 @@ namespace NewsSite.Areas.AdminArea.Controllers
             var n = service.Create(_news.Header, _news.Body, _news.Hot, _news.Type);
             return RedirectToAction("Details", new { id = n.NewsID });
         }
+
+        [HttpPost]
+        public ActionResult NewsSearch(string name)
+        {
+            var _news = service.GetNewsByName(name);
+            return View("Index", _news);
+        }
+
     }
 }

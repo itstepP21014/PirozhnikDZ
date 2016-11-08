@@ -5,14 +5,65 @@
 }
 
 <h2>Update</h2>
-
 @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Header)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Header)
+                @Html.ValidationMessageFor(model => model.Header)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Body)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Body)
+                @Html.ValidationMessageFor(model => model.Body)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.EnumDropDownListFor(model => model.Type)
+                @Html.ValidationMessageFor(model => model.Type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Hot)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Hot)
+                @Html.ValidationMessageFor(model => model.Hot)
+            </dd>
+
+        </dl>
+    </div>
+    @Html.HiddenFor(model => model.NewsID)
+    @Html.HiddenFor(model => model.CreateData)
+<div
+     class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+    }
+
+    @*@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Car</h4>
-        <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.NewsID)
 
@@ -54,7 +105,7 @@
             </div>
         </div>
     </div>
-}
+}*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")

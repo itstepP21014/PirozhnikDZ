@@ -1,0 +1,11 @@
+﻿@model List<DomainObjects.News>
+
+<div id="searchresults">
+    @*<h3>Все книги автора : @Model.First().Author</h3>*@
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.Header, "Details", new { id = item.NewsID })</li>
+        }
+    </ul>
+</div>

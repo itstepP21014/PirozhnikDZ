@@ -30,7 +30,12 @@ namespace Service
         public News GetNewsById(int _id)
         {
             //db.Database.Initialize(true);
-            return db.News.Where(n => n.NewsID == _id).ToList().First();
+            return db.News.Find(_id);
+        }
+
+        public List<News> GetNewsByName(string name)
+        {
+            return db.News.Where(p => p.Header == name).Select(n => n).ToList(); 
         }
 
         public News Create(string _header, string _body, bool _hot, TypeEnum _type)
@@ -43,13 +48,20 @@ namespace Service
 
         public void Update(News _news)
         {
-            var n = db.News.Where(p => p.NewsID == _news.NewsID).First();
+            var n = db.News.Find(_news.NewsID);
             n.Header = _news.Header;
             n.Body = _news.Body;
             n.Hot = _news.Hot;
             n.Type = _news.Type;
             db.SaveChanges();
         }
+        public void Delete(int _id)
+        {
+            var n = db.News.Select(p => p).Where(p => p.NewsID == _id).First();
+            db.News.Remove(n);
+            db.SaveChanges();
+        }
+
 
         //public DataObject GetItem(int id_item)
         //{

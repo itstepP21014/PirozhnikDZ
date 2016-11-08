@@ -8,6 +8,26 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Ajax.BeginForm("NewsSearch", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "update",
+    LoadingElementId = "loader"
+}))
+{
+    @Html.TextBox("name")
+    <input type="submit" value="Search" />
+}
+
+
+
+<div id="loader" class=" aletr" style="display:none">
+    Loading...
+</div>
+<div id="update">
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -43,7 +63,5 @@
             </td>
         </tr>
     }
-
-
 
 </table>
