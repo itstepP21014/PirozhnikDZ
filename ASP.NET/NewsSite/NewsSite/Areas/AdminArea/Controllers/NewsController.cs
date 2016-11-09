@@ -14,7 +14,7 @@ namespace NewsSite.Areas.AdminArea.Controllers
         DataService service = new DataService();
 
         // GET: AdminArea/News
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
             var _news = service.GetAllNews();
             return View(_news);
@@ -74,8 +74,16 @@ namespace NewsSite.Areas.AdminArea.Controllers
         [HttpPost]
         public ActionResult NewsSearch(string name)
         {
-            var _news = service.GetNewsByName(name);
-            return View("Index", _news);
+            List<News> _news;
+            if (name == String.Empty)
+            {
+                _news = service.GetAllNews();
+            }
+            else
+            {
+                _news = service.GetNewsByName(name);
+            }
+            return PartialView("NewsSearchView", _news);
         }
 
     }

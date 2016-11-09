@@ -26,42 +26,9 @@
     Loading...
 </div>
 <div id="update">
+    @Html.Partial("NewsSearchView", Model)
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            Заголовок новости
-        <th>
-            Тело новости
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*<td>
-                Пока пусто...
-                @if (item.Status == Infrastruction.CarStatus.Free)
-                {
-                    @:You can rent this car:
-                }
-                @Html.DisplayFor(modelItem => item.CarName)<br/>
-
-                @Html.Partial("CarStatus", item)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Header)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                @Html.ActionLink("Update", "Update", new { id = item.NewsID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.NewsID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.NewsID })
-            </td>
-        </tr>
-    }
-
-</table>
+<p>
+    @Html.ActionLink("Print version", "Index", new { id = "print" })
+</p>

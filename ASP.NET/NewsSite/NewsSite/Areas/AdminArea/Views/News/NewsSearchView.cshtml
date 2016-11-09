@@ -1,0 +1,71 @@
+﻿@model List<DomainObjects.News>
+
+@*<div id="searchresults">
+    <h3>Все книги автора : @Model.First().Author</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.Header, "Details", new { id = item.NewsID })</li>
+        }
+    </ul>
+</div>*@
+
+<table class="table">
+    <tr>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Содержание
+        </th>
+        <th>
+            Дата создания
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Тип
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    Пока пусто...
+                    @if (item.Status == Infrastruction.CarStatus.Free)
+                    {
+                        @:You can rent this car:
+                    }
+                    @Html.DisplayFor(modelItem => item.CarName)<br/>
+
+                    @Html.Partial("CarStatus", item)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Header)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Update", new { id = item.NewsID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.NewsID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NewsID })
+            </td>
+        </tr>
+    }
+
+</table>

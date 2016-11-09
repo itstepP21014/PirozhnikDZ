@@ -1,0 +1,50 @@
+﻿@model List<DomainObjects.News>
+
+@{
+    ViewBag.Title = "Print";
+    Layout = null;
+}
+
+<h2>Print Version</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Содержание
+        </th>
+        <th>
+            Дата создания
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Тип
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Header)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+        </tr>
+    }
+
+</table>
