@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Home page";
+}
+
+<h2>Home page</h2>
+<p>@Html.ActionLink("Войти как Admin", "Index", new { controller = "Vote", area = "Admin" })</p>
+
+<p>@Html.ActionLink("Войти как User", "Index", new { controller = "Vote", area = "User" })</p>
